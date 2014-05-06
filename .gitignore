@@ -173,3 +173,17 @@ src/papi-5.3.0/src/include/
 src/papi-5.3.0/src/lib/
 src/papi-5.3.0/src/share/
 
+src/papi-5.3.0/src/components/Makefile_comp_tests.target
+src/papi-5.3.0/src/components_config.h
+src/papi-5.3.0/src/config.h
+src/papi-5.3.0/src/ctests/Makefile.target
+src/papi-5.3.0/src/f77papi.h
+src/papi-5.3.0/src/f90papi.h
+src/papi-5.3.0/src/fpapi.h
+src/papi-5.3.0/src/ftests/Makefile.target
+src/papi-5.3.0/src/libpapi.so.5.3.0.0
+src/papi-5.3.0/src/libpfm4/lib/libpfm.so.4
+src/papi-5.3.0/src/libpfm4/lib/libpfm.so.4.4.0
+src/papi-5.3.0/src/man/
+src/papi-5.3.0/src/testlib/Makefile.target
+
