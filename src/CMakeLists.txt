@@ -26,6 +26,7 @@ include_directories(${PAPI_HOME}/include)
 ### Source files
 set(RLIB_FILES
 	example.c
+	flops.c
 )
 
 

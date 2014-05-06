@@ -10,6 +10,7 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
         person("Pragneshkumar", "Patel", role="aut"), 
         person("George", "Ostrouchov", role ="aut"))
 Depends: R (>= 2.14.0), methods, graphics, grid, ggplot2, gridExtra, reshape2
+SystemRequirements: cmake (http://www.cmake.org)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: yes
