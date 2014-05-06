@@ -43,9 +43,6 @@ src/papi-5.3.0/src/ftests/tenth
 src/papi-5.3.0/src/ftests/zero
 src/papi-5.3.0/src/ftests/zeronamed
 src/papi-5.3.0/src/genpapifdef
-src/papi-5.3.0/src/libpapi.so.5.3.0.0
-src/papi-5.3.0/src/libpfm4/lib/libpfm.so.4
-src/papi-5.3.0/src/libpfm4/lib/libpfm.so.4.4.0
 src/papi-5.3.0/src/papi_events_table.h
 src/papi-5.3.0/src/papi_fwrappers_.c
 src/papi-5.3.0/src/papi_fwrappers__.c
@@ -170,20 +167,9 @@ src/papi-5.3.0/src/utils/papi_xml_event_info
 
 src/papi-5.3.0/src/Makefile
 src/papi-5.3.0/src/autom4te.cache/requests
-src/papi-5.3.0/src/bin/papi_avail
-src/papi-5.3.0/src/bin/papi_clockres
-src/papi-5.3.0/src/bin/papi_command_line
-src/papi-5.3.0/src/bin/papi_component_avail
-src/papi-5.3.0/src/bin/papi_cost
-src/papi-5.3.0/src/bin/papi_decode
-src/papi-5.3.0/src/bin/papi_error_codes
-src/papi-5.3.0/src/bin/papi_event_chooser
-src/papi-5.3.0/src/bin/papi_mem_info
-src/papi-5.3.0/src/bin/papi_multiplex_cost
-src/papi-5.3.0/src/bin/papi_native_avail
-src/papi-5.3.0/src/bin/papi_xml_event_info
 src/papi-5.3.0/src/ctests/mpifirst
-src/papi-5.3.0/src/lib/libpapi.a
-src/papi-5.3.0/src/lib/libpfm.a
-src/papi-5.3.0/src/lib/libpfm.so.4.4.0
+src/papi-5.3.0/src/bin/
+src/papi-5.3.0/src/include/
+src/papi-5.3.0/src/lib/
+src/papi-5.3.0/src/share/
 
