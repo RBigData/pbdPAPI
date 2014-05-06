@@ -1,0 +1,22 @@
+Package: pbdPAPI
+Version: 0.1-0
+Date: 2014-05-06
+Title: Programming with Big Data --- PAPI
+Description: Profiling tools.
+Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), 
+        email = "schmidt@math.utk.edu"),
+        person("Christian", "Heckendorf", role=c("aut", "cre")),
+        person("Wei-Chen", "Chen", role="aut"), 
+        person("Pragneshkumar", "Patel", role="aut"), 
+        person("George", "Ostrouchov", role ="aut"))
+Depends: R (>= 2.14.0), methods, graphics, grid, ggplot2, gridExtra, reshape2
+LazyLoad: yes
+LazyData: yes
+ByteCompile: yes
+License: BSD 2-clause License + file LICENSE
+URL: http://r-pbd.org/
+BugReports: http://group.r-pbd.org/
+MailingList: Please send questions and comments regarding pbdR to
+        RBigData@gmail.com
+Packaged: 2014-02-03 02:28:20 UTC; snoweye
+Maintainer: Drew Schmidt <schmidt@math.utk.edu>

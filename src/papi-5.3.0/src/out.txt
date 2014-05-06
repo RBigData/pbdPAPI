@@ -1,0 +1,616 @@
+/usr/bin/make -j 5 -C /home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4 ARCH="x86_64" CC="gcc  -Wno-override-init"  lib
+make[1]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4'
+/usr/bin/make -j 5 -C lib
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib'
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_common.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_perf_event_pmu.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_perf_event.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_x86_perf_event.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_perf_event.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_netburst_perf_event.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_perf_event.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_core.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_x86.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_x86_arch.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_atom.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_nhm_unc.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_nhm.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_wsm.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snb.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snb_unc.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_ivb.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_ivb_unc.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_hsw.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_cbo.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_ha.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_imc.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_pcu.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_qpi.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_ubo.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_r2pcie.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_r3qpi.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_knc.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_netburst.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_k7.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_k8.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam10h.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam11h.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam12h.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam14h.c
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam15h.c
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_common.c -o pfmlib_common.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_perf_event_pmu.c -o pfmlib_perf_event_pmu.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_perf_event.c -o pfmlib_perf_event.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_x86_perf_event.c -o pfmlib_intel_x86_perf_event.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_perf_event.c -o pfmlib_amd64_perf_event.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_netburst_perf_event.c -o pfmlib_intel_netburst_perf_event.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_perf_event.c -o pfmlib_intel_snbep_unc_perf_event.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64.c -o pfmlib_amd64.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_core.c -o pfmlib_intel_core.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_x86.c -o pfmlib_intel_x86.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_x86_arch.c -o pfmlib_intel_x86_arch.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_atom.c -o pfmlib_intel_atom.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_nhm_unc.c -o pfmlib_intel_nhm_unc.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_nhm.c -o pfmlib_intel_nhm.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_wsm.c -o pfmlib_intel_wsm.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snb.c -o pfmlib_intel_snb.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snb_unc.c -o pfmlib_intel_snb_unc.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_ivb.c -o pfmlib_intel_ivb.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_ivb_unc.c -o pfmlib_intel_ivb_unc.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_hsw.c -o pfmlib_intel_hsw.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc.c -o pfmlib_intel_snbep_unc.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_cbo.c -o pfmlib_intel_snbep_unc_cbo.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_ha.c -o pfmlib_intel_snbep_unc_ha.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_imc.c -o pfmlib_intel_snbep_unc_imc.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_pcu.c -o pfmlib_intel_snbep_unc_pcu.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_qpi.c -o pfmlib_intel_snbep_unc_qpi.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_ubo.c -o pfmlib_intel_snbep_unc_ubo.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_r2pcie.c -o pfmlib_intel_snbep_unc_r2pcie.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_snbep_unc_r3qpi.c -o pfmlib_intel_snbep_unc_r3qpi.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_knc.c -o pfmlib_intel_knc.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_intel_netburst.c -o pfmlib_intel_netburst.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_k7.c -o pfmlib_amd64_k7.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_k8.c -o pfmlib_amd64_k8.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam10h.c -o pfmlib_amd64_fam10h.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam11h.c -o pfmlib_amd64_fam11h.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam12h.c -o pfmlib_amd64_fam12h.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam14h.c -o pfmlib_amd64_fam14h.lo
+gcc  -Wno-override-init -fPIC -DPIC  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -c pfmlib_amd64_fam15h.c -o pfmlib_amd64_fam15h.lo
+rm -f libpfm.a
+ar cq libpfm.a pfmlib_common.o pfmlib_perf_event_pmu.o pfmlib_perf_event.o pfmlib_intel_x86_perf_event.o pfmlib_amd64_perf_event.o pfmlib_intel_netburst_perf_event.o pfmlib_intel_snbep_unc_perf_event.o pfmlib_amd64.o pfmlib_intel_core.o pfmlib_intel_x86.o pfmlib_intel_x86_arch.o pfmlib_intel_atom.o pfmlib_intel_nhm_unc.o pfmlib_intel_nhm.o pfmlib_intel_wsm.o pfmlib_intel_snb.o pfmlib_intel_snb_unc.o pfmlib_intel_ivb.o pfmlib_intel_ivb_unc.o pfmlib_intel_hsw.o pfmlib_intel_snbep_unc.o pfmlib_intel_snbep_unc_cbo.o pfmlib_intel_snbep_unc_ha.o pfmlib_intel_snbep_unc_imc.o pfmlib_intel_snbep_unc_pcu.o pfmlib_intel_snbep_unc_qpi.o pfmlib_intel_snbep_unc_ubo.o pfmlib_intel_snbep_unc_r2pcie.o pfmlib_intel_snbep_unc_r3qpi.o pfmlib_intel_knc.o pfmlib_intel_netburst.o pfmlib_amd64_k7.o pfmlib_amd64_k8.o pfmlib_amd64_fam10h.o pfmlib_amd64_fam11h.o pfmlib_amd64_fam12h.o pfmlib_amd64_fam14h.o pfmlib_amd64_fam15h.o
+gcc  -Wno-override-init  -g -Wall -Werror -Wextra -Wno-unused-parameter -I. -I/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/../include -DCONFIG_PFMLIB_DEBUG -DCONFIG_PFMLIB_OS_LINUX -D_REENTRANT -I. -DCONFIG_PFMLIB_ARCH_X86 -DCONFIG_PFMLIB_ARCH_X86_64 -I. -shared -Wl,-soname -Wl,libpfm.so.4  -o libpfm.so.4.4.0 pfmlib_common.lo pfmlib_perf_event_pmu.lo pfmlib_perf_event.lo pfmlib_intel_x86_perf_event.lo pfmlib_amd64_perf_event.lo pfmlib_intel_netburst_perf_event.lo pfmlib_intel_snbep_unc_perf_event.lo pfmlib_amd64.lo pfmlib_intel_core.lo pfmlib_intel_x86.lo pfmlib_intel_x86_arch.lo pfmlib_intel_atom.lo pfmlib_intel_nhm_unc.lo pfmlib_intel_nhm.lo pfmlib_intel_wsm.lo pfmlib_intel_snb.lo pfmlib_intel_snb_unc.lo pfmlib_intel_ivb.lo pfmlib_intel_ivb_unc.lo pfmlib_intel_hsw.lo pfmlib_intel_snbep_unc.lo pfmlib_intel_snbep_unc_cbo.lo pfmlib_intel_snbep_unc_ha.lo pfmlib_intel_snbep_unc_imc.lo pfmlib_intel_snbep_unc_pcu.lo pfmlib_intel_snbep_unc_qpi.lo pfmlib_intel_snbep_unc_ubo.lo pfmlib_intel_snbep_unc_r2pcie.lo pfmlib_intel_snbep_unc_r3qpi.lo pfmlib_intel_knc.lo pfmlib_intel_netburst.lo pfmlib_amd64_k7.lo pfmlib_amd64_k8.lo pfmlib_amd64_fam10h.lo pfmlib_amd64_fam11h.lo pfmlib_amd64_fam12h.lo pfmlib_amd64_fam14h.lo pfmlib_amd64_fam15h.lo
+ln -sf libpfm.so.4.4.0 libpfm.so.4
+ln -sf libpfm.so.4.4.0 libpfm.so
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib'
+make[1]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4'
+/usr/bin/make -j 5
+make[1]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src'
+Host architecture   : Linux with perf_event kernel support and libpfm4
+sh papi_events_table.sh papi_events.csv > papi_events_table.h
+Host CPU component  : perf_event
+Installation DESTDIR: 
+ar xv /home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/libpfm.a
+Installation PREFIX : /usr/local
+ar xv /home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/libpfm.a
+ar xv /home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/libpfm.a
+Installation EPREFIX: /usr/local
+ar xv /home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/libpfm.a
+Installation INCDIR : /usr/local/include
+Installation LIBDIR : /usr/local/lib
+Installation BINDIR : /usr/local/bin
+x - pfmlib_common.o
+x - pfmlib_perf_event_pmu.o
+x - pfmlib_perf_event.o
+x - pfmlib_intel_x86_perf_event.o
+x - pfmlib_amd64_perf_event.o
+x - pfmlib_intel_netburst_perf_event.o
+x - pfmlib_intel_snbep_unc_perf_event.o
+x - pfmlib_amd64.o
+x - pfmlib_intel_core.o
+x - pfmlib_intel_x86.o
+x - pfmlib_intel_x86_arch.o
+x - pfmlib_intel_atom.o
+x - pfmlib_intel_nhm_unc.o
+x - pfmlib_intel_nhm.o
+x - pfmlib_intel_wsm.o
+x - pfmlib_intel_snb.o
+x - pfmlib_intel_snb_unc.o
+x - pfmlib_intel_ivb.o
+x - pfmlib_intel_ivb_unc.o
+x - pfmlib_intel_hsw.o
+x - pfmlib_intel_snbep_unc.o
+x - pfmlib_intel_snbep_unc_cbo.o
+x - pfmlib_intel_snbep_unc_ha.o
+x - pfmlib_intel_snbep_unc_imc.o
+x - pfmlib_intel_snbep_unc_pcu.o
+x - pfmlib_intel_snbep_unc_qpi.o
+x - pfmlib_intel_snbep_unc_ubo.o
+x - pfmlib_intel_snbep_unc_r2pcie.o
+x - pfmlib_intel_snbep_unc_r3qpi.o
+x - pfmlib_intel_knc.o
+x - pfmlib_intel_netburst.o
+x - pfmlib_amd64_k7.o
+x - pfmlib_amd64_k8.o
+x - pfmlib_amd64_fam10h.o
+x - pfmlib_amd64_fam11h.o
+x - pfmlib_amd64_fam12h.o
+x - pfmlib_amd64_fam14h.o
+x - pfmlib_amd64_fam15h.o
+x - pfmlib_common.o
+x - pfmlib_perf_event_pmu.o
+x - pfmlib_perf_event.o
+x - pfmlib_intel_x86_perf_event.o
+x - pfmlib_amd64_perf_event.o
+x - pfmlib_intel_netburst_perf_event.o
+x - pfmlib_intel_snbep_unc_perf_event.o
+x - pfmlib_amd64.o
+x - pfmlib_intel_core.o
+x - pfmlib_intel_x86.o
+x - pfmlib_intel_x86_arch.o
+x - pfmlib_intel_atom.o
+x - pfmlib_intel_nhm_unc.o
+x - pfmlib_intel_nhm.o
+x - pfmlib_intel_wsm.o
+x - pfmlib_intel_snb.o
+x - pfmlib_intel_snb_unc.o
+x - pfmlib_intel_ivb.o
+x - pfmlib_intel_ivb_unc.o
+x - pfmlib_intel_hsw.o
+x - pfmlib_intel_snbep_unc.o
+x - pfmlib_intel_snbep_unc_cbo.o
+x - pfmlib_intel_snbep_unc_ha.o
+x - pfmlib_intel_snbep_unc_imc.o
+x - pfmlib_intel_snbep_unc_pcu.o
+x - pfmlib_intel_snbep_unc_qpi.o
+x - pfmlib_intel_snbep_unc_ubo.o
+x - pfmlib_intel_snbep_unc_r2pcie.o
+x - pfmlib_intel_snbep_unc_r3qpi.o
+x - pfmlib_intel_knc.o
+x - pfmlib_intel_netburst.o
+x - pfmlib_amd64_k7.o
+x - pfmlib_amd64_k8.o
+x - pfmlib_amd64_fam10h.o
+x - pfmlib_amd64_fam11h.o
+x - pfmlib_amd64_fam12h.o
+x - pfmlib_amd64_fam14h.o
+x - pfmlib_amd64_fam15h.o
+ar xv /home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib/libpfm.a
+Installation MANDIR : /usr/local/man
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c x86_cpuid_info.c -o x86_cpuid_info.o
+Installation DOCDIR : 
+Installation DATADIR: /usr/local/share/papi
+x - pfmlib_common.o
+x - pfmlib_perf_event_pmu.o
+x - pfmlib_perf_event.o
+x - pfmlib_intel_x86_perf_event.o
+x - pfmlib_amd64_perf_event.o
+x - pfmlib_intel_netburst_perf_event.o
+x - pfmlib_intel_snbep_unc_perf_event.o
+x - pfmlib_amd64.o
+x - pfmlib_intel_core.o
+x - pfmlib_intel_x86.o
+x - pfmlib_intel_x86_arch.o
+x - pfmlib_intel_atom.o
+x - pfmlib_intel_nhm_unc.o
+x - pfmlib_intel_nhm.o
+x - pfmlib_intel_wsm.o
+x - pfmlib_intel_snb.o
+x - pfmlib_intel_snb_unc.o
+x - pfmlib_intel_ivb.o
+x - pfmlib_intel_ivb_unc.o
+x - pfmlib_intel_hsw.o
+x - pfmlib_intel_snbep_unc.o
+x - pfmlib_intel_snbep_unc_cbo.o
+x - pfmlib_intel_snbep_unc_ha.o
+x - pfmlib_intel_snbep_unc_imc.o
+x - pfmlib_intel_snbep_unc_pcu.o
+x - pfmlib_intel_snbep_unc_qpi.o
+x - pfmlib_intel_snbep_unc_ubo.o
+x - pfmlib_intel_snbep_unc_r2pcie.o
+x - pfmlib_intel_snbep_unc_r3qpi.o
+x - pfmlib_intel_knc.o
+x - pfmlib_intel_netburst.o
+x - pfmlib_amd64_k7.o
+x - pfmlib_amd64_k8.o
+x - pfmlib_amd64_fam10h.o
+x - pfmlib_amd64_fam11h.o
+x - pfmlib_amd64_fam12h.o
+x - pfmlib_amd64_fam14h.o
+x - pfmlib_amd64_fam15h.o
+x - pfmlib_common.o
+x - pfmlib_perf_event_pmu.o
+x - pfmlib_perf_event.o
+x - pfmlib_intel_x86_perf_event.o
+x - pfmlib_amd64_perf_event.o
+x - pfmlib_intel_netburst_perf_event.o
+x - pfmlib_intel_snbep_unc_perf_event.o
+x - pfmlib_amd64.o
+x - pfmlib_intel_core.o
+x - pfmlib_intel_x86.o
+x - pfmlib_intel_x86_arch.o
+x - pfmlib_intel_atom.o
+x - pfmlib_intel_nhm_unc.o
+x - pfmlib_intel_nhm.o
+x - pfmlib_intel_wsm.o
+x - pfmlib_intel_snb.o
+x - pfmlib_intel_snb_unc.o
+x - pfmlib_intel_ivb.o
+x - pfmlib_intel_ivb_unc.o
+x - pfmlib_intel_hsw.o
+x - pfmlib_intel_snbep_unc.o
+x - pfmlib_intel_snbep_unc_cbo.o
+x - pfmlib_intel_snbep_unc_ha.o
+x - pfmlib_intel_snbep_unc_imc.o
+x - pfmlib_intel_snbep_unc_pcu.o
+x - pfmlib_intel_snbep_unc_qpi.o
+x - pfmlib_intel_snbep_unc_ubo.o
+x - pfmlib_intel_snbep_unc_r2pcie.o
+x - pfmlib_intel_snbep_unc_r3qpi.o
+x - pfmlib_intel_knc.o
+x - pfmlib_intel_netburst.o
+x - pfmlib_amd64_k7.o
+x - pfmlib_amd64_k8.o
+x - pfmlib_amd64_fam10h.o
+x - pfmlib_amd64_fam11h.o
+x - pfmlib_amd64_fam12h.o
+x - pfmlib_amd64_fam14h.o
+x - pfmlib_amd64_fam15h.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_libpfm4_events.c -o papi_libpfm4_events.o
+
+x - pfmlib_common.o
+x - pfmlib_perf_event_pmu.o
+x - pfmlib_perf_event.o
+x - pfmlib_intel_x86_perf_event.o
+x - pfmlib_amd64_perf_event.o
+x - pfmlib_intel_netburst_perf_event.o
+x - pfmlib_intel_snbep_unc_perf_event.o
+x - pfmlib_amd64.o
+x - pfmlib_intel_core.o
+x - pfmlib_intel_x86.o
+x - pfmlib_intel_x86_arch.o
+x - pfmlib_intel_atom.o
+x - pfmlib_intel_nhm_unc.o
+x - pfmlib_intel_nhm.o
+x - pfmlib_intel_wsm.o
+x - pfmlib_intel_snb.o
+x - pfmlib_intel_snb_unc.o
+x - pfmlib_intel_ivb.o
+x - pfmlib_intel_ivb_unc.o
+x - pfmlib_intel_hsw.o
+x - pfmlib_intel_snbep_unc.o
+x - pfmlib_intel_snbep_unc_cbo.o
+x - pfmlib_intel_snbep_unc_ha.o
+x - pfmlib_intel_snbep_unc_imc.o
+x - pfmlib_intel_snbep_unc_pcu.o
+x - pfmlib_intel_snbep_unc_qpi.o
+x - pfmlib_intel_snbep_unc_ubo.o
+x - pfmlib_intel_snbep_unc_r2pcie.o
+x - pfmlib_intel_snbep_unc_r3qpi.o
+x - pfmlib_intel_knc.o
+x - pfmlib_intel_netburst.o
+x - pfmlib_amd64_k7.o
+x - pfmlib_amd64_k8.o
+x - pfmlib_amd64_fam10h.o
+x - pfmlib_amd64_fam11h.o
+x - pfmlib_amd64_fam12h.o
+x - pfmlib_amd64_fam14h.o
+x - pfmlib_amd64_fam15h.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi.c -o papi.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_internal.c -o papi_internal.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_hl.c -o papi_hl.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c extras.c -o extras.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c sw_multiplex.c -o sw_multiplex.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_fwrappers.c -o papi_fwrappers.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c threads.c -o threads.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c cpus.c -o cpus.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c linux-memory.c -o linux-memory.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c linux-timer.c -o linux-timer.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c linux-common.c -o linux-common.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_preset.c -o papi_preset.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_vector.c -o papi_vector.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_memory.c -o papi_memory.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_user_events.c -o papi_user_events.o
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c components/perf_event/perf_event.c -o perf_event.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c components/perf_event/pe_libpfm4_events.c -o pe_libpfm4_events.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -Icomponents/perf_event/ -c components/perf_event_uncore/perf_event_uncore.c -o perf_event_uncore.o 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c components/perf_event_uncore/peu_libpfm4_events.c -o peu_libpfm4_events.o 
+cd testlib;  /usr/bin/make -j 5 CC="gcc" CC_R="gcc -pthread" CC_SHR="gcc -fPIC -DPIC -shared -Wl,-soname -Wl,libpapi.so.5.3.0.0 -Xlinker "-rpath" -Xlinker "/usr/local/lib" -Wl,-rpath-link -Wl,/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib" CFLAGS="-I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra" F77="gfortran" FFLAGS="-I.. -Dlinux -Wall -ffixed-line-length-132" OPTFLAGS="-O2 -DPAPI_NO_MEMORY_MANAGEMENT" SMPCFLGS="" OMPCFLGS="-fopenmp" NOOPT="" LDFLAGS=" " LIBRARY="../libpapi.a"
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/testlib'
+gcc -I. -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  -c do_loops.c
+gcc -I. -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  -c test_utils.c
+gcc -I. -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  -c dummy.c
+gcc -I. -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  -c clockcore.c
+gfortran -I. -I.. -Dlinux -Wall -ffixed-line-length-132  -c ftests_util.F
+gcc -E -DFORTRANUNDERSCORE papi_fwrappers.c > papi_fwrappers_.c 
+gcc -E -DFORTRANDOUBLEUNDERSCORE papi_fwrappers.c > papi_fwrappers__.c
+gcc -E -DFORTRANCAPS papi_fwrappers.c > upper_PAPI_FWRAPPERS.c
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_fwrappers__.c -o papi_fwrappers__.o
+gcc -fPIC -DPIC -shared -Wl,-soname -Wl,libpapi.so.5.3.0.0 -Xlinker "-rpath" -Xlinker "/usr/local/lib" -Wl,-rpath-link -Wl,/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT x86_cpuid_info.c papi_libpfm4_events.c papi.c papi_internal.c papi_hl.c extras.c sw_multiplex.c papi_fwrappers.c papi_fwrappers_.c papi_fwrappers__.c upper_PAPI_FWRAPPERS.c threads.c cpus.c linux-memory.c linux-timer.c linux-common.c  papi_preset.c papi_vector.c papi_memory.c papi_user_events.c components/perf_event/perf_event.c components/perf_event/pe_libpfm4_events.c components/perf_event_uncore/perf_event_uncore.c components/perf_event_uncore/peu_libpfm4_events.c  -o libpapi.so.5.3.0.0 -Bdynamic -L/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/libpfm4/lib -lpfm 
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c papi_fwrappers_.c -o papi_fwrappers_.o 
+ar  rv libtestlib.a do_loops.o test_utils.o dummy.o clockcore.o ftests_util.o
+a - do_loops.o
+a - test_utils.o
+a - dummy.o
+a - clockcore.o
+a - ftests_util.o
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/testlib'
+gcc -I. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DOSLOCK=\"linux-lock.h\" -DOSCONTEXT=\"linux-context.h\" -O2 -DPAPI_NO_MEMORY_MANAGEMENT -c upper_PAPI_FWRAPPERS.c -o upper_PAPI_FWRAPPERS.o
+rm -f libpapi.a
+ar  rv libpapi.a pfmlib_common.o pfmlib_perf_event_pmu.o pfmlib_perf_event.o pfmlib_intel_x86_perf_event.o pfmlib_amd64_perf_event.o pfmlib_intel_netburst_perf_event.o pfmlib_intel_snbep_unc_perf_event.o pfmlib_amd64.o pfmlib_intel_core.o pfmlib_intel_x86.o pfmlib_intel_x86_arch.o pfmlib_intel_atom.o pfmlib_intel_nhm_unc.o pfmlib_intel_nhm.o pfmlib_intel_wsm.o pfmlib_intel_snb.o pfmlib_intel_snb_unc.o pfmlib_intel_ivb.o pfmlib_intel_ivb_unc.o pfmlib_intel_hsw.o pfmlib_intel_snbep_unc.o pfmlib_intel_snbep_unc_cbo.o pfmlib_intel_snbep_unc_ha.o pfmlib_intel_snbep_unc_imc.o pfmlib_intel_snbep_unc_pcu.o pfmlib_intel_snbep_unc_qpi.o pfmlib_intel_snbep_unc_ubo.o pfmlib_intel_snbep_unc_r2pcie.o pfmlib_intel_snbep_unc_r3qpi.o pfmlib_intel_knc.o pfmlib_intel_netburst.o pfmlib_amd64_k7.o pfmlib_amd64_k8.o pfmlib_amd64_fam10h.o pfmlib_amd64_fam11h.o pfmlib_amd64_fam12h.o pfmlib_amd64_fam14h.o pfmlib_amd64_fam15h.o x86_cpuid_info.o papi_libpfm4_events.o papi.o papi_internal.o papi_hl.o extras.o sw_multiplex.o papi_fwrappers.o papi_fwrappers_.o papi_fwrappers__.o upper_PAPI_FWRAPPERS.o threads.o cpus.o linux-memory.o linux-timer.o linux-common.o  papi_preset.o papi_vector.o papi_memory.o papi_user_events.o perf_event.o pe_libpfm4_events.o perf_event_uncore.o peu_libpfm4_events.o pfmlib_common.o pfmlib_perf_event_pmu.o pfmlib_perf_event.o pfmlib_intel_x86_perf_event.o pfmlib_amd64_perf_event.o pfmlib_intel_netburst_perf_event.o pfmlib_intel_snbep_unc_perf_event.o pfmlib_amd64.o pfmlib_intel_core.o pfmlib_intel_x86.o pfmlib_intel_x86_arch.o pfmlib_intel_atom.o pfmlib_intel_nhm_unc.o pfmlib_intel_nhm.o pfmlib_intel_wsm.o pfmlib_intel_snb.o pfmlib_intel_snb_unc.o pfmlib_intel_ivb.o pfmlib_intel_ivb_unc.o pfmlib_intel_hsw.o pfmlib_intel_snbep_unc.o pfmlib_intel_snbep_unc_cbo.o pfmlib_intel_snbep_unc_ha.o pfmlib_intel_snbep_unc_imc.o pfmlib_intel_snbep_unc_pcu.o pfmlib_intel_snbep_unc_qpi.o pfmlib_intel_snbep_unc_ubo.o pfmlib_intel_snbep_unc_r2pcie.o pfmlib_intel_snbep_unc_r3qpi.o pfmlib_intel_knc.o pfmlib_intel_netburst.o pfmlib_amd64_k7.o pfmlib_amd64_k8.o pfmlib_amd64_fam10h.o pfmlib_amd64_fam11h.o pfmlib_amd64_fam12h.o pfmlib_amd64_fam14h.o pfmlib_amd64_fam15h.o x86_cpuid_info.o papi_libpfm4_events.o
+a - pfmlib_common.o
+a - pfmlib_perf_event_pmu.o
+a - pfmlib_perf_event.o
+a - pfmlib_intel_x86_perf_event.o
+a - pfmlib_amd64_perf_event.o
+a - pfmlib_intel_netburst_perf_event.o
+a - pfmlib_intel_snbep_unc_perf_event.o
+a - pfmlib_amd64.o
+a - pfmlib_intel_core.o
+a - pfmlib_intel_x86.o
+a - pfmlib_intel_x86_arch.o
+a - pfmlib_intel_atom.o
+a - pfmlib_intel_nhm_unc.o
+a - pfmlib_intel_nhm.o
+a - pfmlib_intel_wsm.o
+a - pfmlib_intel_snb.o
+a - pfmlib_intel_snb_unc.o
+a - pfmlib_intel_ivb.o
+a - pfmlib_intel_ivb_unc.o
+a - pfmlib_intel_hsw.o
+a - pfmlib_intel_snbep_unc.o
+a - pfmlib_intel_snbep_unc_cbo.o
+a - pfmlib_intel_snbep_unc_ha.o
+a - pfmlib_intel_snbep_unc_imc.o
+a - pfmlib_intel_snbep_unc_pcu.o
+a - pfmlib_intel_snbep_unc_qpi.o
+a - pfmlib_intel_snbep_unc_ubo.o
+a - pfmlib_intel_snbep_unc_r2pcie.o
+a - pfmlib_intel_snbep_unc_r3qpi.o
+a - pfmlib_intel_knc.o
+a - pfmlib_intel_netburst.o
+a - pfmlib_amd64_k7.o
+a - pfmlib_amd64_k8.o
+a - pfmlib_amd64_fam10h.o
+a - pfmlib_amd64_fam11h.o
+a - pfmlib_amd64_fam12h.o
+a - pfmlib_amd64_fam14h.o
+a - pfmlib_amd64_fam15h.o
+a - x86_cpuid_info.o
+a - papi_libpfm4_events.o
+a - papi.o
+a - papi_internal.o
+a - papi_hl.o
+a - extras.o
+a - sw_multiplex.o
+a - papi_fwrappers.o
+a - papi_fwrappers_.o
+a - papi_fwrappers__.o
+a - upper_PAPI_FWRAPPERS.o
+a - threads.o
+a - cpus.o
+a - linux-memory.o
+a - linux-timer.o
+a - linux-common.o
+a - papi_preset.o
+a - papi_vector.o
+a - papi_memory.o
+a - papi_user_events.o
+a - perf_event.o
+a - pe_libpfm4_events.o
+a - perf_event_uncore.o
+a - peu_libpfm4_events.o
+a - pfmlib_common.o
+a - pfmlib_perf_event_pmu.o
+a - pfmlib_perf_event.o
+a - pfmlib_intel_x86_perf_event.o
+a - pfmlib_amd64_perf_event.o
+a - pfmlib_intel_netburst_perf_event.o
+a - pfmlib_intel_snbep_unc_perf_event.o
+a - pfmlib_amd64.o
+a - pfmlib_intel_core.o
+a - pfmlib_intel_x86.o
+a - pfmlib_intel_x86_arch.o
+a - pfmlib_intel_atom.o
+a - pfmlib_intel_nhm_unc.o
+a - pfmlib_intel_nhm.o
+a - pfmlib_intel_wsm.o
+a - pfmlib_intel_snb.o
+a - pfmlib_intel_snb_unc.o
+a - pfmlib_intel_ivb.o
+a - pfmlib_intel_ivb_unc.o
+a - pfmlib_intel_hsw.o
+a - pfmlib_intel_snbep_unc.o
+a - pfmlib_intel_snbep_unc_cbo.o
+a - pfmlib_intel_snbep_unc_ha.o
+a - pfmlib_intel_snbep_unc_imc.o
+a - pfmlib_intel_snbep_unc_pcu.o
+a - pfmlib_intel_snbep_unc_qpi.o
+a - pfmlib_intel_snbep_unc_ubo.o
+a - pfmlib_intel_snbep_unc_r2pcie.o
+a - pfmlib_intel_snbep_unc_r3qpi.o
+a - pfmlib_intel_knc.o
+a - pfmlib_intel_netburst.o
+a - pfmlib_amd64_k7.o
+a - pfmlib_amd64_k8.o
+a - pfmlib_amd64_fam10h.o
+a - pfmlib_amd64_fam11h.o
+a - pfmlib_amd64_fam12h.o
+a - pfmlib_amd64_fam14h.o
+a - pfmlib_amd64_fam15h.o
+a - x86_cpuid_info.o
+a - papi_libpfm4_events.o
+cd utils; /usr/bin/make -j 5 CC="gcc" CC_R="gcc -pthread" CFLAGS="-I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra" OPTFLAGS="-O2 -DPAPI_NO_MEMORY_MANAGEMENT" SMPCFLGS="" OMPCFLGS="-fopenmp" NOOPT="" LDFLAGS=" " LIBRARY="../libpapi.a" papi_avail papi_mem_info papi_cost papi_clockres papi_native_avail papi_command_line papi_event_chooser papi_decode papi_xml_event_info papi_version papi_multiplex_cost papi_component_avail papi_error_codes
+cd ctests; /usr/bin/make -j 5 CC="gcc" CC_R="gcc -pthread" MPICC="mpicc" CFLAGS="-I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT" TOPTFLAGS="-O0" SMPCFLGS="" OMPCFLGS="-fopenmp" NOOPT="" LDFLAGS=" " LDL="-ldl" LIBRARY="../libpapi.a" all
+cd ftests; /usr/bin/make -j 5 CC="gcc" CC_R="gcc -pthread" F77="gfortran" CFLAGS="-I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE=\"libpfm4/include/perfmon/perf_event.h\" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra" TOPTFLAGS="-O0" SMPCFLGS="" OMPCFLGS="-fopenmp" FFLAGS="-I.. -Dlinux -Wall -ffixed-line-length-132" NOOPT="" LDFLAGS=" " LIBRARY="../libpapi.a" all
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/utils'
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/ftests'
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/ctests'
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  avail.c ../testlib/libtestlib.a ../libpapi.a  -o papi_avail
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  mem_info.c ../testlib/libtestlib.a ../libpapi.a  -o papi_mem_info
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  strtest.F ../testlib/libtestlib.a ../libpapi.a  -o strtest
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  -c cost_utils.c
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 pthrtough.c ../testlib/libtestlib.a ../libpapi.a  -o pthrtough -lpthread
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/components/perf_event/tests'
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  clockres.c ../testlib/libtestlib.a \
+		../libpapi.a  -o papi_clockres -lm
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  zero.F ../testlib/libtestlib.a ../libpapi.a -o zero 
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -c perf_event_offcore_response.c
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 pthrtough2.c ../testlib/libtestlib.a ../libpapi.a  -o pthrtough2 -lpthread
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 thrspecific.c ../testlib/libtestlib.a ../libpapi.a  -o thrspecific -lpthread
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 profile_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o profile_pthreads -lpthread
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  native_avail.c ../testlib/libtestlib.a ../libpapi.a  -o papi_native_avail
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -c event_name_lib.c
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -c perf_event_system_wide.c
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  zeronamed.F ../testlib/libtestlib.a ../libpapi.a -o zeronamed 
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_pthreads -lpthread
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -c perf_event_user_kernel.c
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  first.F ../testlib/libtestlib.a ../libpapi.a -o first 
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  second.F ../testlib/libtestlib.a ../libpapi.a -o second 
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  command_line.c ../testlib/libtestlib.a ../libpapi.a  -o papi_command_line
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -o perf_event_offcore_response perf_event_offcore_response.o event_name_lib.o ../../../testlib/libtestlib.a ../../../libpapi.a  
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -o perf_event_user_kernel perf_event_user_kernel.o event_name_lib.o ../../../testlib/libtestlib.a ../../../libpapi.a  
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -o perf_event_system_wide perf_event_system_wide.o ../../../testlib/libtestlib.a ../../../libpapi.a  
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  event_chooser.c ../testlib/libtestlib.a ../libpapi.a  -o papi_event_chooser -lm
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  decode.c ../testlib/libtestlib.a ../libpapi.a  -o papi_decode
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  tenth.F ../testlib/libtestlib.a ../libpapi.a -o tenth 
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  event_info.c ../testlib/libtestlib.a ../libpapi.a  -o papi_xml_event_info -lm
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  description.F ../testlib/libtestlib.a ../libpapi.a  -o description
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  fdmemtest.F ../testlib/libtestlib.a ../libpapi.a  -o fdmemtest
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o zero_pthreads -lpthread
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 clockres_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o clockres_pthreads -lpthread -lm
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  version.c ../libpapi.a  -o papi_version
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow3_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o overflow3_pthreads -lpthread
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 locks_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o locks_pthreads -lpthread
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  accum.F ../testlib/libtestlib.a ../libpapi.a -o accum 
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 krentel_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o krentel_pthreads -lpthread
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  highlevel.F ../testlib/libtestlib.a ../libpapi.a -o highlevel 
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/components/perf_event/tests'
+make[2]: Entering directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/components/perf_event_uncore/tests'
+gcc  -I../../../testlib -I../../.. -I. -c perf_event_uncore.c
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -c perf_event_uncore_lib.c
+gcc  -I../../../testlib -I../../.. -I. -c perf_event_uncore_multiple.c
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  multiplex_cost.c ../testlib/libtestlib.a cost_utils.o ../libpapi.a  -o papi_multiplex_cost -lm
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -c perf_event_amd_northbridge.c
+gcc  -I../../../testlib -I../../.. -I. -c perf_event_uncore_cbox.c
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  component.c ../testlib/libtestlib.a ../libpapi.a  -o papi_component_avail
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  error_codes.c ../testlib/libtestlib.a ../libpapi.a  -o papi_error_codes
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -o perf_event_uncore perf_event_uncore.o perf_event_uncore_lib.o ../../../testlib/libtestlib.a ../../../libpapi.a  
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -o perf_event_uncore_multiple perf_event_uncore_multiple.o perf_event_uncore_lib.o ../../../testlib/libtestlib.a ../../../libpapi.a  
+gcc -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -I../../../testlib -I../../.. -I. -o perf_event_uncore_cbox perf_event_uncore_cbox.o perf_event_uncore_lib.o ../../../testlib/libtestlib.a ../../../libpapi.a  
+gcc -I../testlib -I.  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra  cost.c ../testlib/libtestlib.a cost_utils.o ../libpapi.a  -o papi_cost -lm
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  cost.F ../testlib/libtestlib.a ../libpapi.a -o cost 
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  case1.F ../testlib/libtestlib.a ../libpapi.a  -o case1
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  case2.F ../testlib/libtestlib.a ../libpapi.a  -o case2
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  clockres.F ../testlib/libtestlib.a ../libpapi.a  -o clockres
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 inherit.c ../testlib/libtestlib.a ../libpapi.a  -o inherit
+gcc  -o perf_event_amd_northbridge perf_event_amd_northbridge.o ../../../testlib/libtestlib.a ../../../libpapi.a 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 hwinfo.c ../testlib/libtestlib.a ../libpapi.a  -o hwinfo
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  eventname.F ../testlib/libtestlib.a ../libpapi.a  -o eventname
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 code2name.c ../testlib/libtestlib.a ../libpapi.a  -o code2name
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 reset.c ../testlib/libtestlib.a ../libpapi.a  -o reset 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 cmpinfo.c ../testlib/libtestlib.a ../libpapi.a  -o cmpinfo 
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/components/perf_event_uncore/tests'
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/utils'
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  fmatrixlowpapi.F ../testlib/libtestlib.a ../libpapi.a  -o fmatrixlowpapi
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  fmatrixpapi.F ../testlib/libtestlib.a ../libpapi.a  -o fmatrixpapi
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  fmatrixpapi2.F ../testlib/libtestlib.a ../libpapi.a  -o fmatrixpapi2
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  flops.F ../testlib/libtestlib.a ../libpapi.a  -o flops
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 realtime.c ../testlib/libtestlib.a ../libpapi.a  -o realtime
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 virttime.c ../testlib/libtestlib.a ../libpapi.a  -o virttime
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  fmultiplex1.F ../testlib/libtestlib.a ../libpapi.a -o fmultiplex1 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 first.c ../testlib/libtestlib.a ../libpapi.a  -o first
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 exeinfo.c ../testlib/libtestlib.a ../libpapi.a  -o exeinfo 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero.c ../testlib/libtestlib.a ../libpapi.a  -o zero
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  johnmay2.F ../testlib/libtestlib.a ../libpapi.a -o johnmay2 
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  fmultiplex2.F ../testlib/libtestlib.a ../libpapi.a -o fmultiplex2 
+gfortran -I../testlib -I.. -Dlinux -Wall -ffixed-line-length-132  avail.F  ../testlib/libtestlib.a ../libpapi.a  -o avail
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_named.c ../testlib/libtestlib.a ../libpapi.a  -o zero_named
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 branches.c ../testlib/libtestlib.a ../libpapi.a  -lm -o branches
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 dmem_info.c ../testlib/libtestlib.a ../libpapi.a  -o dmem_info
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 all_native_events.c ../testlib/libtestlib.a ../libpapi.a  -o all_native_events
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 all_events.c ../testlib/libtestlib.a ../libpapi.a  -o all_events
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/ftests'
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 derived.c ../testlib/libtestlib.a ../libpapi.a  -o derived
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 high-level2.c ../testlib/libtestlib.a ../libpapi.a  -o high-level2
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 hl_rates.c ../testlib/libtestlib.a ../libpapi.a  -o hl_rates
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 describe.c ../testlib/libtestlib.a ../libpapi.a  -o describe
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 memory.c ../testlib/libtestlib.a ../libpapi.a  -o memory
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_flip.c ../testlib/libtestlib.a ../libpapi.a  -o zero_flip
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 low-level.c ../testlib/libtestlib.a ../libpapi.a  -o low-level
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 high-level.c ../testlib/libtestlib.a ../libpapi.a  -o high-level
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 eventname.c ../testlib/libtestlib.a ../libpapi.a  -o eventname
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 case1.c ../testlib/libtestlib.a ../libpapi.a  -o case1
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 case2.c ../testlib/libtestlib.a ../libpapi.a  -o case2
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 calibrate.c ../testlib/libtestlib.a ../libpapi.a  -o calibrate
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 flops.c ../testlib/libtestlib.a ../libpapi.a  -o flops
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 second.c ../testlib/libtestlib.a ../libpapi.a  -o second
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 johnmay2.c ../testlib/libtestlib.a ../libpapi.a  -o johnmay2
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0  matrix-hl.c ../testlib/libtestlib.a ../libpapi.a  -o matrix-hl
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 tenth.c ../testlib/libtestlib.a ../libpapi.a  -o tenth
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 ipc.c ../testlib/libtestlib.a ../libpapi.a  -o ipc
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 nmi_watchdog.c ../testlib/libtestlib.a ../libpapi.a  -o nmi_watchdog
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 get_event_component.c ../testlib/libtestlib.a ../libpapi.a  -o get_event_component
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 disable_component.c ../testlib/libtestlib.a ../libpapi.a  -o disable_component
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 remove_events.c ../testlib/libtestlib.a ../libpapi.a  -o remove_events
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 cycle_ratio.c ../testlib/libtestlib.a ../libpapi.a  -o cycle_ratio
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 fork.c ../testlib/libtestlib.a ../libpapi.a  -o fork 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 fork2.c ../testlib/libtestlib.a ../libpapi.a  -o fork2 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 exec.c ../testlib/libtestlib.a ../libpapi.a  -o exec 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 exec2.c ../testlib/libtestlib.a ../libpapi.a  -o exec2 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 forkexec.c ../testlib/libtestlib.a ../libpapi.a  -o forkexec 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 forkexec2.c ../testlib/libtestlib.a ../libpapi.a  -o forkexec2 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 forkexec3.c ../testlib/libtestlib.a ../libpapi.a  -o forkexec3 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 forkexec4.c ../testlib/libtestlib.a ../libpapi.a  -o forkexec4 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 fork_exec_overflow.c ../testlib/libtestlib.a ../libpapi.a  -o fork_overflow
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -DPEXEC fork_exec_overflow.c ../testlib/libtestlib.a ../libpapi.a  -o exec_overflow
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -DPCHILD fork_exec_overflow.c ../testlib/libtestlib.a ../libpapi.a  -o child_overflow
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -DSYSTEM fork_exec_overflow.c ../testlib/libtestlib.a ../libpapi.a  -o system_child_overflow
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -DSYSTEM2 fork_exec_overflow.c ../testlib/libtestlib.a ../libpapi.a  -o system_overflow
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 burn.c ../testlib/libtestlib.a ../libpapi.a  -o burn
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_fork.c ../testlib/libtestlib.a ../libpapi.a  -o zero_fork
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow.c ../testlib/libtestlib.a ../libpapi.a  -o overflow
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_force_software.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_force_software
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_single_event.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_single_event
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_twoevents.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_twoevents
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 timer_overflow.c ../testlib/libtestlib.a ../libpapi.a  -o timer_overflow 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow2.c ../testlib/libtestlib.a ../libpapi.a  -o overflow2
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_index.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_index
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_one_and_read.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_one_and_read
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 overflow_allcounters.c ../testlib/libtestlib.a ../libpapi.a  -o overflow_allcounters
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -c prof_utils.c
+mpicc -I.. -I../testlib  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 first.c ../testlib/libtestlib.a ../libpapi.a  -o mpifirst
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 max_multiplex.c ../testlib/libtestlib.a ../libpapi.a  -o max_multiplex 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 multiplex1.c ../testlib/libtestlib.a ../libpapi.a  -o multiplex1 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 multiplex2.c ../testlib/libtestlib.a ../libpapi.a  -o multiplex2 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -DMULTIPLEX mendes-alt.c ../testlib/libtestlib.a ../libpapi.a  -o mendes-alt 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -DMPX -O0 sdsc.c ../testlib/libtestlib.a ../libpapi.a  -o sdsc-mpx
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -DMPX -O0 sdsc2.c ../testlib/libtestlib.a ../libpapi.a  -lm -o sdsc2-mpx
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -DMPX -O0 sdsc4.c ../testlib/libtestlib.a ../libpapi.a  -lm -o sdsc4-mpx
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 reset_multiplex.c ../testlib/libtestlib.a ../libpapi.a  -o reset_multiplex 
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 multiplex1_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o multiplex1_pthreads -lpthread
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 multiplex3_pthreads.c ../testlib/libtestlib.a ../libpapi.a  -o multiplex3_pthreads -lpthread
+gcc -pthread -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 kufrin.c ../testlib/libtestlib.a ../libpapi.a  -o kufrin -lpthread
+gcc -pthread -I.. -I../testlib -fopenmp -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_omp.c ../testlib/libtestlib.a ../libpapi.a  -o zero_omp 
+gcc -pthread -I.. -I../testlib -fopenmp -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 omptough.c ../testlib/libtestlib.a ../libpapi.a  -o omptough 
+gcc -pthread -I.. -I../testlib  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_smp.c ../testlib/libtestlib.a ../libpapi.a  -o zero_smp 
+gcc -pthread -I.. -I../testlib  -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_shmem.c ../testlib/libtestlib.a ../libpapi.a  -o zero_shmem 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 shlib.c ../testlib/libtestlib.a ../libpapi.a  -o shlib -ldl
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 earprofile.c ../testlib/libtestlib.a prof_utils.o ../libpapi.a  -o earprofile
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 data_range.c ../testlib/libtestlib.a ../libpapi.a  -o data_range
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 p4_lst_ins.c ../testlib/libtestlib.a ../libpapi.a  -o p4_lst_ins
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 multiattach.c ../testlib/libtestlib.a ../libpapi.a  -o multiattach 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 multiattach2.c ../testlib/libtestlib.a ../libpapi.a  -o multiattach2 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 zero_attach.c ../testlib/libtestlib.a ../libpapi.a  -o zero_attach 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 attach_target.c -o attach_target ../testlib/libtestlib.a
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 api.c ../testlib/libtestlib.a ../libpapi.a  -o api
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 profile.c prof_utils.o ../testlib/libtestlib.a ../libpapi.a  -o profile
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 -DSWPROFILE profile.c prof_utils.o ../testlib/libtestlib.a ../libpapi.a  -o profile_force_software
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 sprofile.c prof_utils.o ../testlib/libtestlib.a ../libpapi.a  -o sprofile
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 profile_twoevents.c prof_utils.o ../testlib/libtestlib.a ../libpapi.a  -o profile_twoevents
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 byte_profile.c prof_utils.o ../testlib/libtestlib.a ../libpapi.a  -o byte_profile
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 attach3.c ../testlib/libtestlib.a ../libpapi.a  -o attach3 
+gcc -I.. -I../testlib -I.. -g -DSTATIC_PAPI_EVENTS_TABLE -DPEINCLUDE="libpfm4/include/perfmon/perf_event.h" -D_REENTRANT -D_GNU_SOURCE -DUSE_COMPILER_TLS  -Wall -Ilibpfm4/include -Wextra -DPAPI_NO_MEMORY_MANAGEMENT -O0 attach2.c ../testlib/libtestlib.a ../libpapi.a  -o attach2 
+make[2]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src/ctests'
+make[1]: Leaving directory `/home/mschmid3/dev/pbd/papi/src/papi-5.3.0/src'

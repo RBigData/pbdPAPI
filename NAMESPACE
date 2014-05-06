@@ -1,0 +1,7 @@
+useDynLib("pbdpapi")
+
+import(methods, graphics, grid, ggplot2, gridExtra, reshape2)
+
+### All functions
+exportPattern("^[[:alpha:]]+")
+
