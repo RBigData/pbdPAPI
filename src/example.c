@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <papi.h>
+#include "papi.h"
 
 #define NUM_EVENTS 2
 #define THRESHOLD 10000

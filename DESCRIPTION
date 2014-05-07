@@ -9,7 +9,8 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
         person("Wei-Chen", "Chen", role="aut"), 
         person("Pragneshkumar", "Patel", role="aut"), 
         person("George", "Ostrouchov", role ="aut"))
-Depends: R (>= 2.14.0), methods, graphics, grid, ggplot2, gridExtra, reshape2
+Depends: R (>= 2.14.0), methods, graphics, grid, ggplot2, gridExtra,
+        reshape2
 SystemRequirements: cmake (http://www.cmake.org)
 LazyLoad: yes
 LazyData: yes
@@ -19,5 +20,10 @@ URL: http://r-pbd.org/
 BugReports: http://group.r-pbd.org/
 MailingList: Please send questions and comments regarding pbdR to
         RBigData@gmail.com
-Packaged: 2014-02-03 02:28:20 UTC; snoweye
+Packaged: 2014-05-07 04:04:07 UTC; snoweye
 Maintainer: Drew Schmidt <schmidt@math.utk.edu>
+Author: Drew Schmidt [aut, cre],
+  Christian Heckendorf [aut, cre],
+  Wei-Chen Chen [aut],
+  Pragneshkumar Patel [aut],
+  George Ostrouchov [aut]
