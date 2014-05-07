@@ -1,10 +1,10 @@
 ### Configure PAPI.
 MY_PREFIX_DIR=`pwd | sed -e "s#papi-.*\/src#build#g"`
-MY_CFLAGS=PKG_CPICFLAGS
+CFLAGS=MY_CFLAGS
 ./configure \
   --prefix=${MY_PREFIX_DIR} \
-  CFLAGS=${MY_CFLAGS}
+  CFLAGS=${CFLAGS}
 
 ### Make and install.
-make
+CFLAGS=${CFLAGS} make
 make install
