@@ -65,7 +65,7 @@ SEXP papi_cache_off()
     
     setAttrib(RET, R_NamesSymbol, RET_NAMES);
     
-    unpt = 5;
+    unpt = NUM_EVENTS + 2;
   }
   
   
