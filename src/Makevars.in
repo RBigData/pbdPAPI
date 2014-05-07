@@ -1,19 +1,30 @@
+#######################################################
+
 papi_home = ./papi-5.3.0/src/
 MY_CFLAGS = ${CPICFLAGS}
-PKG_CFLAGS = -I./build/include/
-PKG_LIBS = ./build/lib/libpapi.a ./build/lib/libpfm.a
+
+BUILD_PAPI = @BUILD_BUNDLED_PAPI@
+
+PKG_CFLAGS = @PAPI_CFLAGS@
+PKG_LIBS = @PAPI_LIBS@
 
 OBJECTS = flops.o example.o
 
 all: $(SHLIB)
 
-$(SHLIB): mkpapi $(OBJECTS)
 
+ifeq "$(BUILD_PAPI)" "yes"
+$(SHLIB): mkpapi $(OBJECTS)
 $(OBJECTS): mkpapi
+else
+$(SHLIB): $(OBJECTS)
+endif
+
 
 mkpapi: build_papi
 	@sed -i "s#MY_CFLAGS#${MY_CFLAGS}#g" build_papi
 	( cd ${papi_home}; sh ../../build_papi )
+
 
 clean:
 	rm -rf ./build

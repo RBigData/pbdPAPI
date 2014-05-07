@@ -37,6 +37,7 @@ SEXP papi_flops_off()
   float real_time, proc_time, mflops;
   long long flpops;
   int retval;
+  int unpt;
   
   int Events[3] = {PAPI_TOT_CYC, PAPI_FP_INS, PAPI_FP_OPS};
   long_long values[3];
@@ -50,6 +51,8 @@ SEXP papi_flops_off()
   {    
     PROTECT(RET = allocVector(INTSXP, 1));
     INTEGER(RET)[0] = PBD_ERROR;
+    
+    unpt = 1;
   }
   else
   {
@@ -79,12 +82,15 @@ SEXP papi_flops_off()
     SET_STRING_ELT(RET_NAMES, 3, mkChar("mflops"));
     
     setAttrib(RET, R_NamesSymbol, RET_NAMES);
+    
+    unpt = 6;
   }
   
   
   // Turn off counters
   PAPI_stop_counters(values, 3);
   
+  UNPROTECT(unpt);
   return RET;
 }
 
