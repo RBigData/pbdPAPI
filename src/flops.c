@@ -1,9 +1,5 @@
 #include "pbdPAPI.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "papi.h"
-
 /***********************************************************************
  * if PAPI_FP_OPS is a derived event in your platform, then your       * 
  * platform must have at least three counters to support PAPI_flops,   *
@@ -12,6 +8,8 @@
  * available hardware counters and PAPI_FP_OPS is a derived event in   *
  * this platform, so PAPI_flops returns an error.                      *
  ***********************************************************************/
+
+#define NUM_EVENTS 3
 
 SEXP papi_flops_on()
 { 
@@ -24,9 +22,10 @@ SEXP papi_flops_on()
   
   retval = PAPI_flops(&ireal_time, &iproc_time, &iflpops, &imflops);
   
-  if (retval < PAPI_OK)
+  if (retval != PAPI_OK)
     INTEGER(RET)[0] = PBD_ERROR;
   
+  UNPROTECT(1);
   return RET;
 }
 
@@ -38,16 +37,14 @@ SEXP papi_flops_off()
   long long flpops;
   int retval;
   int unpt;
-  
-  int Events[3] = {PAPI_TOT_CYC, PAPI_FP_INS, PAPI_FP_OPS};
-  long_long values[3];
+  long_long values[NUM_EVENTS];
   
   SEXP RET, RET_NAMES, REAL_TIME, PROC_TIME, FLPOPS, MFLOPS;
   
   
   retval = PAPI_flops(&real_time, &proc_time, &flpops, &mflops);
-    
-  if (retval < PAPI_OK)
+  
+  if (retval != PAPI_OK)
   {    
     PROTECT(RET = allocVector(INTSXP, 1));
     INTEGER(RET)[0] = PBD_ERROR;
@@ -88,7 +85,7 @@ SEXP papi_flops_off()
   
   
   // Turn off counters
-  PAPI_stop_counters(values, 3);
+  PAPI_stop_counters(values, NUM_EVENTS);
   
   UNPROTECT(unpt);
   return RET;

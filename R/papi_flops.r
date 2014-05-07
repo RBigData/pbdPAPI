@@ -1,5 +1,7 @@
 papi.flops <- function(expr)
 {
+  papi.check(3L)
+  
   ret <- .Call("papi_flops_on", 1L)
   if (ret == -1L)
     stop("Could not initialise PAPI_flops \nYour platform may not support floating point operation event.\n")

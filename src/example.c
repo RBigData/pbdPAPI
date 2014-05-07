@@ -1,11 +1,9 @@
-#include <R.h>
-#include <Rinternals.h>
-
 /*  Taken from $PAPI/src/examples/high_level.c  */
+
+#include "pbdPAPI.h"
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "papi.h"
 
 #define NUM_EVENTS 2
 #define THRESHOLD 10000
@@ -92,7 +90,6 @@ SEXP papi_example()
    /* Your code goes here*/
    computation_add();
 	
-
   
 
    /**********************************************************************

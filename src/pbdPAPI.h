@@ -4,6 +4,7 @@
 
 #include <R.h>
 #include <Rinternals.h>
+#include "papi.h"
 
 #define PBD_ERROR -1
 #define PBD_OK 0
