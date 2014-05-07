@@ -11,6 +11,8 @@
 src/Makeconf
 src/Makevars
 src/build
+src/build_papi
+src/configure
 
 src/papi-5.3.0/src/components/perf_event/tests/perf_event_offcore_response
 src/papi-5.3.0/src/components/perf_event/tests/perf_event_system_wide

@@ -1,5 +1,4 @@
-#include <R.h>
-#include <Rinternals.h>
+#include "pbdPAPI.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,49 +13,79 @@
  * this platform, so PAPI_flops returns an error.                      *
  ***********************************************************************/
 
-#define OFF 0
-#define ON 1
-
-SEXP papi_get_flops(SEXP onoff)
+SEXP papi_flops_on()
 { 
-  float real_time, proc_time,mflops;
-  long long flpops;
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
   
-  if (INTEGER(onoff)[0] == ON)
-  {
-    retval = PAPI_flops(&ireal_time, &iproc_time, &iflpops, &imflops);
+  SEXP RET;
+  PROTECT(RET = allocVector(INTSXP, 1));
+  
+  retval = PAPI_flops(&ireal_time, &iproc_time, &iflpops, &imflops);
+  
+  if (retval < PAPI_OK)
+    INTEGER(RET)[0] = PBD_ERROR;
+  
+  return RET;
+}
+
+
+
+SEXP papi_flops_off()
+{ 
+  float real_time, proc_time, mflops;
+  long long flpops;
+  int retval;
+  
+  int Events[3] = {PAPI_TOT_CYC, PAPI_FP_INS, PAPI_FP_OPS};
+  long_long values[3];
+  
+  SEXP RET, RET_NAMES, REAL_TIME, PROC_TIME, FLPOPS, MFLOPS;
+  
+  
+  retval = PAPI_flops(&real_time, &proc_time, &flpops, &mflops);
     
-    if (retval < PAPI_OK)
-    { 
-      printf("Could not initialise PAPI_flops \n");
-      printf("Your platform may not support floating point operation event.\n"); 
-      printf("retval: %d\n", retval);
-      exit(1);
-    }
+  if (retval < PAPI_OK)
+  {    
+    PROTECT(RET = allocVector(INTSXP, 1));
+    INTEGER(RET)[0] = PBD_ERROR;
   }
   else
   {
-    retval = PAPI_flops(&real_time, &proc_time, &flpops, &mflops);
+    // Fill return values
+    PROTECT(REAL_TIME = allocVector(REALSXP, 1));
+    PROTECT(PROC_TIME = allocVector(REALSXP, 1));
+    PROTECT(FLPOPS = allocVector(REALSXP, 1));
+    PROTECT(MFLOPS = allocVector(REALSXP, 1));
     
-    if (retval < PAPI_OK)
-    {    
-      printf("retval: %d\n", retval);
-      exit(1);
-    }
-    printf("Real_time: %f Proc_time: %f Total flpops: %lld MFLOPS: %f\n", 
-           real_time, proc_time, flpops, mflops);
+    REAL(REAL_TIME)[0] = (double) real_time;
+    REAL(PROC_TIME)[0] = (double) proc_time;
+    REAL(FLPOPS)[0] = (double) flpops;
+    REAL(MFLOPS)[0] = (double) mflops;
     
-    int Events[3] = {PAPI_TOT_CYC, PAPI_FP_INS, PAPI_FP_OPS};
-    long_long values[3];
-/*    retval = */
-    PAPI_stop_counters(values, 3);
-/*    if (retval != PAPI_OK)*/
-/*      handle_error(1);*/
+    // Fill list
+    PROTECT(RET = allocVector(VECSXP, 4));
+    PROTECT(RET_NAMES = allocVector(STRSXP, 4));
+    
+    SET_VECTOR_ELT(RET, 0, REAL_TIME);
+    SET_VECTOR_ELT(RET, 1, PROC_TIME);
+    SET_VECTOR_ELT(RET, 2, FLPOPS);
+    SET_VECTOR_ELT(RET, 3, MFLOPS);
+    
+    SET_STRING_ELT(RET_NAMES, 0, mkChar("real_time"));
+    SET_STRING_ELT(RET_NAMES, 1, mkChar("proc_time"));
+    SET_STRING_ELT(RET_NAMES, 2, mkChar("flpops"));
+    SET_STRING_ELT(RET_NAMES, 3, mkChar("mflops"));
+    
+    setAttrib(RET, R_NamesSymbol, RET_NAMES);
   }
   
-  return R_NilValue;
+  
+  // Turn off counters
+  PAPI_stop_counters(values, 3);
+  
+  return RET;
 }
+
 
