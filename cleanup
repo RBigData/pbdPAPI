@@ -4,7 +4,6 @@ rm -rf ./config.*
 rm -rf ./autom4te.cache
 rm -rf ./src/Makevars
 rm -rf ./src/Makedeps
-rm -rf ./src/Makeconf
 rm -rf ./src/*.dylib
 rm -rf ./src/*.so*
 rm -rf ./src/*.o
@@ -14,10 +13,7 @@ rm -rf ./src/*.a
 rm -rf ./src/*.rc
 rm -rf ./src/*.rds
 rm -rf ./src-*
-rm -rf ./inst/etc*
-rm -rf ./R/zzz.r
 rm -rf ./man/*.pdf
 
 rm -rf ./src/build
-
-cd src/papi-5.3.0/src/ && make clean
+cd ./src/papi-5.3.0/src/ && make clean

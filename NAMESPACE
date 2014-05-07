@@ -1,4 +1,4 @@
-useDynLib("pbdpapi")
+useDynLib("pbdPAPI")
 
 import(methods, graphics, grid, ggplot2, gridExtra, reshape2)
 
