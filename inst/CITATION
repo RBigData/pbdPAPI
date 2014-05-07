@@ -1,0 +1,30 @@
+citHeader("To cite pbdDMAT in a publication use:")
+
+citEntry(
+  entry = "Misc",
+  title = "pbdPAPI: Programming with Big Data -- PAPI",
+  author = personList(as.person("Drew Schmidt"),
+                      as.person("Christian Heckendorf"),
+                      as.person("Wei-Chen Chen"),
+                      as.person("Pragneshkumar Patel")
+                      as.person("George Ostrouchov")),
+  year = "2014",
+  note = "{R} Package",
+  url = "http://cran.r-project.org/package=pbdPAPI",
+  textVersion = "Schmidt, D., Heckendorf, C., Chen, W.-C., Patel, P., and Ostrouchov, G. (2014) pbdPAPI: PAPI. R Package, URL http://cran.r-project.org/package=pbdPAPI"
+)
+
+citEntry(
+  entry = "Manual",
+  title = "A Quick Guide for the pbdPAPI Package",
+  author = personList(as.person("Drew Schmidt"),
+                      as.person("Christian Heckendorf"),
+                      as.person("Wei-Chen Chen"),
+                      as.person("Pragneshkumar Patel")
+                      as.person("George Ostrouchov")),
+  year = "2014",
+  note = "{R} Vignette",
+  url = "http://cran.r-project.org/package=pbdDMAT",
+  textVersion = "Schmidt, D., Heckendorf, C., Chen, W.-C., Patel, P., and Ostrouchov, G. (2014) A Quick Guide to the pbdPAPI Package. R Vignette, URL http://cran.r-project.org/package=pbdPAPI"
+)
+

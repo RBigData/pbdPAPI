@@ -1,0 +1,58 @@
+%\VignetteIndexEntry{pbdPROF-guide}
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\newcommand{\thispackage}{\pkg{pbdPAPI}\xspace}
+
+\input{./include/preamble}
+
+
+\mytitle{Guide to the\\ \thispackage Package}
+\mysubtitle{PAPI}
+\myversion{0.1-0}
+\myauthor{
+\centering
+Drew Schmidt \\
+\textit{National Institute for Computational Sciences \\
+University of Tennessee}
+\\[.4cm]
+Christian Heckendorf \\
+\textit{Somewhere \\
+Bahstahn}
+\\[.4cm]
+%
+Wei-Chen Chen \\
+\textit{Department of Ecology and Evolutionary Biology \\
+University of Tennessee}
+\\[.4cm]
+%
+George Ostrouchov \\
+\textit{Computer Science and Mathematics Division, \\
+Oak Ridge National Laboratory}
+\\[.4cm]
+%
+Pragneshkumar Patel \\
+\textit{National Institute for Computational Sciences \\
+University of Tennessee}
+}
+
+
+\begin{document}
+
+\begin{figure}[h]
+  \begin{minipage}[c]{8.5in}
+  \hspace{-1.0in}
+  \includegraphics[width=8.25in,height=10in]{./cover/cover.pdf}
+  \end{minipage}
+\end{figure}
+
+\makefirstfew
+
+\input{./include/01-introduction}
+
+\newpage
+\phantomsection
+\bibliography{./include/pbdPAPI}
+
+\end{document}
+
+
