@@ -19,6 +19,7 @@ else
 fi
 
 
+AC_PROG_CC([xlc icc gcc cc])
 
 AC_SUBST(CPICFLAGS)
 AC_SUBST(BUILD_BUNDLED_PAPI)
