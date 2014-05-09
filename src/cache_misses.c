@@ -59,12 +59,6 @@ SEXP papi_cache_misses_on(SEXP which)
   }
   
   
-  for (i=0; i<NUM_EVENTS; i++)
-    printf("which: %d  event: %d  ", INTEGER(which)[i], events[i]);
-  printf("\n");
-  
-  printf("%d %d\n", PAPI_L3_DCM, PAPI_L3_ICM);
-  
   retval = PAPI_start_counters(events, NUM_EVENTS);
   
   RET = R_papi_error(retval);
