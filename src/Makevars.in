@@ -8,7 +8,7 @@ BUILD_PAPI = @BUILD_BUNDLED_PAPI@
 PKG_CFLAGS = @PAPI_CFLAGS@
 PKG_LIBS = @PAPI_LIBS@
 
-OBJECTS = cache.o cache_fine.o check.o example.o flops.o init.o
+OBJECTS = cache_misses.o check.o example.o flops.o init.o papi_error.o
 
 all: $(SHLIB)
 

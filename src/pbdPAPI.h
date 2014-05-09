@@ -9,5 +9,7 @@
 #define PBD_ERROR -1
 #define PBD_OK 0
 
+SEXP R_papi_error(int retval);
+
 
 #endif
