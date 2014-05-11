@@ -1,4 +1,6 @@
-flops     pbdPAPI   Count FLOPs.
-cache     pbdPAPI   L1 Cache misses (data+instruction).
-inner     pbdPAPI   Inner product example.
-matprod   pbdPAPI   Matrix-matrix multiplication example.
+flops       pbdPAPI   Count FLOPs.
+cache       pbdPAPI   L1 Cache misses (data+instruction).
+inner       pbdPAPI   Floating point measurements for inner product.
+matprod     pbdPAPI   Floating point measurements for matrix-matrix multiplication.
+regression  pbaPAPI   Floating point measurements for linear regression.
+pca         pbdPAPI   Floating point measurements for PCA.
