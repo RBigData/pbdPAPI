@@ -1,1 +1,4 @@
-flops  pbdPAPI    Count FLOPs.
+flops     pbdPAPI   Count FLOPs.
+cache     pbdPAPI   L1 Cache misses (data+instruction).
+inner     pbdPAPI   Inner product example.
+matprod   pbdPAPI   Matrix-matrix multiplication example.
