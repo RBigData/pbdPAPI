@@ -17,5 +17,5 @@ count <- report$flpops
 theoretical <- 6*m*n^2 + 20*n^3 + 2*m*n^2
 mflops <- report$mflops
 
-data.frame(n=n, measured=count, theoretical=theoretical, difference=count-theoretical, "pct.error"=(1.0 - (theoretical/count))*100, mflops=mflops)
+data.frame(m=m, n=n, measured=count, theoretical=theoretical, difference=count-theoretical, "pct.error"=(1.0 - (theoretical/count))*100, mflops=mflops)
 
