@@ -9,7 +9,8 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
         person("Wei-Chen", "Chen", role="aut"), 
         person("Pragneshkumar", "Patel", role="aut"), 
         person("George", "Ostrouchov", role ="aut"))
-Depends: R (>= 2.14.0), methods
+Depends: R (>= 2.14.0)
+Enhances: Rcpp, inline
 SystemRequirements: cmake (http://www.cmake.org)
 LazyLoad: yes
 LazyData: yes

@@ -2,6 +2,7 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \newcommand{\thispackage}{\pkg{pbdPAPI}\xspace}
+\newcommand{\PAPIversion}{5.3.0\xspace}
 
 \input{./include/preamble}
 
@@ -16,8 +17,8 @@ Drew Schmidt \\
 University of Tennessee}
 \\[.4cm]
 Christian Heckendorf \\
-\textit{Somewhere \\
-Bahstahn}
+\textit{Student, Boston College \\
+Chestnut Hill, Massachusetts}
 \\[.4cm]
 %
 Wei-Chen Chen \\
@@ -48,6 +49,8 @@ University of Tennessee}
 \makefirstfew
 
 \input{./include/01-introduction}
+\input{./include/02-installation}
+\input{./include/03-counters}
 
 \newpage
 \phantomsection

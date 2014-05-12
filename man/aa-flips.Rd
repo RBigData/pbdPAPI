@@ -1,6 +1,5 @@
 \name{system.flips}
 \alias{system.flips}
-\alias{papi.flips}
 
 \title{Measuring Floating Point Instructions}
 \description{

@@ -1,0 +1,34 @@
+\section{Installation}
+\label{sec:installation}
+
+In this section, we will describe the various ways that one can build \thispackage.
+
+
+
+\subsection{Installing pbdPROF without a System Installation of PAPI}
+
+This is the default method of installation.  Here, the \PAPI package will automatically be built first as a static library, and then the \thispackage package will be built and linked against that static library.  This is the best option if you do not already have a system installation of \PAPI available, or you are making changes to \thispackage (and thus are rebuilding frequently).
+
+\begin{Command}
+R CMD INSTALL pbdPAPI_0.1-0.tar.gz
+\end{Command}
+and using the \pkg{devtools} package:
+\begin{lstlisting}
+library(devtools)
+install_github(username="wrathematics", repo="pbdPAPI")
+\end{lstlisting}
+
+
+
+
+\subsection{Linking pbdPROF with an Existing System Installation of PAPI}
+
+To link with an external installation of \PAPI, from the command line, execute:
+\begin{Command}
+R CMD INSTALL pbdPAPI_0.1-0.tar.gz \ --configure-args="--enable-system-papi \ --with-papi-home=location/of/PAPI/install"
+\end{Command}
+and using the \pkg{devtools} package:
+\begin{lstlisting}
+library(devtools)
+install_github(username="wrathematics", repo="pbdPAPI", args="--configure-args='--enable-system-papi --with-papi-home=location/of/PAPI/install'")
+\end{lstlisting}

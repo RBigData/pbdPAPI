@@ -61,7 +61,6 @@
 %%%%% colors
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{xcolor}
-\usepackage{color}
 
 \definecolor{yellow2}{rgb}{1, .7, 0}
 
@@ -222,9 +221,18 @@ is_double, is_integer, PRINT}
 %%%%% misc.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\R}{\proglang{R}}
-\newcommand{\C}{\proglang{C}}
-\newcommand{\Cpp}{\proglang{C$++$}}
+\usepackage{xspace}
+\newcommand{\R}{\proglang{R}\xspace}
+\newcommand{\C}{\proglang{C}\xspace}
+\newcommand{\CXX}{\proglang{C$++$}\xspace}
+
+\newcommand{\PAPI}{\pkg{PAPI}\xspace}
+
+\definecolor{pbdgrn}{HTML}{005700}
+\definecolor{pbdrd}{HTML}{ab0000}
+\definecolor{pbdylw}{HTML}{ab7e00}
+\definecolor{pbdblu}{HTML}{2b74ec}
+\newcommand{\pbdR}{\textbf{\color{pbdgrn}{p}\color{pbdrd}{b}\color{pbdylw}{d}\color{pbdblu}{R}\xspace}}
 
 % \usepackage{url}
 \usepackage{multirow}

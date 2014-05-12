@@ -1,6 +1,5 @@
 \name{system.flops}
 \alias{system.flops}
-\alias{papi.flops}
 
 \title{Measuring Floating Point Operations}
 \description{
