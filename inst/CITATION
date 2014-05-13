@@ -2,7 +2,7 @@ citHeader("To cite pbdDMAT in a publication use:")
 
 citEntry(
   entry = "Misc",
-  title = "pbdPAPI: Programming with Big Data -- PAPI",
+  title = "pbdPAPI: Programming with Big Data -- Performance Analysis Tools for R",
   author = personList(as.person("Drew Schmidt"),
                       as.person("Christian Heckendorf"),
                       as.person("Wei-Chen Chen"),
@@ -11,7 +11,7 @@ citEntry(
   year = "2014",
   note = "{R} Package",
   url = "http://cran.r-project.org/package=pbdPAPI",
-  textVersion = "Schmidt, D., Heckendorf, C., Chen, W.-C., Patel, P., and Ostrouchov, G. (2014) pbdPAPI: PAPI. R Package, URL http://cran.r-project.org/package=pbdPAPI"
+  textVersion = "Schmidt, D., Heckendorf, C., Chen, W.-C., Patel, P., and Ostrouchov, G. (2014) pbdPAPI: Performance Analysis Tools for R. R Package, URL http://cran.r-project.org/package=pbdPAPI"
 )
 
 citEntry(

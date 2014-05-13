@@ -1,7 +1,8 @@
 Package: pbdPAPI
 Version: 0.1-0
 Date: 2014-05-06
-Title: Programming with Big Data --- PAPI
+Title: Programming with Big Data --- Performance Analysis
+        Tools for R
 Description: Profiling tools.
 Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"), 
         email = "schmidt@math.utk.edu"),
@@ -11,19 +12,10 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
         person("George", "Ostrouchov", role ="aut"))
 Depends: R (>= 2.14.0)
 Enhances: Rcpp, inline
-SystemRequirements: cmake (http://www.cmake.org)
-LazyLoad: yes
-LazyData: yes
 ByteCompile: yes
 License: BSD 2-clause License + file LICENSE
 URL: http://r-pbd.org/
 BugReports: http://group.r-pbd.org/
 MailingList: Please send questions and comments regarding pbdR to
         RBigData@gmail.com
-Packaged: 2014-05-07 04:44:53 UTC; snoweye
 Maintainer: Drew Schmidt <schmidt@math.utk.edu>
-Author: Drew Schmidt [aut, cre],
-  Christian Heckendorf [aut, cre],
-  Wei-Chen Chen [aut],
-  Pragneshkumar Patel [aut],
-  George Ostrouchov [aut]

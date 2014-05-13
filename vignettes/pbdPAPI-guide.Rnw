@@ -8,7 +8,7 @@
 
 
 \mytitle{Guide to the\\ \thispackage Package}
-\mysubtitle{PAPI}
+\mysubtitle{Performance Analysis Tools for R}
 \myversion{0.1-0}
 \myauthor{
 \centering
