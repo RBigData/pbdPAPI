@@ -7,22 +7,19 @@ BUILD_PAPI = @BUILD_BUNDLED_PAPI@
 
 PKG_CFLAGS = @PAPI_CFLAGS@
 PKG_LIBS = @PAPI_LIBS@
+OBEXTRA = @OBEXTRA@
 
 OBJECTS = cache_misses.o check.o example.o flips.o flops.o init.o papi_error.o
 
 all: $(SHLIB)
 
 
-ifeq "$(BUILD_PAPI)" "yes"
-$(SHLIB): mkpapi $(OBJECTS)
-$(OBJECTS): mkpapi
-else
-$(SHLIB): $(OBJECTS)
-endif
+$(SHLIB): $(OBEXTRA) $(OBJECTS)
+$(OBJECTS): $(OBEXTRA)
 
 
 mkpapi: build_papi
-	@sed -i "s#MY_CFLAGS#${MY_CFLAGS}#g" build_papi
+	@sed -i -e "s#MY_CFLAGS#${MY_CFLAGS}#g" build_papi
 	( cd ${papi_home}; sh ../../build_papi )
 
 
