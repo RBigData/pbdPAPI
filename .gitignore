@@ -1,3 +1,4 @@
+### Source
 *.o
 *.lo
 *.mod
@@ -14,6 +15,16 @@ src/build
 src/build_papi
 src/configure
 
+
+### Latex
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+
+
+### PAPI build
 src/papi-5.3.0/src/components/perf_event/tests/perf_event_offcore_response
 src/papi-5.3.0/src/components/perf_event/tests/perf_event_system_wide
 src/papi-5.3.0/src/components/perf_event/tests/perf_event_user_kernel

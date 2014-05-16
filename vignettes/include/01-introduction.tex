@@ -1,10 +1,10 @@
 \section{Introduction}
 \label{sec:introduction}
 
-The value of profiling code is indisputable; if you disagree, stop pretending that you actually care about data.  \proglang{R}'s own \code{Rprof()} function is extremely useful, but its profiling capabilities are limited to simple timings of R functions. This is a very good starting point in performance analysis, but for more experienced developers (especially those working with compiled code) additional performance information can be invaluable. Access to low-level software/hardware counter data can have tremendous impact when trying to understand and optimize performance of compiled code. 
+The value of profiling code is indisputable; if you disagree, stop pretending that you actually care about data.  \R's own \code{Rprof()} function is extremely useful, but its profiling capabilities are limited to simple timings of \R functions. This is a very good starting point in performance analysis and can quickly help the \R programmer focus in on bottlenecks.  But for more experienced developers (especially those working with compiled code) additional performance information can be invaluable. Access to low-level hardware counter data can have tremendous impact when trying to understand and optimize performance of compiled code. 
 
-The \thispackage package offers access to low-level hardware counter information by way of the high-level 
-\C library \PAPI~\citep{mucci1999papi}.  Therefore, an installation of \PAPI is required in order to use this package.  For convenience, we bundle \PAPIversion with \thispackage to install by default, but with appropriate configure arguments, one can easily build \thispackage with an existing system installation of \PAPI; see Section~\ref{sec:installation} for details.
+The \thispackage~\citep{Schmidt2014pbdPAPIpackage} package offers access to this low-level hardware counter information by way of the high-level 
+\C library \PAPI~\citep{mucci1999papi}.  Therefore, an installation of \PAPI is required in order to use the package.  For convenience, we bundle \PAPI version \PAPIversion with \thispackage, which will install by default.  However, with appropriate configure arguments, one can easily build \thispackage with an existing system installation of \PAPI.  See Section~\ref{sec:installation} for details.
 
 The current main features of \thispackage include:
 \begin{enumerate}

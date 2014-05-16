@@ -1,16 +1,15 @@
 \name{pbdPAPI-package}
 \alias{pbdPAPI-package}
 \docType{package}
-\title{PAPI}
+\title{Performance Analysis Tools for R}
 \description{
-  PAPI
+  TODO
 }
 \details{
 \tabular{ll}{
   Package: \tab pbdPAPI\cr
   Type: \tab Package\cr
   License: \tab BSD 2-Clause\cr
-  LazyLoad: \tab yes\cr
 }
 }
 \references{
