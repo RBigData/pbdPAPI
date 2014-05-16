@@ -584,6 +584,7 @@ PACKAGE_URL=
 ac_unique_file="DESCRIPTION"
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+OBEXTRA
 PAPI_LIBS
 PAPI_CFLAGS
 BUILD_BUNDLED_PAPI
@@ -1760,9 +1761,11 @@ fi
 if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
   PAPI_CFLAGS="-I./build/include/"
   PAPI_LIBS="./build/lib/libpapi.a ./build/lib/libpfm.a"
+  OBEXTRA="mkpapi"
 else
   PAPI_CFLAGS="-I${PAPI_HOME}/include"
   PAPI_LIBS="${PAPI_HOME}/libpapi.a"
+  OBEXTRA=""
 fi
 
 
@@ -2362,6 +2365,7 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
 
 
 

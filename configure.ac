@@ -13,9 +13,11 @@ AC_ARG_WITH(papi-home,
 if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
   PAPI_CFLAGS="-I./build/include/"
   PAPI_LIBS="./build/lib/libpapi.a ./build/lib/libpfm.a"
+  OBEXTRA="mkpapi"
 else
   PAPI_CFLAGS="-I${PAPI_HOME}/include"
   PAPI_LIBS="${PAPI_HOME}/libpapi.a"
+  OBEXTRA=""
 fi
 
 
@@ -25,6 +27,7 @@ AC_SUBST(CPICFLAGS)
 AC_SUBST(BUILD_BUNDLED_PAPI)
 AC_SUBST(PAPI_CFLAGS)
 AC_SUBST(PAPI_LIBS)
+AC_SUBST(OBEXTRA)
 
 
 AC_OUTPUT(src/Makevars)
