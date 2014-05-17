@@ -120,7 +120,7 @@ const static struct eventmap_s eventmap[]={
 	{-1,NULL,NULL}
 };
 
-const struct eventmap_s* eventfind_iname(const char *iname){
+const static struct eventmap_s* eventfind_iname(const char *iname){
 	int i;
 
 	for(i=0;eventmap[i].iname!=NULL;i++){
@@ -131,7 +131,7 @@ const struct eventmap_s* eventfind_iname(const char *iname){
 	return NULL;
 }
 
-const struct eventmap_s* eventfind_id(const int id){
+const static struct eventmap_s* eventfind_id(const int id){
 	int i;
 
 	for(i=0;eventmap[i].iname!=NULL;i++){
@@ -154,6 +154,10 @@ SEXP papi_event_counter_init(SEXP which)
 
 	for (i=0; i<num; i++){
 		ev=eventfind_iname(CHAR(STRING_ELT(which, i)));
+		if(ev==NULL){
+			UNPROTECT(1);
+			return R_papi_error(PAPI_ENOEVNT); // Should we make a custom error?
+		}
 		INTEGER(vec)[i]=ev->id;
 	}
 
@@ -170,15 +174,8 @@ SEXP papi_event_counter_on(SEXP which)
 	int i;
 	const int num = NUM_EVENTS;
 
-	//events=malloc(sizeof(*events)*num);
-
-	//for (i=0; i<num; i++)
-		//events[i] = INTEGER(which)[i];
-
 	events=INTEGER(which);
-	retval = PAPI_start_counters(events, NUM_EVENTS);
-
-	//free(events);
+	retval = PAPI_start_counters(events, num);
 
 	ret = R_papi_error(retval);
 
@@ -196,7 +193,7 @@ SEXP papi_event_counter_off(SEXP which)
 	const struct eventmap_s *ev;
 
 	SEXP RET, RET_NAMES;
-	SEXP *svals; //L1D, L1I, L2D, L2I, L3D, L3I, L1T, L2T, L3T;
+	SEXP *svals;
 
 	svals=malloc(sizeof(*svals)*num);
 
