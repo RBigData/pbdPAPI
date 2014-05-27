@@ -9,7 +9,7 @@ y <- matrix(rnorm(n), n, 1)
 
 op <- expression(crossprod(x,y))
 
-report <- papi.flops(eval(op))
+report <- system.flops(eval(op))
 count <- report$flpops
 theoretical <- 2*n
 mflops <- report$mflops

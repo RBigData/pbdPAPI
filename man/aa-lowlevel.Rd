@@ -1,22 +1,27 @@
 \name{papi.event}
-\alias{papi.event.start}
-\alias{papi.event.stop}
+\alias{system.event}
+\alias{papi.start}
+\alias{papi.stop}
 
-\title{papi.event}
+\title{Events}
 \description{
   Low level interface for pbdPAPI; for experts only.
 }
 \usage{
-  papi.event.start(which)
-  papi.event.stop(which)
+  papi.event.start(events)
+  papi.event.stop(events)
+  system.event(expr, events, gcFirst=TRUE)
 }
 \arguments{
-  \item{which}{A vector of PAPI events.  See details section for more
-  information.}
+  \item{events}{A vector of PAPI events (as strings).  See details section for 
+  more information.}
+  \item{expr}{A valid R expression to be profiled.}
+  \item{gcFirst}{logical; determines if garbage collection should be
+  called before profiling.}
 }
 \details{
   This is the low-level interface for accessing hardware counters, and
-  should look very similar to PAPI's own low-level interface.
+  should look somewhat similar to PAPI's own low-level interface.
   This offers a great deal of control, at the expense of ease of
   use.  If you are new to pbdPAPI and/or PAPI, it is recommended
   that you start with the higher level interfaces.
@@ -31,16 +36,19 @@
 }
   
   You would then enclose the code you wish to profile with a call
-  to \code{papi.event.start(which=events)}, call that code, then
-  call \code{papi.event.stop(which=events)} to end profiling.
+  to \code{papi.start(events)}, call that code, then
+  call \code{papi.stop(events)} to end profiling.
   
-  Strictly speaking, in the call to \code{papi.event.stop()}, simply
-  passing a vector of the same length would suffice (those familiar
-  with the C-level PAPI interface will understand).  As a corollary,
-  if a different length vector is passed, expect things to break.
-  For safety and sanity, you should just pass in the original events
-  vector to \code{papi.event.stop()} as you did to 
-  \code{papi.event.star()}.
+  Another version of the low-level interface is in the 
+  \code{system.event()} function, which has syntax reminiscent of 
+  \code{system.time()}.  Using this instead of \code{papi.start()}
+  and \code{papi.stop()} in the above example, you would instead
+  call \code{system.event(expr, events)}, where \code{expr} is
+  the valid R expression you want profiled.
+  
+  The complete list of possible hardware events that one can
+  profile with pbdPAPI is given below.  Note that not all counters
+  will be available on any given platform.
 \tabular{ll}{
   "PAPI_L1_DCM" \tab Level 1 data cache misses \cr
   "PAPI_L1_ICM" \tab Level 1 instruction cache misses \cr

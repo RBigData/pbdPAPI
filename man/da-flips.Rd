@@ -1,7 +1,7 @@
 \name{system.flips}
 \alias{system.flips}
 
-\title{Measuring Floating Point Instructions}
+\title{flips}
 \description{
   Measuring floating point instructions.
 }

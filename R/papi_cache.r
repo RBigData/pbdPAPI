@@ -28,13 +28,13 @@ cache.opts <- function(type, which)
   return( which )
 }
 
-system.cache <- function(expr, type="miss", events="total")
+system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE)
 {
-  
+  type <- match.arg(tolower(type), c("miss", "hit", "access", "read"))
   events <- match.arg(tolower(events), c("total", "data", "instruction", "all", "l1.all", "l2.all", "l3.all"))
   events <- cache.opts(type=type, which=events)
   
-  ret <- papi.event(expr=expr, events=events)
+  ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
   
   return( ret )
 }

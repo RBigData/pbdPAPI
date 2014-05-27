@@ -6,4 +6,3 @@ inner         pbdPAPI   Floating point measurements for inner product.
 matprod       pbdPAPI   Floating point measurements for matrix-matrix multiplication.
 regression    pbaPAPI   Floating point measurements for linear regression.
 pca           pbdPAPI   Floating point measurements for PCA.
-fillmat       pbdPAPI   Cache misses for filling a matrix row-wise and column-wise.

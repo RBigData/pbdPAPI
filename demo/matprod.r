@@ -10,7 +10,7 @@ z <- matrix(rnorm(n*n), n, n)
 
 op <- expression(z + x %*% y)
 
-report <- papi.flops(eval(op))
+report <- system.flops(eval(op))
 count <- report$flpops
 theoretical <- 2*n^3
 mflops <- report$mflops

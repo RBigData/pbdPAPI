@@ -12,7 +12,7 @@ x <- matrix(rnorm(m*n), m, n)
 ### x %*% svd$v requires 2*m*n^2 flops
 op <- expression(prcomp(x, center=FALSE, scale.=FALSE))
 
-report <- papi.flops(eval(op))
+report <- system.flops(eval(op))
 count <- report$flpops
 theoretical <- 6*m*n^2 + 20*n^3 + 2*m*n^2
 mflops <- report$mflops

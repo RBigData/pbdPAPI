@@ -1,4 +1,4 @@
-system.idle <- function(expr, events="float")
+system.idle <- function(expr, events="float", gcFirst=TRUE)
 {
   events <- match.arg(tolower(events), c("float", "int", "numeric", "branch", "load", "all"))
   
@@ -15,7 +15,7 @@ system.idle <- function(expr, events="float")
   else if (events == "all")
     events <- c("PAPI_FPU_IDL", "PAPI_FXU_IDL", "PAPI_BRU_IDL", "PAPI_LSU_IDL")
   
-  ret <- papi.event(expr=expr, events=events)
+  ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
   
   return( ret )
 }

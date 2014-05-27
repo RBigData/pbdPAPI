@@ -71,8 +71,11 @@ papi.stop <- function(events)
   return(ret)
 }
 
-papi.event <- function(expr, events)
+system.event <- function(expr, events, gcFirst=TRUE)
 {
+  if (gcFirst) 
+    gc(FALSE)
+  
   ret <- papi.start(events)
   
   if (!missing("expr"))

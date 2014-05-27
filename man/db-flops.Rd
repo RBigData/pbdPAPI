@@ -1,7 +1,7 @@
 \name{system.flops}
 \alias{system.flops}
 
-\title{Measuring Floating Point Operations}
+\title{flops}
 \description{
   Measuring floating point operations.
 }
