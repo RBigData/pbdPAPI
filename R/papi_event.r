@@ -44,13 +44,14 @@ papi.event.init.light <- function(which)
     return(ret)
 }
 
-papi.start <- function(which)
+papi.start <- function(events)
 {
   papi.init()
+  papi.check(length(events))
   
-  which <- papi.event.init(which=which)
+  events <- papi.event.init(which=events)
   
-  ret <- .Call("papi_event_counter_on", which) # ret: error value
+  ret <- .Call("papi_event_counter_on", events) # ret: error value
   
   if (!is.integer(ret))
     stop(ret)
@@ -58,11 +59,11 @@ papi.start <- function(which)
   return(ret)
 }
 
-papi.stop <- function(which)
+papi.stop <- function(events)
 {
-  which <- papi.event.init.light(which=which)
+  which <- papi.event.init.light(which=events)
   
-  ret <- .Call("papi_event_counter_off", which) # ret: counter values
+  ret <- .Call("papi_event_counter_off", events) # ret: counter values
   
   if (length(ret) == 1L && is.integer(ret) && ret == -1L)
     stop("There was a problem recovering the counter information.")
@@ -70,14 +71,14 @@ papi.stop <- function(which)
   return(ret)
 }
 
-papi.event <- function(expr, which)
+papi.event <- function(expr, events)
 {
-  ret <- papi.start(which)
+  ret <- papi.start(events)
   
   if (!missing("expr"))
     eval(expr)
   
-  ret <- papi.stop(which)
+  ret <- papi.stop(events)
   
   return(ret)
 }

@@ -1,7 +1,9 @@
-flops       pbdPAPI   Count FLOPs.
-cache       pbdPAPI   L1 Cache misses (data+instruction).
-inner       pbdPAPI   Floating point measurements for inner product.
-matprod     pbdPAPI   Floating point measurements for matrix-matrix multiplication.
-regression  pbaPAPI   Floating point measurements for linear regression.
-pca         pbdPAPI   Floating point measurements for PCA.
-fillmat     pbdPAPI   Cache misses for filling a matrix row-wise and column-wise.
+flops         pbdPAPI   Count FLOPs.
+cache         pbdPAPI   L1 Cache misses (data+instruction).
+cache_access  pbdPAPI   Examples of good and bad cache access (requires Rcpp and inline packages).
+event         pbdPAPI   Demonstration of the interfaces.
+inner         pbdPAPI   Floating point measurements for inner product.
+matprod       pbdPAPI   Floating point measurements for matrix-matrix multiplication.
+regression    pbaPAPI   Floating point measurements for linear regression.
+pca           pbdPAPI   Floating point measurements for PCA.
+fillmat       pbdPAPI   Cache misses for filling a matrix row-wise and column-wise.

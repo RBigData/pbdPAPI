@@ -33,5 +33,5 @@ good <- cxxfunction(signature(n_="integer"), body=good_cache_access, plugin="Rcp
 
 n <- 10000L
 
-papi.cache(bad(n))
-papi.cache(good(n))
+system.cache(bad(n))
+system.cache(good(n))
