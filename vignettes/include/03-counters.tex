@@ -3,15 +3,20 @@
 
 \subsection{flips and flops}
 
-\paragraph{flips}  This is intended to measure \emph{instruction} rate through the floating point pipe with no massaging.
+\paragraph{flips}  This is intended to measure \emph{instruction} rate through 
+the floating point pipe with no massaging.
 
 
 
-\paragraph{flops}  Perhaps the more well-known measurement is the rate of floating point \emph{operations}.  
+\paragraph{flops}  Perhaps the more well-known measurement is the rate of  
+floating point \emph{operations}.  
 
-Calling \code{system.flops(expr)} on a valid \R expression \code{expr} will produce system and processor timings, the number of floating point operations, and the Mflops.
+Calling \code{system.flops(expr)} on a valid \R expression \code{expr} will  
+produce system and processor timings, the number of floating point operations, 
+and the Mflops.
 
-The \code{pca} demo shows off this functionality with principal components analysis.  Executing:
+The \code{pca} demo shows off this functionality with principal components  
+analysis.  Executing:
 \begin{lstlisting}
 demo("pca", "pbdPAPI")
 \end{lstlisting}
@@ -25,7 +30,8 @@ on an Intel Sandy Bridge Core i5 produces the following outputs:
 
 \paragraph{Theoretical flops}
 \begin{align*}
-\text{flops} = \text{(\# cores)} * \text{(\# of SSE units per core)} * \text{(cycles / second)} * \text{(\# SSE operations per cycle)}
+\text{flops} = \text{(\# cores)} * \text{(\# of SSE units per core)} *  
+\text{(cycles / second)} * \text{(\# SSE operations per cycle)}
 \end{align*}
 
 single precision (divide by 2 for double precision).
@@ -37,7 +43,7 @@ So for this Intel Sandy Bridge Core i5 again as a reference, the
 &= 25600 
 \end{align*}
 
-or about 25 Gflops (1,000,000,000 flops).
+or about 25 Gflops (25,000,000,000 flops), aka, a hell of a lot of arithmetic.
 
 
 
@@ -46,7 +52,11 @@ or about 25 Gflops (1,000,000,000 flops).
 
 \paragraph{Memory and Cache}
 
-Computers operate at \emph{billions} of cycles per second.  Of course, those operations occur on data.  A useful abstraction we use in thinking about processing data is you load the stuff up into ram and then the processor does things to it.  This is usually fine, or at least convenient, but it's not accurate, as you are probably aware.  
+Computers operate at \emph{billions} of cycles per second.  Of course, those  
+operations occur on data.  A useful abstraction we use in thinking about 
+processing data is you load the stuff up into ram and then the processor does 
+things to it.  This is usually fine, or at least convenient, but it's not 
+accurate, as you are probably aware.  
 
 \begin{figure}[ht]
   \centering
@@ -54,27 +64,50 @@ Computers operate at \emph{billions} of cycles per second.  Of course, those ope
   \caption{Memory Hierarchy}
   \label{fig:mem}
 \end{figure}
-Another more accurate abstraction is that shown in Figure~\ref{fig:mem}.  In a sense, the magic really happens when things get into the CPU registers.  But something that's in ram that you want to operate on, as it's headed to the CPU, it gets cached into various levels of (comparatively) fast access storage along the way. Not understanding this (simplified from reality) architecture can have can cause some pretty nasty performance side-effects. on your code.
+Another more accurate abstraction is that shown in Figure~\ref{fig:mem}.  In a 
+sense, the magic really happens when things get into the CPU registers.  But 
+something that's in ram that you want to operate on, as it's headed to the CPU, 
+it gets cached into various levels of (comparatively) fast access storage along 
+the way. Not understanding this (simplified from reality) architecture can have 
+can cause some pretty nasty performance side-effects. on your code.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{./include/pics/cache}
   \caption{Still from Interactive Visualization Showing Relative Memory Access Speeds}
   \label{fig:cache}
 \end{figure}
-If you're unfamiliar with this, I would strongly encourage you to check out this really cool interactive
+If you're unfamiliar with this, I would strongly encourage you to check out 
+this really cool interactive
 \href{http://www.overbyte.com.au/misc/Lesson3/CacheFun.html}{visualization} 
-showing (relative) speeds of cache misses, also shown in Figure~\ref{fig:cache}.  It too involves some hefty simplifications of how modern hardware actually works, so if this is at all confusing, let us all take a moment to pity the tragic life of the computer engineer.
+showing (relative) speeds of cache misses, also shown in Figure~\ref{fig:cache}. 
+It too involves some hefty simplifications of how modern hardware actually 
+works, so if this is at all confusing, let us all take a moment to pity the 
+tragic life of the computer engineer.
 
 
-\href{http://www.eecs.berkeley.edu/~rcs/research/interactive_latency.html}{Latency Numbers}
+\href%
+  {http://www.eecs.berkeley.edu/~rcs/research/interactive_latency.html}%
+  {Latency Numbers}
 
 
 
 
 
-\paragraph{Cache Misses} Fundamentally, a cache miss occurs when the cache needs some piece of data to pass along to registers, but it isn't immediately available and has to go digging through ram (or god help you, disk) to get it.  Cache misses are bad and reduce performance.  You can't get rid of them, unless your entire problem fits into cache (which is glorious when it happens), but you can eliminate \emph{unnecessary} cache misses being aware of how your data and algorithms interact with cache.  When people tell you things like ``R's matrices are column-major'' or that you should loop over columns then rows, this is exactly what they are talking about.
+\paragraph{Cache Misses} Fundamentally, a cache miss occurs when the cache 
+needs some piece of data to pass along to registers, but it isn't immediately 
+available and has to go digging through ram (or god help you, disk) to get it.  
+Cache misses are bad and reduce performance.  You can't get rid of them, unless 
+your entire problem fits into cache (which is glorious when it happens), but you 
+can eliminate \emph{unnecessary} cache misses being aware of how your data and 
+algorithms interact with cache.  When people tell you things like ``R's matrices 
+are column-major'' or that you should loop over columns then rows, this is 
+exactly what they are talking about.
 
-Consider the following example, where we will fill a matrix with 1's, first by looping over rows then columns, and then by looping over columns then rows.  For maximum effect, we will be dropping to \C by way of \pkg{Rcpp}.  If you do not have \pkg{Rcpp} installed on your system, you can still follow along (even if you don't know \CXX), but you will not be able to recreate the timings locally.
+Consider the following example, where we will fill a matrix with 1's, first by 
+looping over rows then columns, and then by looping over columns then rows.  For 
+maximum effect, we will be dropping to \C by way of \pkg{Rcpp}.  If you do not 
+have \pkg{Rcpp} installed on your system, you can still follow along (even if 
+you don't know \CXX), but you will not be able to recreate the timings locally.
 \begin{lstlisting}
 library(inline)
 
@@ -105,8 +138,10 @@ good_cache_access <- "
 "
 
 
-bad <- cxxfunction(signature(n_="integer"), body=bad_cache_access, plugin="Rcpp")
-good <- cxxfunction(signature(n_="integer"), body=good_cache_access, plugin="Rcpp")
+bad <- cxxfunction(signature(n_="integer"), 
+                   body=bad_cache_access, plugin="Rcpp")
+good <- cxxfunction(signature(n_="integer"), 
+                    body=good_cache_access, plugin="Rcpp")
 \end{lstlisting}
 
 A quick check of run times shows something drastically different happening:
@@ -122,7 +157,10 @@ system.time(good(n))
 #  0.201   0.155   0.357 
 \end{Output}
 
-So even though we (mathematically) are doing the exact same thing, the run times differ by a factor of 3.5.  \thispackage allows us to more thoroughly see what's happening.  If we use \code{papi.cache()} to check the L1, L2, and L3 cache misses for each of these functions:
+So even though we (mathematically) are doing the exact same thing, the run 
+times differ by a factor of 3.5.  \thispackage allows us to more thoroughly see 
+what's happening.  If we use \code{papi.cache()} to check the L1, L2, and L3 
+cache misses for each of these functions:
 \begin{Output}
 library(pbdPAPI)
 n <- 10000L
@@ -148,4 +186,5 @@ papi.cache(good(n))
 #[1] 801150
 \end{Output}
 
-it should be readily apparent what is going on now.  The L1 cache misses differ by more than an order of magnitude, 194 million to 16 million!
+it should be readily apparent what is going on now.  The L1 cache misses differ 
+by more than an order of magnitude, 194 million to 16 million!
