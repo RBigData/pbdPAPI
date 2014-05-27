@@ -1,7 +1,8 @@
 papi.event.init <- function(which)
 {
-  ret <- .Call("papi_event_counter_init", which) # ret: name to id conversion
+  ret <- .Call("papi_event_counter_init", which)
   
+  # Error on NA's (bad counter input)
   nas <- is.na(ret)
   if (any(nas))
   {
@@ -21,7 +22,26 @@ papi.event.init <- function(which)
     stop(paste(event.name, paste(which[nas], collapse=", "), tobe.name, "undefined.\n", counter.name, "may not be available on your platform.", sep=""))
   }
   
-  return(ret)
+  # Warn on duplicates
+  ret.uniq <- unique(ret)
+  if (length(ret.uniq) != length(ret))
+  {
+    warning("Duplicate counters detected; using reduced set.")
+    return(ret.uniq)
+  }
+  else
+    return(ret)
+}
+
+papi.event.init.light <- function(which)
+{
+  ret <- .Call("papi_event_counter_init", which)
+  
+  ret.uniq <- unique(ret)
+  if (length(ret.uniq) != length(ret))
+    return(ret.uniq)
+  else
+    return(ret)
 }
 
 papi.start <- function(which)
@@ -40,7 +60,7 @@ papi.start <- function(which)
 
 papi.stop <- function(which)
 {
-  which <- papi.event.init(which=which)
+  which <- papi.event.init.light(which=which)
   
   ret <- .Call("papi_event_counter_off", which) # ret: counter values
   
