@@ -2,6 +2,7 @@
 
 #define NUM_EVENTS LENGTH(which)
 
+#define CHARPT(x,i)	((char*)CHAR(STRING_ELT(x,i)))
 #define SETLISTVAR(RVAR,i,RNAME) PROTECT(RVAR=allocVector(REALSXP,1));REAL(RVAR)[0]=(double) values[i];SET_VECTOR_ELT(RET, i, RVAR);SET_STRING_ELT(RET_NAMES, i, mkChar(RNAME))
 
 #define EM(id,rn) {id, #id, rn}
@@ -142,7 +143,8 @@ const static struct eventmap_s* eventfind_id(const int id){
   return NULL;
 }
 
-/* TODO: Validate input. Truncate vector on incorrect event? */
+
+
 SEXP papi_event_counter_init(SEXP which)
 {
   SEXP vec;
@@ -153,7 +155,7 @@ SEXP papi_event_counter_init(SEXP which)
   vec = PROTECT(allocVector(INTSXP,num));
   
   for (i=0; i<num; i++){
-    ev=eventfind_iname(CHAR(STRING_ELT(which, i)));
+    ev=eventfind_iname(CHARPT(which, i));
     if(ev==NULL){
       UNPROTECT(1);
       return R_papi_error(PAPI_ENOEVNT); // Should we make a custom error?
@@ -165,6 +167,8 @@ SEXP papi_event_counter_init(SEXP which)
   
   return vec;
 }
+
+
 
 SEXP papi_event_counter_on(SEXP which)
 {

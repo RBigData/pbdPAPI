@@ -63,7 +63,7 @@ papi.stop <- function(events)
 {
   which <- papi.event.init.light(which=events)
   
-  ret <- .Call("papi_event_counter_off", events) # ret: counter values
+  ret <- .Call("papi_event_counter_off", which) # ret: counter values
   
   if (length(ret) == 1L && is.integer(ret) && ret == -1L)
     stop("There was a problem recovering the counter information.")

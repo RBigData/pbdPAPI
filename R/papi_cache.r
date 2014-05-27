@@ -1,29 +1,40 @@
-cache.opts <- function(which)
+cache.opts <- function(type, which)
 {
+  if (type == "miss")
+    char <- "M"
+  else if (type == "hit")
+    char <- "H"
+  else if (type == "access")
+    char <- "A"
+  else if (type == "read")
+    char <- "R"
+  
   if (which == "total")
-    which <- c("PAPI_L1_TCM", "PAPI_L2_TCM", "PAPI_L3_TCM")
+    which <- paste(c("PAPI_L1_TC", "PAPI_L2_TC", "PAPI_L3_TC"), char, sep="")
   else if (which == "data")
-    which <- c("PAPI_L1_DCM", "PAPI_L2_DCM", "PAPI_L3_DCM")
+    which <- paste(c("PAPI_L1_DC", "PAPI_L2_DC", "PAPI_L3_DC"), char, sep="")
   else if (which == "instruction")
-    which <- c("PAPI_L1_ICM", "PAPI_L2_ICM", "PAPI_L3_ICM")
+    which <- paste(c("PAPI_L1_IC", "PAPI_L2_IC", "PAPI_L3_IC"), char, sep="")
   else if (which == "all")
-    which <- c("PAPI_L1_ICM", "PAPI_L1_DCM", "PAPI_L2_ICM", "PAPI_L2_DCM", "PAPI_L3_ICM", "PAPI_L3_DCM")
+    which <- paste(c("PAPI_L1_IC", "PAPI_L1_DC", "PAPI_L2_IC", "PAPI_L2_DC", "PAPI_L3_IC", "PAPI_L3_DC"), char, sep="")
   else if (which == "l1.all")
-    which <- c("PAPI_L1_ICM", "PAPI_L1_DCM")
+    which <- paste(c("PAPI_L1_IC", "PAPI_L1_DC"), char, sep="")
   else if (which == "l2.all")
-    which <- c("PAPI_L2_ICM", "PAPI_L2_DCM")
+    which <- paste(c("PAPI_L2_IC", "PAPI_L2_DC"), char, sep="")
   else if (which == "l3.all")
-    which <- c("PAPI_L3_ICM", "PAPI_L3_DCM")
+    which <- paste(c("PAPI_L3_IC", "PAPI_L3_DC"), char, sep="")
+  
   
   return( which )
 }
 
-system.cache <- function(expr, which="total")
+system.cache <- function(expr, type="miss", events="total")
 {
-  which <- match.arg(tolower(which), c("total", "data", "instruction", "all", "l1.all", "l2.all", "l3.all"))
-  which <- cache.opts(which=which)
   
-  ret <- papi.event(expr=expr, which=which)
+  events <- match.arg(tolower(events), c("total", "data", "instruction", "all", "l1.all", "l2.all", "l3.all"))
+  events <- cache.opts(type=type, which=events)
+  
+  ret <- papi.event(expr=expr, events=events)
   
   return( ret )
 }
