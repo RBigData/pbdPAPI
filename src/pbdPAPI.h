@@ -1,4 +1,4 @@
-#ifndef __PBDPAPI_H__                                                    
+#ifndef __PBDPAPI_H__
 #define __PBDPAPI_H__
 
 

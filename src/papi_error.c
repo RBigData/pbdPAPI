@@ -3,7 +3,7 @@
 SEXP R_papi_error(int retval)
 {
   SEXP RET;
-  
+
   if (retval == PAPI_OK)
   {
     PROTECT(RET = allocVector(INTSXP, 1));
@@ -12,7 +12,7 @@ SEXP R_papi_error(int retval)
   else
   {
     PROTECT(RET = allocVector(STRSXP, 1));
-    
+
     switch (retval)
     {
       case PAPI_EINVAL :
@@ -62,7 +62,7 @@ SEXP R_papi_error(int retval)
         break;
     }
   }
-  
+
   UNPROTECT(1);
   return RET;
 }

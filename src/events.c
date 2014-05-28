@@ -15,9 +15,11 @@ SEXP papi_event_counter_init(SEXP which)
 
   vec = PROTECT(allocVector(INTSXP,num));
 
-  for (i=0; i<num; i++){
+  for (i=0; i<num; i++)
+  {
     ret=PAPI_event_name_to_code(CHARPT(which, i),&id);
-    if(ret!=PAPI_OK){
+    if(ret!=PAPI_OK)
+    {
       UNPROTECT(1);
       return R_papi_error(PAPI_ENOEVNT); // Should we make a custom error?
     }
