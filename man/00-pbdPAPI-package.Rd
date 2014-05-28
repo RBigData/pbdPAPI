@@ -3,7 +3,10 @@
 \docType{package}
 \title{Performance Analysis Tools for R}
 \description{
-  TODO
+  pbdPAPI is an R package which offers a set of R bindings for the Performance
+  Application Programming Interface (PAPI).  PAPI is a high-level C library for 
+  gathering information from hardware performance counters.  PAPI measures 
+  events like cache misses, flops, etc.
 }
 \details{
 \tabular{ll}{
@@ -22,4 +25,3 @@
   Hckendorf, Wei-Chen Chen, George Ostrouchov, and Pragneshkumar 
   Patel.
 }
-\keyword{Package}

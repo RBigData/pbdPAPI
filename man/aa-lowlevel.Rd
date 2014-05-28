@@ -5,7 +5,7 @@
 
 \title{Events}
 \description{
-  Low level interface for pbdPAPI; for experts only.
+  Low level interface for pbdPAPI.
 }
 \usage{
   papi.event.start(events)
@@ -175,5 +175,3 @@ results <- papi.event.stop(which=events)
 results
 }
 }
-\keyword{programming}
-
