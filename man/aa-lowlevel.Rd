@@ -2,6 +2,7 @@
 \alias{system.event}
 \alias{papi.start}
 \alias{papi.stop}
+\alias{papi.avail}
 
 \title{Events}
 \description{
