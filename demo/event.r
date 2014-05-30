@@ -2,6 +2,9 @@ library(pbdPAPI)
 
 events <- c("PAPI_L1_DCM","PAPI_L2_DCM")
 
+papi.avail(events)
+
+
 ### High-level interface
 system.event(1+1, events)
 

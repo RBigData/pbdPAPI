@@ -8,6 +8,7 @@
   Low level interface for pbdPAPI.
 }
 \usage{
+  papi.event.avail(events=NA)
   papi.event.start(events)
   papi.event.stop(events)
   system.event(expr, events, gcFirst=TRUE)
@@ -49,6 +50,12 @@
   The complete list of possible hardware events that one can
   profile with pbdPAPI is given below.  Note that not all counters
   will be available on any given platform.
+
+  To determine which counters are available on the target platform,
+  the \code{papi.avail()} function is provided. If no arguments are
+  provided, a complete list of PAPI events and their availability
+  will be returned. Otherwise, the list will be limited to the
+  specified events.
 \tabular{ll}{
   "PAPI_L1_DCM"   \tab  Level 1 data cache misses \cr
   "PAPI_L1_ICM"   \tab  Level 1 instruction cache misses \cr
@@ -164,14 +171,17 @@ library(pbdPAPI)
 
 events <- c("PAPI_L1_DCM", "PAPI_L2_DCM")
 
+#Confirm the availability of the target events
+papi.avail(events=events)
+
 # Start profiling
-papi.event.start(which=events)
+papi.start(events=events)
 
 # Computationally interesting code
 sum(sapply(1:100, sqrt))
 
 # Stop profiling and collect results
-results <- papi.event.stop(which=events)
+results <- papi.stop(events=events)
 results
 }
 }
