@@ -16,7 +16,8 @@ SEXP papi_event_avail(SEXP which)
   SEXP val,name,desc;
   int i;
 int unpt;
-  const int num = NUM_EVENTS;
+int num;
+  const int which_num = NUM_EVENTS;
   SEXP ret;
 int papiret;
   int id;
@@ -24,7 +25,8 @@ int papiret;
   char *namep;
 
 
-  if(num>0 && TYPEOF(which)==STRSXP){
+  if(which_num>0 && TYPEOF(which)==STRSXP){
+	num=which_num;
 	PROTECT(ret=allocVector(VECSXP,3));
 	PROTECT(name=allocVector(STRSXP,num));
 	PROTECT(val=allocVector(LGLSXP,num));
@@ -45,7 +47,7 @@ int papiret;
 
 		LOGICAL(val)[i]=ev.count>0;
 		SET_STRING_ELT(name, i, mkChar(namep));
-		SET_STRING_ELT(desc, i, mkChar(ev.short_descr));
+		SET_STRING_ELT(desc, i, mkChar(ev.long_descr));
 	}
 
 	unpt=4;
@@ -72,7 +74,7 @@ int papiret;
 
 		LOGICAL(val)[i]=ev.count>0;
 		SET_STRING_ELT(name, i, mkChar(ev.symbol));
-		SET_STRING_ELT(desc, i, mkChar(ev.short_descr));
+		SET_STRING_ELT(desc, i, mkChar(ev.long_descr));
 
 		i++;
 	  }while(PAPI_enum_event(&id,PAPI_ENUM_EVENTS)==PAPI_OK); // PAPI_PRESET_ENUM_AVAIL might also be useful

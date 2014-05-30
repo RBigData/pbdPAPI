@@ -90,7 +90,7 @@ SEXP papi_event_counter_off(SEXP which)
     {
       ret=PAPI_get_event_info(INTEGER(which)[i],&ev);
       /* TODO: find out what this returns */
-      SETLISTVAR(svals[i],i,ev.short_descr);
+      SETLISTVAR(svals[i],i,ev.long_descr);
     }
 
     setAttrib(RET, R_NamesSymbol, RET_NAMES);
