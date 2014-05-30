@@ -48,24 +48,43 @@ int papiret;
 		SET_STRING_ELT(desc, i, mkChar(ev.short_descr));
 	}
 
-	SET_VECTOR_ELT(ret,0,name);
-	SET_VECTOR_ELT(ret,1,val);
-	SET_VECTOR_ELT(ret,2,desc);
-
 	unpt=4;
-	UNPROTECT(unpt);
   }
   else{ /* Get all events */
-/* REMOVE ME */ return R_papi_error(PAPI_ENOEVNT); /* REMOVE ME */
+	i=num=0;
+	  id=0|PAPI_PRESET_MASK;
+	  PAPI_enum_event(&id,PAPI_ENUM_FIRST);
+
+	  do{
+		  num++;
+	  }while(PAPI_enum_event(&id,PAPI_ENUM_EVENTS)==PAPI_OK); // PAPI_PRESET_ENUM_AVAIL might also be useful
+
+	PROTECT(ret=allocVector(VECSXP,3));
+	PROTECT(name=allocVector(STRSXP,num));
+	PROTECT(val=allocVector(LGLSXP,num));
+	PROTECT(desc=allocVector(STRSXP,num));
+
 	  id=0|PAPI_PRESET_MASK;
 	  PAPI_enum_event(&id,PAPI_ENUM_FIRST);
 
 	  do{
 		papiret=PAPI_get_event_info(id,&ev);
-		  /* TODO: Fill in the list */
+
+		LOGICAL(val)[i]=ev.count>0;
+		SET_STRING_ELT(name, i, mkChar(ev.symbol));
+		SET_STRING_ELT(desc, i, mkChar(ev.short_descr));
+
+		i++;
 	  }while(PAPI_enum_event(&id,PAPI_ENUM_EVENTS)==PAPI_OK); // PAPI_PRESET_ENUM_AVAIL might also be useful
+
+	unpt=4;
   }
 
+	SET_VECTOR_ELT(ret,0,name);
+	SET_VECTOR_ELT(ret,1,val);
+	SET_VECTOR_ELT(ret,2,desc);
+
+	UNPROTECT(unpt);
 
   return ret;
 }
