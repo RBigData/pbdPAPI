@@ -13,9 +13,9 @@ SEXP papi_init(SEXP n)
   SEXP RET;
 
   if(PAPI_is_initialized())
-	retval = PAPI_VER_CURRENT;
+    retval = PAPI_VER_CURRENT;
   else
-	retval = PAPI_library_init(PAPI_VER_CURRENT);
+    retval = PAPI_library_init(PAPI_VER_CURRENT);
 
   PROTECT(RET = allocVector(INTSXP, 1));
 
