@@ -3,5 +3,5 @@ useDynLib("pbdPAPI")
 ### All functions
 exportPattern("^system\\.[[:alpha:]]+")
 
-export(papi.start, papi.stop)
+export(papi.start, papi.stop, papi.avail)
 

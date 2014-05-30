@@ -15,23 +15,25 @@ SEXP papi_event_avail(SEXP which)
 {
   SEXP val,name,desc;
   int i;
+int unpt;
   const int num = NUM_EVENTS;
   SEXP ret;
+int papiret;
   int id;
   PAPI_event_info_t ev;
   char *namep;
 
 
-  if(num>0){
-	  PROTECT(ret=allocVector(VECSXP,3));
+  if(num>0 && TYPEOF(which)==STRSXP){
+	PROTECT(ret=allocVector(VECSXP,3));
 	PROTECT(name=allocVector(STRSXP,num));
 	PROTECT(val=allocVector(LGLSXP,num));
 	PROTECT(desc=allocVector(STRSXP,num));
 	for (i=0; i<num; i++)
 	{
 		namep=CHARPT(which,i);
-		ret=PAPI_event_name_to_code(namep,&id);
-		if(ret!=PAPI_OK)
+		papiret=PAPI_event_name_to_code(namep,&id);
+		if(papiret!=PAPI_OK)
 		{
 			unpt=i+3;
 		UNPROTECT(unpt);
@@ -39,18 +41,19 @@ SEXP papi_event_avail(SEXP which)
 		}
 
 		/* TODO: find out what this returns */
-		ret=PAPI_get_event_info(id,&ev);
+		papiret=PAPI_get_event_info(id,&ev);
 
-		SET_VECTOR_ELT(val, i, info.count>0);
+		LOGICAL(val)[i]=ev.count>0;
 		SET_STRING_ELT(name, i, mkChar(namep));
-		SET_STRING_ELT(desc, i, mkChar(info.short_desc));
+		SET_STRING_ELT(desc, i, mkChar(ev.short_descr));
 	}
 
 	SET_VECTOR_ELT(ret,0,name);
 	SET_VECTOR_ELT(ret,1,val);
 	SET_VECTOR_ELT(ret,2,desc);
 
-	UNPROTECT(4);
+	unpt=4;
+	UNPROTECT(unpt);
   }
   else{ /* Get all events */
 /* REMOVE ME */ return R_papi_error(PAPI_ENOEVNT); /* REMOVE ME */
@@ -58,7 +61,7 @@ SEXP papi_event_avail(SEXP which)
 	  PAPI_enum_event(&id,PAPI_ENUM_FIRST);
 
 	  do{
-		ret=PAPI_get_event_info(id,&ev);
+		papiret=PAPI_get_event_info(id,&ev);
 		  /* TODO: Fill in the list */
 	  }while(PAPI_enum_event(&id,PAPI_ENUM_EVENTS)==PAPI_OK); // PAPI_PRESET_ENUM_AVAIL might also be useful
   }
