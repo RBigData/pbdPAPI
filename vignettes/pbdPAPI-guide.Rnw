@@ -17,8 +17,8 @@ Drew Schmidt \\
 University of Tennessee}
 \\[.4cm]
 Christian Heckendorf \\
-\textit{Student, Boston College \\
-Chestnut Hill, Massachusetts}
+\textit{Boston University \\
+Boston, Massachusetts}
 \\[.4cm]
 %
 Wei-Chen Chen \\
