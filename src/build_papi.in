@@ -10,3 +10,4 @@ CC="${CC} MY_CFLAGS"
 ### Make and install.
 make
 make install
+make clean
