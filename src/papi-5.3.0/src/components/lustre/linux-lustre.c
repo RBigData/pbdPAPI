@@ -79,7 +79,7 @@ typedef struct LUSTRE_context
 
 /* Default path to lustre stats */
 #ifdef FAKE_LUSTRE
-const char proc_base_path[] = "./components/lustre/fake_proc/fs/lustre/";
+const char proc_base_path[] = "../../components/lustre/fake_proc/fs/lustre/";
 #else
 const char proc_base_path[] = "/proc/fs/lustre/";
 #endif
