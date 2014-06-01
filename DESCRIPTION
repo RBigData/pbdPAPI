@@ -12,6 +12,8 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
         person("George", "Ostrouchov", role ="aut"))
 Depends: R (>= 2.14.0)
 Enhances: Rcpp, inline
+LazyData: yes
+LazyLoad: yes
 ByteCompile: yes
 License: BSD 2-clause License + file LICENSE
 URL: http://r-pbd.org/

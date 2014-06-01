@@ -1,54 +1,31 @@
 \name{papi.event}
 \alias{system.event}
-\alias{papi.start}
-\alias{papi.stop}
 
 \title{Events}
 \description{
   Low level interface for pbdPAPI.
 }
 \usage{
-  papi.event.start(events)
-  papi.event.stop(events)
-  system.event(expr, events, gcFirst=TRUE)
+  papi.event.avail(events=NA)
 }
 \arguments{
+  \item{expr}{A valid R expression to be profiled.}
   \item{events}{A vector of PAPI events (as strings).  See details section for 
   more information.}
-  \item{expr}{A valid R expression to be profiled.}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
 }
 \details{
-  This is the low-level interface for accessing hardware counters, and
-  should look somewhat similar to PAPI's own low-level interface.
-  This offers a great deal of control, at the expense of ease of
-  use.  If you are new to pbdPAPI and/or PAPI, it is recommended
-  that you start with the higher level interfaces.
-  
-  To use, you should first construct an events vector, which consists 
-  of a set of pre-specified strings (listed in detail below; scroll
-  down, you can't miss it).  For example, if you want to profile
-  level 1 and level 2 data cache misses, you would set
-  
-\tabular{c}{
-  \code{events <- c("PAPI_L1_DCM", "PAPI_L2_DCM")}
-}
-  
-  You would then enclose the code you wish to profile with a call
-  to \code{papi.start(events)}, call that code, then
-  call \code{papi.stop(events)} to end profiling.
-  
-  Another version of the low-level interface is in the 
-  \code{system.event()} function, which has syntax reminiscent of 
-  \code{system.time()}.  Using this instead of \code{papi.start()}
-  and \code{papi.stop()} in the above example, you would instead
-  call \code{system.event(expr, events)}, where \code{expr} is
-  the valid R expression you want profiled.
+  To determine which counters are available on the target platform,
+  the \code{papi.avail()} function is provided. If no arguments are
+  provided, a complete list of PAPI events and their availability
+  will be returned. Otherwise, the list will be limited to the
+  specified events.
   
   The complete list of possible hardware events that one can
   profile with pbdPAPI is given below.  Note that not all counters
   will be available on any given platform.
+  
 \tabular{ll}{
   "PAPI_L1_DCM"   \tab  Level 1 data cache misses \cr
   "PAPI_L1_ICM"   \tab  Level 1 instruction cache misses \cr
@@ -155,23 +132,19 @@
 }
 }
 \value{
-  The results of the requested PAPI events are returned, in a 
-  named list, with values stored in double precision.
+  If no argument is specified, then a dataframe detailing all events,
+  event names, and platform support is returned.  If an events vector
+  is passed, then a logical vector is returned.
 }
 \examples{
 \dontrun{
 library(pbdPAPI)
 
+### Check all events
+system.avail()
+
+### Check an events vector of events
 events <- c("PAPI_L1_DCM", "PAPI_L2_DCM")
-
-# Start profiling
-papi.event.start(which=events)
-
-# Computationally interesting code
-sum(sapply(1:100, sqrt))
-
-# Stop profiling and collect results
-results <- papi.event.stop(which=events)
-results
+system.event(events)
 }
 }
