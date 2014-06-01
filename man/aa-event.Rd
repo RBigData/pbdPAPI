@@ -9,11 +9,8 @@
   papi.avail(events)
 }
 \arguments{
-  \item{expr}{A valid R expression to be profiled.}
   \item{events}{A vector of PAPI events (as strings).  See details section for 
   more information.}
-  \item{gcFirst}{logical; determines if garbage collection should be
-  called before profiling.}
 }
 \details{
   To determine which counters are available on the target platform,
