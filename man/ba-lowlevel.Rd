@@ -1,6 +1,7 @@
 \name{papi.event}
 \alias{papi.start}
 \alias{papi.stop}
+\alias{system.event}
 
 \title{Low Level Interface}
 \description{
@@ -14,6 +15,9 @@
 \arguments{
   \item{events}{A vector of PAPI events (as strings).  See details section for 
   more information.}
+  \item{expr}{A valid R expression to be profiled.}
+  \item{gcFirst}{logical; determines if garbage collection should be
+  called before profiling.}
 }
 \details{
   This is the low-level interface for accessing hardware counters, and

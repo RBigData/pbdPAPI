@@ -6,7 +6,7 @@
   Measuring idle cycles.
 }
 \usage{
-  system.idle(expr, events="total", gcFirst=TRUE)
+  system.idle(expr, events="float", gcFirst=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}

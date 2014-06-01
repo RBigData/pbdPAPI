@@ -1,3 +1,0 @@
-#!/bin/sh
-autoconf configure.ac && autoreconf -if
-rm -r autom4te.cache

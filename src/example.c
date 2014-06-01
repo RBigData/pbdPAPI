@@ -56,11 +56,13 @@ SEXP papi_example()
   * keeps track of the version number.                                       *
   ***************************************************************************/
 
+  #if 0
   if((retval = PAPI_library_init(PAPI_VER_CURRENT)) != PAPI_VER_CURRENT )
   {
     fprintf(stderr, "Error: %d %s\n",retval, errstring);
     exit(1);
   }
+  #endif
 
 
   /**************************************************************************
@@ -70,7 +72,8 @@ SEXP papi_example()
   if ((num_hwcntrs = PAPI_num_counters()) < PAPI_OK)
   {
     Rprintf("There are no counters available. \n");
-    exit(1);
+/*    exit(1);*/
+    return R_NilValue;
   }
 
   Rprintf("There are %d counters in this system\n",num_hwcntrs);
@@ -83,7 +86,8 @@ SEXP papi_example()
    **************************************************************************/
 
   if ( (retval = PAPI_start_counters(Events, NUM_EVENTS)) != PAPI_OK)
-    ERROR_RETURN(retval);
+    return R_NilValue;
+/*    ERROR_RETURN(retval);*/
 
   Rprintf("\nCounter Started: \n");
 
@@ -97,7 +101,8 @@ SEXP papi_example()
    **********************************************************************/
 
   if ( (retval=PAPI_read_counters(values, NUM_EVENTS)) != PAPI_OK)
-    ERROR_RETURN(retval);
+    return R_NilValue;
+/*    ERROR_RETURN(retval);*/
 
   Rprintf("Read successfully\n");
 
@@ -119,7 +124,8 @@ SEXP papi_example()
    ************************************************************************/
 
   if ( (retval=PAPI_accum_counters(values, NUM_EVENTS)) != PAPI_OK)
-    ERROR_RETURN(retval);
+    return R_NilValue;
+/*    ERROR_RETURN(retval);*/
 
   Rprintf("We did an additional %d times addition!\n", THRESHOLD);
   Rprintf("The total instructions executed for addition are %lld \n",
@@ -135,11 +141,13 @@ SEXP papi_example()
 
   /******************* PAPI_stop_counters **********************************/
   if ((retval=PAPI_stop_counters(values, NUM_EVENTS)) != PAPI_OK)
-    ERROR_RETURN(retval);
+    return R_NilValue;
+/*    ERROR_RETURN(retval);*/
 
   Rprintf("The total instruction executed for multiplication are %lld \n",
           values[0] );
   Rprintf("The total cycles used are %lld \n", values[1] );
-
+  
+  
   return R_NilValue;
 }

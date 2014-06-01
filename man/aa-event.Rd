@@ -1,12 +1,12 @@
-\name{papi.event}
-\alias{system.event}
+\name{papi.avail}
+\alias{papi.avail}
 
 \title{Events}
 \description{
   Low level interface for pbdPAPI.
 }
 \usage{
-  papi.event.avail(events=NA)
+  papi.avail(events)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
