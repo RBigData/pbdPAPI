@@ -17,4 +17,6 @@ rm -rf ./src-*
 rm -rf ./man/*.pdf
 
 rm -rf ./src/build
+
 cd ./src/papi-5.3.0/src/ && make clean
+rm -rf ctests/mpifirst
