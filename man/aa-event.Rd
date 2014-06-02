@@ -3,10 +3,11 @@
 
 \title{Events}
 \description{
-  Low level interface for pbdPAPI.
+  PAPI events.
 }
 \usage{
   papi.avail(events)
+  system.ncounters()
 }
 \arguments{
   \item{events}{A vector of PAPI events (as strings).  See details section for 
@@ -18,6 +19,12 @@
   provided, a complete list of PAPI events and their availability
   will be returned. Otherwise, the list will be limited to the
   specified events.
+  
+  There is a physical limitation to the number of counters that any
+  given analysis may profile, and whence an events counter vector 
+  must be no larger than the total number of hardware counters.
+  You can see how many counters are available by calling
+  \code{system.ncounters()}.
   
   The complete list of possible hardware events that one can
   profile with pbdPAPI is given below.  Note that not all counters
