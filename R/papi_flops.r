@@ -1,6 +1,5 @@
 papi.flops <- function(expr)
 {
-  papi.init()
   papi.check(3L)
   
   ret <- .Call("papi_flops_on")

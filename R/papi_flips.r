@@ -1,6 +1,5 @@
 papi.flips <- function(expr)
 {
-  papi.init()
   papi.check(3L)
   
   ret <- .Call("papi_flips_on")
