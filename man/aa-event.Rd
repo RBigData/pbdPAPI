@@ -1,5 +1,6 @@
 \name{papi.avail}
 \alias{papi.avail}
+\alias{system.ncounters}
 
 \title{Events}
 \description{

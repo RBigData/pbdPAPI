@@ -43,8 +43,8 @@ hw.info.linux <- function()
   
 #  archname <- hw.arch(vendor=vendor.id)
   
-  ret <- list(ncores=ncores)
-  return( ret )
+#  ret <- list(ncores=ncores)
+#  return( ret )
 }
 
 # -----------------------------------------------------------------------------
