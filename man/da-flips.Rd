@@ -6,12 +6,14 @@
   Measuring floating point instructions.
 }
 \usage{
-  system.flips(expr, gcFirst=TRUE)
+  system.flips(expr, gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
+  \item{burnin}{logical; determines if the function should first be
+  evaluated with an empty expression.}
 }
 \details{
   .

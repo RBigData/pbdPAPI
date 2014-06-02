@@ -6,7 +6,7 @@
   Measuring cache misses, hits, accesses, and reads.
 }
 \usage{
-  system.cache(expr, type="miss", events="total", gcFirst=TRUE)
+  system.cache(expr, type="miss", events="total", gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
@@ -17,6 +17,8 @@
   "l3.all".}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
+  \item{burnin}{logical; determines if the function should first be
+  evaluated with an empty expression.}
 }
 \details{
   .

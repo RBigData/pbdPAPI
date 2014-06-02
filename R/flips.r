@@ -16,10 +16,16 @@ papi.flips <- function(expr)
 }
 
 
-system.flips <- function(expr, gcFirst=TRUE)
+system.flips <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
+  if (burnin)
+    system.flips(gcFirst=gcFirst, burnin=FALSE)
+  
   if (gcFirst) 
     gc(FALSE)
+  
+  if (missing(expr))
+    expr <- NULL
   
   return( papi.flips(expr=expr) )
 }

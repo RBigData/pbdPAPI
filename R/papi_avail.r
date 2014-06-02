@@ -1,4 +1,4 @@
-### 
+### Generate a table of all events and their (local) hardware support
 papi.avail.internal <- function()
 {
   papi.init()
@@ -14,6 +14,7 @@ papi.avail.internal <- function()
 
 
 
+### Checks if event is available
 papi.avail <- function(events)
 {
   avail <- get(".__pbdPAPI_avail", envir=.__pbdPAPIEnv)

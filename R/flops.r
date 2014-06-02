@@ -16,10 +16,17 @@ papi.flops <- function(expr)
 }
 
 
-system.flops <- function(expr, gcFirst=TRUE)
+system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
+  ### burnin
+  if (burnin)
+    system.flops(gcFirst=gcFirst, burnin=FALSE)
+  
   if (gcFirst) 
     gc(FALSE)
+  
+  if (missing(expr))
+    expr <- NULL
   
   return( papi.flops(expr=expr) )
 }

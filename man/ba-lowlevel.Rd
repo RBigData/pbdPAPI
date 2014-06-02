@@ -10,7 +10,7 @@
 \usage{
   papi.start(events)
   papi.stop(events)
-  system.event(expr, events, gcFirst=TRUE)
+  system.event(expr, events, gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{events}{A vector of PAPI events (as strings).  See details section for 
@@ -18,6 +18,9 @@
   \item{expr}{A valid R expression to be profiled.}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
+  \item{burnin}{logical; determines if the function should first be
+  evaluated with an empty expression. This can be especially important
+  for measuring cache effects.}
 }
 \details{
   This is the low-level interface for accessing hardware counters, and

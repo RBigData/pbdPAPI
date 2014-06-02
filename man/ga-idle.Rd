@@ -6,7 +6,7 @@
   Measuring idle cycles.
 }
 \usage{
-  system.idle(expr, events="float", gcFirst=TRUE)
+  system.idle(expr, events="float", gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
@@ -14,6 +14,8 @@
   "float", "int", "numeric", "branch", "load", and "all".}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
+  \item{burnin}{logical; determines if the function should first be
+  evaluated with an empty expression.}
 }
 \details{
   .

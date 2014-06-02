@@ -1,6 +1,12 @@
-system.idle <- function(expr, events="float", gcFirst=TRUE)
+system.idle <- function(expr, events="float", gcFirst=TRUE, burnin=TRUE)
 {
   events <- match.arg(tolower(events), c("float", "int", "numeric", "branch", "load", "all"))
+  
+  if (burnin)
+    system.idle(events=events, gcFirst=gcFirst, burnin=FALSE)
+  
+  if (missing(expr))
+    expr <- NULL
   
   shorthand <- events
   

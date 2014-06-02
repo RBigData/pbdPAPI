@@ -28,9 +28,17 @@ cache.opts <- function(type, which)
   return( which )
 }
 
-system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE)
+
+
+system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin=TRUE)
 {
   type <- match.arg(tolower(type), c("miss", "hit", "access", "read"))
+  
+  if (burnin)
+    system.cache(type=type, events=events, gcFirst=gcFirst, burnin=FALSE)
+  
+  if (missing(expr))
+    expr <- NULL
   
   shorthand <- events
   

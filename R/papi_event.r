@@ -60,10 +60,19 @@ papi.stop <- function(events)
 
 
 ### Simple wrapper
-system.event <- function(expr, events, gcFirst=TRUE)
+system.event <- function(expr, events, gcFirst=TRUE, burnin=TRUE)
 {
+  if (missing(events))
+    stop("argument \"events\" is missing, with no default")
+  
+  if (burnin)
+    system.event(events=events, gcFirst=gcFirst, burnin=FALSE)
+  
   if (gcFirst) 
     gc(FALSE)
+  
+  if (missing(expr))
+    expr <- NULL
   
   papi.avail.lookup(events=events, shorthand=FALSE)
   
