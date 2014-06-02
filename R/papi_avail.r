@@ -3,7 +3,6 @@ papi.avail.internal <- function()
   papi.init()
   
   ret <- .Call("papi_event_avail", NULL)
-  ret[[2L]] <- as.logical(ret[[2L]])
   ret <- as.data.frame(ret, stringsAsFactors=FALSE)
   colnames(ret) <- c("event","avail","desc")
   
@@ -25,7 +24,8 @@ papi.avail <- function(events)
   
   if (!all(events %in% events.all))
   {
-    stop("")
+    fail <- events[-which(events %in% events.all)]
+    stop(paste("Event(s) ", paste(fail, collapse=", "), "is/are not recognized PAPI events"))
   }
   
   l <- sapply(events, function(i) which(i == events.all))
