@@ -2,6 +2,8 @@ system.idle <- function(expr, events="float", gcFirst=TRUE)
 {
   events <- match.arg(tolower(events), c("float", "int", "numeric", "branch", "load", "all"))
   
+  shorthand <- events
+  
   if (events == "float")
     events <- "PAPI_FPU_IDL"
   else if (events == "int")
@@ -14,6 +16,8 @@ system.idle <- function(expr, events="float", gcFirst=TRUE)
     events <- "PAPI_LSU_IDL"
   else if (events == "all")
     events <- c("PAPI_FPU_IDL", "PAPI_FXU_IDL", "PAPI_BRU_IDL", "PAPI_LSU_IDL")
+  
+  papi.avail.lookup(events=events, shorthand=shorthand)
   
   ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
   

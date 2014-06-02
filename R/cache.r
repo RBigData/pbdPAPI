@@ -31,8 +31,13 @@ cache.opts <- function(type, which)
 system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE)
 {
   type <- match.arg(tolower(type), c("miss", "hit", "access", "read"))
+  
+  shorthand <- events
+  
   events <- match.arg(tolower(events), c("total", "data", "instruction", "all", "l1.all", "l2.all", "l3.all"))
   events <- cache.opts(type=type, which=events)
+  
+  papi.avail.lookup(events=events, shorthand=shorthand)
   
   ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
   

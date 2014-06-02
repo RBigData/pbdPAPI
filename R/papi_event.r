@@ -1,3 +1,4 @@
+### Translate vector of strings of PAPI events into their C-level int equivs
 papi.event.init <- function(which)
 {
   ret <- .Call("papi_event_counter_init", which)
@@ -24,6 +25,9 @@ papi.event.init.light <- function(which)
     return(ret)
 }
 
+
+
+### Initialize counters, start profiling
 papi.start <- function(events)
 {
   papi.check.ncounters(length(events))
@@ -38,6 +42,9 @@ papi.start <- function(events)
   return(ret)
 }
 
+
+
+### Stop profiling, read values of counters
 papi.stop <- function(events)
 {
   which <- papi.event.init.light(which=events)
@@ -50,6 +57,9 @@ papi.stop <- function(events)
   return(ret)
 }
 
+
+
+### Simple wrapper
 system.event <- function(expr, events, gcFirst=TRUE)
 {
   if (gcFirst) 
@@ -64,3 +74,4 @@ system.event <- function(expr, events, gcFirst=TRUE)
   
   return(ret)
 }
+

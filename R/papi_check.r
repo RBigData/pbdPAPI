@@ -1,15 +1,17 @@
-system.ncounters <- function()
+### Make sure PAPI linked with pbdPAPI at compile time is the same as that linked at run time
+papi.init <- function()
 {
-  ret <- .Call("papi_check_counters", 0L)
+  ret <- .Call("papi_init")
   
-  if (ret == -2L)
-    return( 0L )
+  if (ret != 0L)
+    stop("Could not initialize PAPI; compile time and run time versions disagree")
   else
-    return( ret )
+    invisible( ret )
 }
 
 
 
+### Internal checker for number of hw counters
 papi.check.ncounters <- function(n=1)
 {
   ret <- .Call("papi_check_counters", as.integer(n))
@@ -22,4 +24,16 @@ papi.check.ncounters <- function(n=1)
     return( ret )
 }
 
+
+
+### User-facing function that gives number of hw counters
+system.ncounters <- function()
+{
+  ret <- .Call("papi_check_counters", 0L)
+  
+  if (ret == -2L)
+    return( 0L )
+  else
+    return( ret )
+}
 
