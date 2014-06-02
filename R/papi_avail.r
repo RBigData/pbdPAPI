@@ -38,7 +38,7 @@ papi.avail <- function(events)
 
 
 ### Error checking for the higher interfaces
-papi.avail.lookup <- function(events, shorthand)
+papi.avail.lookup <- function(events, shorthand=FALSE)
 {
   check.avail <- try(papi.avail(events=events), silent=TRUE)
   
@@ -60,7 +60,11 @@ papi.avail.lookup <- function(events, shorthand)
     
     events.fail <- if (length(notavail) == 0) events else events[notavail]
     events.fail <- paste(events.fail, collapse=", ")
-    stop(paste("Your platform does not support the hardware", event, "{", events.fail, "} which", tobe, "needed for events=\"", shorthand, "\".\n\nSee ?papi.avail for more information.", sep=""))
+    
+    if (!is.logical(shorthand))
+      stop(paste("Your platform does not support the hardware", event, "{", events.fail, "} which", tobe, "needed for events=\"", shorthand, "\".\n\nSee ?papi.avail for more information.", sep=""))
+    else
+      stop(paste("Your platform does not support the hardware", event, "{", events.fail, "}.\n\nSee ?papi.avail for more information.", sep=""))
   }
   
   invisible()

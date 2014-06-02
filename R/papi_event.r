@@ -65,6 +65,8 @@ system.event <- function(expr, events, gcFirst=TRUE)
   if (gcFirst) 
     gc(FALSE)
   
+  papi.avail.lookup(events=events, shorthand=FALSE)
+  
   ret <- papi.start(events)
   
   if (!missing("expr"))
