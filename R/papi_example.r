@@ -1,6 +1,6 @@
 papi.example <- function()
 {
-  papi.check(2L)
+  papi.check.ncounters(2L)
   
   .Call("papi_example")
   

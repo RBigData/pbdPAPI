@@ -26,7 +26,7 @@ papi.event.init.light <- function(which)
 
 papi.start <- function(events)
 {
-  papi.check(length(events))
+  papi.check.ncounters(length(events))
   
   events <- papi.event.init(which=events)
   

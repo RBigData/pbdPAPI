@@ -1,6 +1,6 @@
 papi.flops <- function(expr)
 {
-  papi.check(3L)
+  papi.check.ncounters(3L)
   
   ret <- .Call("papi_flops_on")
   if (ret == -1L)

@@ -1,16 +1,16 @@
-papi.ncounters <- function(n=1)
+system.ncounters <- function()
 {
-  ret <- .Call("papi_check_counters", as.integer(n))
+  ret <- .Call("papi_check_counters", 0L)
   
   if (ret == -2L)
-    return( NA )
+    return( 0L )
   else
     return( ret )
 }
 
 
 
-papi.check <- function(n=1)
+papi.check.ncounters <- function(n=1)
 {
   ret <- .Call("papi_check_counters", as.integer(n))
   
