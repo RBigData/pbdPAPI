@@ -1,0 +1,46 @@
+\section{Using pbdPAPI}
+
+The \thispackage package has 2 distinct interfaces for gathering performance data, one low-level 
+and ``one'' high-level.  The low-level interface is reminiscent of \PAPI's own native \C interface, 
+and ``the'' high-level interface is a collection of similar-looking wrappers around this interface.
+
+
+\subsection{High-Level Interface}
+
+
+
+
+\subsection{Low-Level Interface}
+
+The low-level interface is provided for users who more familiar with hardware and may have 
+questions about the operation of a block of code that do not easily fall into the the set of 
+wrappers that make up the high-level interface.  Even this comes in two forms.  The first is the 
+\code{system.event()} interface, which looks like the high-level interface functions, except that 
+you must explicitly supply a \PAPI events vector, with event names stored as strings.  For a list 
+of all possible events, and how to determine which are supported on your platform, see the \R help 
+\code{?papi.avail}.
+
+As an example, suppose you wanted to measure the level 1 data cache misses and L1 data cache hits. 
+After looking up the names for these events in the help file mentioned just above, you would simply 
+call
+\begin{lstlisting}
+events <- c("PAPI_L1_DCM", "PAPI_L1_DCH")
+system.event(1+1, events=events)
+\end{lstlisting}
+
+Here, replace \code{1+1} with your preferred computation.
+
+The final form of the low-level interface is essentially a deconstruction of the code making up the 
+body of the \code{system.event()} function.  This would allow you to skip several forms of error 
+checking (if you want to do that for some reason).  Primarily its purpose is to resemble the 
+native \C-level \PAPI interface.  We really don't recommend you use this, but it's there if you 
+really believe you need it.
+
+Revisiting the above example, you would call:
+\begin{lstlisting}
+events <- c("PAPI_L1_DCM", "PAPI_L1_DCH")
+
+papi.start(events=events)
+1+1
+papi.stop(events=events)
+\end{lstlisting}

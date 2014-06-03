@@ -51,7 +51,8 @@ University of Tennessee}
 
 \input{./include/01-introduction}
 \input{./include/02-installation}
-\input{./include/03-counters}
+\input{./include/03-background}
+\input{./include/04-interface}
 
 \newpage
 \phantomsection
