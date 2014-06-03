@@ -16,9 +16,12 @@ hw.info <- function()
 
 hw.info.name <- function()
 {
+  intinfo <- hw.info()
   info <- .Call("papi_hwname")
-  val <- info[[2]]
-  attr(x=val, which="names") <- info[[1]]
+  id.family <- intinfo[which(attr(x=intinfo,which="names")=="cpuid_family")]
+  id.model <- intinfo[which(attr(x=intinfo,which="names")=="cpuid_model")]
+  val <- c(info[[2]],arch.lookup(id.family,id.model))
+  attr(x=val, which="names") <- c(info[[1]],"codename")
   return(val)
 }
 
@@ -76,6 +79,18 @@ hw.info.linux <- function()
 #    stop("Hardware vendor not supported")
 #}
 
+
+arch.lookup <- function(family, model)
+{
+  if (family == 0x06)
+  {
+    return(arch.intel(family, model))
+  }
+  else
+  {
+    return("Unknown")
+  }
+}
 
 #https://software.intel.com/en-us/articles/intel-architecture-and-processor-identification-with-cpuid-model-and-family-numbershttps://software.intel.com/en-us/articles/intel-architecture-and-processor-identification-with-cpuid-model-and-family-numbers
 arch.intel <- function(family, model)
