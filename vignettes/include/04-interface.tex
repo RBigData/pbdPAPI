@@ -23,7 +23,7 @@ of all possible events, and how to determine which are supported on your platfor
 As an example, suppose you wanted to measure the level 1 data cache misses and L1 data cache hits. 
 After looking up the names for these events in the help file mentioned just above, you would simply 
 call
-\begin{lstlisting}
+\begin{lstlisting}[language=rr]
 events <- c("PAPI_L1_DCM", "PAPI_L1_DCH")
 system.event(1+1, events=events)
 \end{lstlisting}
@@ -37,7 +37,7 @@ native \C-level \PAPI interface.  We really don't recommend you use this, but it
 really believe you need it.
 
 Revisiting the above example, you would call:
-\begin{lstlisting}
+\begin{lstlisting}[language=rr]
 events <- c("PAPI_L1_DCM", "PAPI_L1_DCH")
 
 papi.start(events=events)

@@ -1,0 +1,100 @@
+\section{Examples}
+
+
+\subsection{flops}
+
+To see the full source code described in this example, see the \code{matprod} demo in 
+\thispackage.
+
+
+
+\subsection{Cache Misses}
+
+To see the full source code described in this example, see the \code{cache_access} demo in 
+\thispackage.
+
+Consider the following example, where we will fill a matrix with 1's, first by 
+looping over rows then columns, and then by looping over columns then rows.  For 
+maximum effect, we will be dropping to \C by way of \pkg{Rcpp}.  If you do not 
+have \pkg{Rcpp} installed on your system, you can still follow along (even if 
+you don't know \CXX), but you will not be able to recreate the timings locally.
+\begin{lstlisting}[language=rr]
+library(inline)
+
+bad_cache_access <- "
+  int i, j;
+  const int n = INTEGER(n_)[0];
+  Rcpp::NumericMatrix x(n, n);
+  
+  
+  for (i=0; i<n; i++)
+    for (j=0; j<n; j++)
+      x(i, j) = 1.;
+  
+  return x;
+"
+
+good_cache_access <- "
+  int i, j;
+  const int n = INTEGER(n_)[0];
+  Rcpp::NumericMatrix x(n, n);
+  
+  
+  for (j=0; j<n; j++)
+    for (i=0; i<n; i++)
+      x(i, j) = 1.;
+  
+  return x;
+"
+
+
+bad <- cxxfunction(signature(n_="integer"), 
+                   body=bad_cache_access, plugin="Rcpp")
+good <- cxxfunction(signature(n_="integer"), 
+                    body=good_cache_access, plugin="Rcpp")
+\end{lstlisting}
+
+A quick check of run times shows something drastically different happening:
+\begin{Output}
+n <- 10000L
+
+system.time(bad(n))
+#   user  system elapsed 
+#  1.016   0.232   1.259 
+
+system.time(good(n))
+#   user  system elapsed 
+#  0.201   0.155   0.357 
+\end{Output}
+
+So even though we (mathematically) are doing the exact same thing, the run 
+times differ by a factor of 3.5.  \thispackage allows us to more thoroughly see 
+what's happening.  If we use \code{system.cache()} to check the L1, L2, and L3 
+cache misses for each of these functions:
+\begin{Output}
+library(pbdPAPI)
+n <- 10000L
+
+system.cache(bad(n))
+#$L1.total
+#[1] 193580295
+#
+#$L2.total
+#[1] 159442230
+#
+#$L3.total
+#[1] 16895275
+
+system.cache(good(n))
+#$L1.total
+#[1] 15552007
+#
+#$L2.total
+#[1] 11580023
+#
+#$L3.total
+#[1] 801150
+\end{Output}
+
+it should be readily apparent what is going on now.  The L1 cache misses differ 
+by more than an order of magnitude, 194 million to 16 million!

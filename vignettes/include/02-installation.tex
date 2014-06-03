@@ -9,7 +9,18 @@ In this section, we will describe the various ways that one can install the
 
 It is possible for \PAPI and/or \thispackage to build, but still have no access
 to any counter information.  For example, the package will build on a Raspberry 
-Pi, but that hardware does not have any hardware counters.
+Pi, but that hardware does not have any hardware counters.  If the package installs without error, 
+you can see how many hardware counters you have available by executing:
+\begin{lstlisting}[language=rr]
+library(pbdPAPI)
+system.ncounters()
+\end{lstlisting}
+
+For a detailed list of all counters and whether or not your platform supports them, simply call 
+\begin{lstlisting}[language=rr]
+library(pbdPAPI)
+papi.avail()
+\end{lstlisting}
 
 
 
@@ -26,7 +37,7 @@ supported by \PAPI.  This is the simplest approach, and should cover most users.
 R CMD INSTALL pbdPAPI_0.1-0.tar.gz
 \end{Command}
 and using the \pkg{devtools} package:
-\begin{lstlisting}
+\begin{lstlisting}[language=rr]
 library(devtools)
 install_github(username="wrathematics", repo="pbdPAPI")
 \end{lstlisting}
