@@ -12,7 +12,7 @@
 
 SEXP papi_hwname()
 {
-	PAPI_hw_info_t *p_ret;
+	const PAPI_hw_info_t *p_ret;
 	SEXP ret,name,val;
 
 	p_ret=PAPI_get_hardware_info();
@@ -40,7 +40,7 @@ SEXP papi_hwname()
 
 SEXP papi_hwinfo()
 {
-	PAPI_hw_info_t *p_ret;
+	const PAPI_hw_info_t *p_ret;
 	SEXP ret,name,val;
 	int i;
 

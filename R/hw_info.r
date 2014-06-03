@@ -8,12 +8,18 @@ get.os <- function()
 
 hw.info <- function()
 {
-  return(.Call("papi_hwinfo"))
+  info <- .Call("papi_hwinfo")
+  val <- info[[2]]
+  attr(x=val, which="names") <- info[[1]]
+  return(val)
 }
 
 hw.info.name <- function()
 {
-  return(.Call("papi_hwname"))
+  info <- .Call("papi_hwname")
+  val <- info[[2]]
+  attr(x=val, which="names") <- info[[1]]
+  return(val)
 }
 
 system.hw.info <- function()
