@@ -6,9 +6,17 @@ get.os <- function()
   return( ret )
 }
 
-
-
 hw.info <- function()
+{
+  return(.Call("papi_hwinfo"))
+}
+
+hw.info.name <- function()
+{
+  return(.Call("papi_hwname"))
+}
+
+system.hw.info <- function()
 {
   os <- get.os()
   
