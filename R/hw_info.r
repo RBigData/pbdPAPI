@@ -15,10 +15,11 @@ hw.info.name <- function()
   
   attr(x=info[[2L]], which="names") <- info[[1L]]
   
+  id.vendor <- info[[2L]]["vendor"]
   id.family <- intinfo["cpuid_family"]
   id.model <- intinfo["cpuid_model"]
   
-  val <- c(info[[2L]], arch.lookup(id.family, id.model))
+  val <- c(info[[2L]], arch.lookup(id.vendor, id.family, id.model))
   
   return(val)
 }
@@ -28,22 +29,45 @@ hw.info.name <- function()
 # Processor model lookup
 # -----------------------------------------------------------------------------
 
-arch.lookup <- function(family, model)
+arch.lookup <- function(vendor, family, model)
 {
-  if (family == 0x06)
+  if (vendor == "GenuineIntel")
   {
-    return(arch.intel(model))
+   arch <- arch.intel(family, model)
+  }
+  else if (vendor == "AuthenticAMD")
+  {
+    arch <- arch.amd(family,model)
   }
   else
   {
-    return("Unknown")
+    arch <- "Unknown"
   }
+
+  ret <- list(codename=arch)
+  return(ret)
+}
+
+arch.amd <- function(family, model)
+{
+  #TODO
+  return ("Unknown")
 }
 
 #http://www.cpu-world.com/cgi-bin/CPUID.pl
 #https://software.intel.com/en-us/articles/intel-architecture-and-processor-identification-with-cpuid-model-and-family-numbershttps://software.intel.com/en-us/articles/intel-architecture-and-processor-identification-with-cpuid-model-and-family-numbers
-arch.intel <- function(model)
+arch.intel <- function(family, model)
 {
+  if (family == 0x0F && model == 0x06)
+  {
+    return("Presler")
+  }
+
+  if (family != 0x06)
+  {
+    return("Unknown")
+  }
+
   if (model == 0x3C || model == 0x45 || model == 0x46)
   {
     arch <- "Haswell"
@@ -74,10 +98,6 @@ arch.intel <- function(model)
   {
     arch <- "Merom"
   }
-  else if (model == 0x06)
-  {
-    arch <- "Presler"
-  }
   else if (model == 0x03)
   {
     arch <- "Nocona"
@@ -95,8 +115,7 @@ arch.intel <- function(model)
     arch <- "Unknown"
   }
   
-  ret <- list(codename=arch)
-  return( ret )
+  return(arch)
 }
 
 
