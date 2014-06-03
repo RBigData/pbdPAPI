@@ -1,16 +1,10 @@
-get.os <- function()
-{
-  ret <- Sys.info()[1L]
-  names(ret) <- NULL
-  
-  return( ret )
-}
-
 hw.info <- function()
 {
   info <- .Call("papi_hwinfo")
-  val <- info[[2]]
-  attr(x=val, which="names") <- info[[1]]
+  
+  val <- info[[2L]]
+  attr(x=val, which="names") <- info[[1L]]
+  
   return(val)
 }
 
@@ -18,51 +12,16 @@ hw.info.name <- function()
 {
   intinfo <- hw.info()
   info <- .Call("papi_hwname")
-  id.family <- intinfo[which(attr(x=intinfo,which="names")=="cpuid_family")]
-  id.model <- intinfo[which(attr(x=intinfo,which="names")=="cpuid_model")]
-  val <- c(info[[2]],arch.lookup(id.family,id.model))
-  attr(x=val, which="names") <- c(info[[1]],"codename")
+  
+  id.family <- intinfo["cpuid_family"]
+  id.model <- intinfo["cpuid_model"]
+  
+  val <- c(info[[2]], arch.lookup(id.family, id.model))
+  attr(x=val, which="names") <- c(info[[1]], "codename")
+  
   return(val)
 }
 
-system.hw.info <- function()
-{
-  os <- get.os()
-  
-  if (os == "Linux")
-    return( hw.info.linux() )
-  else
-    stop(paste("function hw.info() does not support platform", os, "at this stime"))
-}
-
-
-
-### Linux
-grep.cpuinfo <- function(info, x)
-{
-  x.which <- grep(x=info, x)
-  
-  ret <- gsub(x=info[x.which], pattern=paste(x, "\t: ", sep=""), replacement="")
-  
-  return( ret )
-}
-
-hw.info.linux <- function()
-{
-  info <- readLines("/proc/cpuinfo")
-  
-  ncores.phys <- grep.cpuinfo(info=info, x="cpu cores")[1L]
-  ncores.log <- length(grep.cpuinfo(info=info, x="processor"))
-  vendor.id <- grep.cpuinfo(info=info, x="vendor_id")[1L]
-  cpu.family <- grep.cpuinfo(info=info, x="cpu family")[1L]
-  cpu.model <- grep.cpuinfo(info=info, x="model\t")[1L]
-  cpu.model.name <- grep.cpuinfo(info=info, x="model name")[1L]
-  
-#  archname <- hw.arch(vendor=vendor.id)
-  
-#  ret <- list(ncores=ncores)
-#  return( ret )
-}
 
 # -----------------------------------------------------------------------------
 # Processor model lookup
