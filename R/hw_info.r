@@ -16,8 +16,8 @@ hw.info.name <- function()
   id.family <- intinfo["cpuid_family"]
   id.model <- intinfo["cpuid_model"]
   
-  val <- c(info[[2]], arch.lookup(id.family, id.model))
-  attr(x=val, which="names") <- c(info[[1]], "codename")
+  val <- c(info[[2L]], arch.lookup(id.family, id.model))
+  attr(x=val, which="names") <- c(info[[1L]], "codename")
   
   return(val)
 }
