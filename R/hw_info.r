@@ -51,6 +51,7 @@ arch.lookup <- function(vendor, family, model)
 arch.amd <- function(family, model)
 {
   #TODO
+  warning("AMD chipsets are not supported at this time.")
   return ("Unknown")
 }
 
