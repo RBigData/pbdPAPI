@@ -1,4 +1,21 @@
-cache.opts <- function(type, which)
+nmatches <- function(x, pattern)
+{
+  tmp <- grep(x=x, pattern=pattern)
+  
+  if (length(tmp) == 0)
+    return( 0L )
+  else
+    return( tmp )
+}
+
+
+is.match <- function(x, pattern)
+{
+  return( nmatches(x=x, pattern=pattern) != 0 )
+}
+
+
+cache.opts <- function(type, which, level)
 {
   if (type == "miss")
     char <- "M"
@@ -17,13 +34,10 @@ cache.opts <- function(type, which)
     which <- paste(c("PAPI_L1_IC", "PAPI_L2_IC", "PAPI_L3_IC"), char, sep="")
   else if (which == "all")
     which <- paste(c("PAPI_L1_IC", "PAPI_L1_DC", "PAPI_L2_IC", "PAPI_L2_DC", "PAPI_L3_IC", "PAPI_L3_DC"), char, sep="")
-  else if (which == "l1.all")
-    which <- paste(c("PAPI_L1_IC", "PAPI_L1_DC"), char, sep="")
-  else if (which == "l2.all")
-    which <- paste(c("PAPI_L2_IC", "PAPI_L2_DC"), char, sep="")
-  else if (which == "l3.all")
-    which <- paste(c("PAPI_L3_IC", "PAPI_L3_DC"), char, sep="")
-  
+  else if (is.match(x=which, pattern="l[0-9][.]all"))
+    which <- paste(c(paste("PAPI_L", level, "_IC", sep=""), paste("PAPI_L", level, "_DC")), char, sep="")
+  else if (is.match(x=which, pattern="l[0-9][.]ratio"))
+    which <- c(paste("PAPI_L", level, "_TC", char, sep=""), paste("PAPI_L", level, "_TCA", sep=""))
   
   return( which )
 }
@@ -42,12 +56,40 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   
   shorthand <- events
   
-  events <- match.arg(tolower(events), c("total", "data", "instruction", "all", "l1.all", "l2.all", "l3.all"))
-  events <- cache.opts(type=type, which=events)
+  events <- match.arg(tolower(events), c("total", "data", "instruction", "all", "l1.all", "l2.all", "l3.all", "l1.ratio", "l2.ratio", "l3.ratio"))
+  
+  is.ratio <- is.match(x=events, pattern="[.]ratio")
+  is.all <- is.match(x=events, pattern="[.]all")
+  
+  if (is.ratio || is.all)
+  {
+    level <- sub(x=events, pattern="[.]ratio", replacement="")
+    level <- sub(x=level, pattern="l", replacement="")
+  }
+  else
+    level <- NULL
+  
+  if (type == "access" && is.ratio)
+  {
+    warning("Duplicate counters requested")
+    ret <- 1L
+    names(ret) <- names(ret) <- paste("L", level, " cache ", type, " ratio", sep="")
+    return( ret )
+  }
+  
+  events <- cache.opts(type=type, which=events, level=level)
   
   papi.avail.lookup(events=events, shorthand=shorthand)
   
   ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
   
+  if (is.ratio)
+  {
+    ret <- ret[[1L]] / ret[[2L]]
+    names(ret) <- paste("L", level, " cache ", type, " ratio", sep="")
+  }
+  
   return( ret )
 }
+
+
