@@ -1,7 +1,7 @@
 \section{Examples}
 
 
-\subsection{flops}
+\subsection{Floating Point Operations}
 
 Principal Components Analysis is a common statistical analysis technique.  The 
 implementation of PCA typically involves computing the singular value 
@@ -51,10 +51,9 @@ you don't know \CXX), but you will not be able to recreate the timings locally.
 You are probably aware that \R matrices are stored in column-major fashion.  
 What this means is that the data, as it is laid out in physical memory, is 
 easier to go from the entry with index $(i, j)$ to index $(i+1, j)$ than 
-it is to go to index $(i, j+1)$.  Accessing in the correct way minimizes the 
-amount of work the computer needs to do in searching for the data your program 
-needs.  And in particular, this will help minimize cache misses, because if you 
-routinely access data 
+it is to go to index $(i, j+1)$.  
+
+An example of accessing data poorly is the following:
 \begin{lstlisting}[language=rr]
 bad_cache_access <- "
   int i, j;
@@ -69,6 +68,10 @@ bad_cache_access <- "
   return x;
 "
 \end{lstlisting}
+
+Accessing data in this way maximizes the 
+amount of work the computer needs to do in searching for the data your program 
+needs.  Accessing your memory correctly will help minimize cache misses: 
 
 \begin{lstlisting}[language=rr]
 good_cache_access <- "
@@ -85,6 +88,9 @@ good_cache_access <- "
 "
 \end{lstlisting}
 
+To prove this, we can build these functions using the \pkg{inline} and 
+\pkg{Rcpp} packages~\citep{inline,rcpp} and then profile them with \thispackage.
+
 \begin{lstlisting}[language=rr]
 library(inline)
 
@@ -94,7 +100,8 @@ good <- cxxfunction(signature(n_="integer"),
                     body=good_cache_access, plugin="Rcpp")
 \end{lstlisting}
 
-A quick check of run times shows something drastically different happening:
+A quick check of run times shows something drastically different is happening 
+between the two implementations:
 \begin{Output}
 n <- 10000L
 
@@ -107,10 +114,11 @@ system.time(good(n))
 #  0.201   0.155   0.357 
 \end{Output}
 
-So even though we (mathematically) are doing the exact same thing, the run 
-times differ by a factor of 3.5.  \thispackage allows us to more thoroughly see 
-what's happening.  If we use \code{system.cache()} to check the L1, L2, and L3 
-cache misses for each of these functions:
+So even though we (mathematically) are doing the exact same thing to the data, 
+the run times differ by a factor of 3.5.  \thispackage allows us to more 
+thoroughly see what's happening.  We can use \code{system.cache()} to check the 
+L1, L2, and L3 (total) cache misses for each of these functions:
+
 \begin{Output}
 library(pbdPAPI)
 n <- 10000L
@@ -136,9 +144,15 @@ system.cache(good(n))
 #[1] 801150
 \end{Output}
 
-it should be readily apparent what is going on now.  The L1 cache misses differ 
-by more than an order of magnitude, 194 million to 16 million!
+The L1 cache misses differ by more than an order of magnitude, 194 million to 16 
+million!
 
+Perhaps a more useful measure is the \emph{cache miss ratio}, which is the 
+total cache misses divided by the total cache accesses (in the low-level 
+interface syntax, this is the return of event \code{PAPI_L2_TCM} divided by the 
+return of event \code{PAPI_L2_TCA}, for level 2). 
+
+Measuring this too is simple:
 
 \begin{Output}
 system.cache(bad(n), events="l2.ratio")
@@ -150,4 +164,3 @@ system.cache(good(n), events="l2.ratio")
 #           0.7156862 
 
 \end{Output}
-

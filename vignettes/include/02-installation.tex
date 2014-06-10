@@ -5,18 +5,34 @@ In this section, we will describe the various ways that one can install the
 \thispackage package.
 
 
-\subsection{Important Note}
+\subsection{Important Notes}
 
 It is possible for \PAPI and/or \thispackage to build, but still have no access
-to any counter information.  For example, the package will build on a Raspberry 
-Pi, but that hardware does not have any hardware counters.  If the package installs without error, 
-you can see how many hardware counters you have available by executing:
+to any counter information.  For example, the package will build on the popular 
+Arm architecture device 
+Raspberry Pi\footnote{\url{http://www.raspberrypi.org/}};
+however, it does not have any hardware counters, and as such, \thispackage 
+effectively can not be used.  If the package installs without error, you can 
+see how many hardware counters you have available by calling:
 \begin{lstlisting}[language=rr]
 library(pbdPAPI)
 system.ncounters()
 \end{lstlisting}
 
-For a detailed list of all counters and whether or not your platform supports them, simply call 
+However, this too has some caveats.  Those with Intel Sandy Bridge and/or Intel 
+Ivy Bridge architectures should be aware that flops counts are unreliable on 
+these platforms.  This is a problem with the hardware returning incorrect 
+values, not with \PAPI or \thispackage.  For more details, see: 
+\href{http://icl.cs.utk.edu/projects/papi/wiki/PAPITopics:SandyFlops}%
+{the \PAPI documentation} on this matter.
+
+
+Additionally, not all platforms support all counters.  For the high-level 
+interface, this simply means that some things you may wish to try simply can 
+not physically work, and as such will return an error.  
+
+For a detailed list of all counters and whether or not your particular platform 
+supports them, simply call 
 \begin{lstlisting}[language=rr]
 library(pbdPAPI)
 papi.avail()
@@ -25,7 +41,8 @@ papi.avail()
 
 
 
-\subsection{WITHOUT a System Installation of PAPI}
+
+\subsection{Installing WITHOUT a System Installation of PAPI}
 
 This is the default method of installation.  Here, the \PAPI library will  
 automatically be built first as a static library, and then the \thispackage 
@@ -45,7 +62,7 @@ install_github(username="wrathematics", repo="pbdPAPI")
 
 
 
-\subsection{WITH an Existing System Installation of PAPI}
+\subsection{Installing WITH an Existing System Installation of PAPI}
 
 If you already have a system installation of \PAPI available, it makes more  
 sense to link with that existing library.  The one catch is that the static 

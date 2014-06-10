@@ -1,18 +1,40 @@
 \section{Examples}
 
 
-\subsection{flops}
-
-To see the full source code described in this example, see the \code{matprod} demo in 
-\thispackage.
+\subsection{Floating Point Operations}
 
 Principal Components Analysis is a common statistical analysis technique.  The 
 implementation of PCA typically involves computing the singular value 
 decomposition (SVD) of the input data and then projecting the data onto the 
 right singular vectors.  It is known that an SVD requires $6mn^2 + 20n^3$ 
 floating point operations and that the projection onto the right singular 
-vectors requires an additional $2mn^2$ flops~\citep{gvl}.
+vectors requires an additional $2mn^2$ operations~\citep{gvl}.  Finally, as PCA 
+is usually performed on centered (and often scaled) data, we require an 
+additional $2*mn+1$ operations for centering the data.
 
+The \thispackage package contains the example \code{pca.r} as a package demo, 
+which will perform a PCA on random data consisting of $10,000$ observations and 
+50 predictors.  The analysis uses \R's ordinary \code{prcomp()} routine, and 
+the performance is measured by \thispackage's \code{system.flops()}.  You can 
+run this demo by calling
+
+\begin{lstlisting}[language=rr]
+demo("pca", package="pbdPAPI")
+\end{lstlisting}
+
+
+An example output from this machine is:
+
+\begin{Output}
+      m  n  measured theoretical difference pct.error   mflops
+1 10000 50 212538720   203500001    9038719   4.25274 2284.257
+\end{Output}
+
+The \thispackage package has several other demonstrations that, like this, 
+compare a theoretical floating point operations count against a measured count, 
+and then display the Mflops the operation achieved.  These demos include 
+an inner product calculation \code{inner.r}, a matrix-matrix product 
+\code{matprod.r}, and the fitting of a linear model in \code{regression.r}.
 
 
 \subsection{Cache Misses}

@@ -11,21 +11,6 @@ the floating point pipe with no massaging.
 \paragraph{flops}  Perhaps the more well-known measurement is the rate of  
 floating point \emph{operations}.  
 
-Calling \code{system.flops(expr)} on a valid \R expression \code{expr} will  
-produce system and processor timings, the number of floating point operations, 
-and the Mflops.
-
-The \code{pca} demo shows off this functionality with principal components  
-analysis.  Executing:
-\begin{lstlisting}
-demo("pca", "pbdPAPI")
-\end{lstlisting}
-on an Intel Sandy Bridge Core i5 produces the following outputs:
-\begin{Output}
-      m  n  measured theoretical difference pct.error   mflops
-1 10000 50 211875901   202500000    9375901  4.425185 1637.195
-\end{Output}
-
 
 
 \paragraph{Theoretical flops}
@@ -36,7 +21,7 @@ on an Intel Sandy Bridge Core i5 produces the following outputs:
 
 single precision (divide by 2 for double precision).
 
-So for this Intel Sandy Bridge Core i5 again as a reference, the 
+So for this Intel Sandy Bridge Core i5 as a reference, the 
 
 \begin{align*}
 \text{Mflops} &= (4) * (2) * (3200 Mhz) * 2 \\ 
