@@ -17,8 +17,9 @@ OBJECTS = avail.o \
           flops.o \
           hwinfo.o \
           init.o \
-          mips.o \
-          papi_error.o
+          ipc.o \
+          papi_error.o \
+          setret.o
 #          utilization.o
 
 all: $(SHLIB)

@@ -13,8 +13,8 @@
   \item{type}{The type of cache event to profile; options are
   "miss", "hit", "access", and "read".}
   \item{events}{The class of cache events to profile; options are
-  "total", "data", "instruction", "all", "l1.all", "l2.all", and 
-  "l3.all".}
+  "total", "data", "instruction", "all", "l1.all", "l2.all", 
+  "l3.all", "l1.ratio", "l2.ratio", and "l3.ratio".}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
   \item{burnin}{logical; determines if the function should first be
