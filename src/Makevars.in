@@ -9,7 +9,17 @@ PKG_CFLAGS = @PAPI_CFLAGS@
 PKG_LIBS = @PAPI_LIBS@
 OBEXTRA = @OBEXTRA@
 
-OBJECTS = avail.o check.o events.o flips.o flops.o hwinfo.o init.o papi_error.o
+OBJECTS = avail.o \
+          check.o \
+          epc.o \
+          events.o \
+          flips.o \
+          flops.o \
+          hwinfo.o \
+          init.o \
+          mips.o \
+          papi_error.o
+#          utilization.o
 
 all: $(SHLIB)
 

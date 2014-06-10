@@ -28,5 +28,10 @@ system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
   if (missing(expr))
     expr <- NULL
   
-  return( papi.flops(expr=expr) )
+  events <- "PAPI_FP_INS"
+  papi.avail.lookup(events=events, shorthand=FALSE)
+  
+  ret <- papi.flops(expr=expr)
+  
+  return( ret )
 }
