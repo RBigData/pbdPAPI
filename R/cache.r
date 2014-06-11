@@ -48,9 +48,6 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
 {
   type <- match.arg(tolower(type), c("miss", "hit", "access", "read"))
   
-  if (burnin)
-    b <- system.cache(type=type, events=events, gcFirst=gcFirst, burnin=FALSE)
-  
   if (missing(expr))
     expr <- NULL
   
@@ -81,13 +78,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   
   papi.avail.lookup(events=events, shorthand=shorthand)
   
-  ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
-  
-  if (burnin)
-  {
-    for (i in 1:length(ret))
-      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
-  }
+  ret <- system.event(expr=expr, events=events, gcFirst=gcFirst, burnin=burnin)
   
   if (is.ratio)
   {

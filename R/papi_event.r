@@ -62,11 +62,14 @@ papi.stop <- function(events)
 ### Simple wrapper
 system.event <- function(expr, events, gcFirst=TRUE, burnin=TRUE)
 {
+  papi.start(events=events)
+  papi.stop(events=events)
+  
   if (missing(events))
     stop("argument \"events\" is missing, with no default")
   
   if (burnin)
-    system.event(events=events, gcFirst=gcFirst, burnin=FALSE)
+    b <- system.event(events=events, gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
     gc(FALSE)
@@ -76,12 +79,15 @@ system.event <- function(expr, events, gcFirst=TRUE, burnin=TRUE)
   
   papi.avail.lookup(events=events, shorthand=FALSE)
   
-  ret <- papi.start(events)
+  ret <- papi.start(events=events)
+  eval(expr)
+  ret <- papi.stop(events=events)
   
-  if (!missing("expr"))
-    eval(expr)
-  
-  ret <- papi.stop(events)
+  if (burnin)
+  {
+    for (i in 1:length(ret))
+      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
+  }
   
   return(ret)
 }

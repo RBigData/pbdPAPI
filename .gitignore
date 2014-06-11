@@ -22,6 +22,7 @@ src/configure
 *.blg
 *.out
 *.toc
+*.tex.backup
 
 
 ### PAPI build

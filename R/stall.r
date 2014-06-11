@@ -2,9 +2,6 @@ system.stall <- function(expr, events="float", gcFirst=TRUE, burnin=TRUE)
 {
   events <- match.arg(tolower(events), c("float", "int", "numeric", "branch", "load", "all"))
   
-  if (burnin)
-    system.idle(events=events, gcFirst=gcFirst, burnin=FALSE)
-  
   if (missing(expr))
     expr <- NULL
   
@@ -25,13 +22,7 @@ system.stall <- function(expr, events="float", gcFirst=TRUE, burnin=TRUE)
   
   papi.avail.lookup(events=events, shorthand=shorthand)
   
-  ret <- system.event(expr=expr, events=events, gcFirst=gcFirst)
-  
-  if (burnin)
-  {
-    for (i in 1:length(ret))
-      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
-  }
+  ret <- system.event(expr=expr, events=events, gcFirst=gcFirst, burnin=burnin)
   
   return( ret )
 }
