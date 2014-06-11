@@ -1,0 +1,11 @@
+Before June 30: (version 0.1-0)
+-finish documentation
+-finish vignette
+-write tests
+-fix build issues
+
+
+After June 30: (version 0.1-1)
+-Create true low-level interface (PAPI_accum, etc.)
+-Use above to create 2nd high level interface that captures streaming
+counter information (dumb idea ???)
