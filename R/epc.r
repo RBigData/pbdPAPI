@@ -19,7 +19,7 @@ papi.epc <- function(expr, event)
 system.epc <- function(expr, event, gcFirst=TRUE, burnin=TRUE)
 {
   if (burnin)
-    system.epc(event=event, gcFirst=gcFirst, burnin=FALSE)
+    b <- system.epc(event=event, gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
     gc(FALSE)
@@ -31,6 +31,12 @@ system.epc <- function(expr, event, gcFirst=TRUE, burnin=TRUE)
   event.num <- papi.event.init(which=event)
   
   ret <- papi.epc(expr=expr, event=event.num)
+  
+  if (burnin)
+  {
+    for (i in 3:length(ret))
+      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
+  }
   
   return( ret )
 }

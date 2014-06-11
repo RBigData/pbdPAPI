@@ -1,14 +1,14 @@
-papi.ipc <- function(expr)
+papi.utilization <- function(expr)
 {
   papi.check.ncounters(3L)
   
-  ret <- .Call("papi_ipc_on")
+  ret <- .Call("papi_utilization_on")
   if (ret == -1L)
     stop("PAPI failed to initialize hardware counters.\nYour platform may not support floating point operation event.\n")
   
   eval(expr)
   
-  ret <- .Call("papi_ipc_off")
+  ret <- .Call("papi_utilization_off")
   if (is.integer(ret) && ret == -1L)
     stop("There was a problem recovering the counter information.")
   
@@ -16,10 +16,10 @@ papi.ipc <- function(expr)
 }
 
 
-system.ipc <- function(expr, gcFirst=TRUE, burnin=TRUE)
+system.utilization <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
   if (burnin)
-    system.ipc(gcFirst=gcFirst, burnin=FALSE)
+    b <- system.utilization(gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
     gc(FALSE)
@@ -30,7 +30,13 @@ system.ipc <- function(expr, gcFirst=TRUE, burnin=TRUE)
   events <- c("PAPI_TOT_INS", "PAPI_TOT_CYC")
   papi.avail.lookup(events=events, shorthand=FALSE)
   
-  ret <- papi.ipc(expr=expr)
+  ret <- papi.utilization(expr=expr)
+  
+  if (burnin)
+  {
+    for (i in 3:(length(ret)-1))
+      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
+  }
   
   return( ret )
 }

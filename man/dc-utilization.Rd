@@ -1,12 +1,12 @@
-\name{system.mips}
-\alias{system.mips}
+\name{system.utilization}
+\alias{system.utilization}
 
-\title{flops}
+\title{utilization}
 \description{
-  Instructions per cycle.
+  CPU Utilization.
 }
 \usage{
-  system.ipc(expr, gcFirst=TRUE, burnin=TRUE)
+  system.utilization(expr, gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
@@ -16,7 +16,14 @@
   evaluated with an empty expression.}
 }
 \details{
-  .
+  We define processor utilization as:\cr
+  
+  \eqn{utilization = \frac{ins}{clockrate\ *\ real\_time\ *\ ncpus}} \cr
+  
+  where \code{ins} is the number of instructions measured by PAPI, 
+  \code{clockrate} is the clock frequency of the processor in Hz, 
+  \code{real_time} is the wall clock time, and \code{ncpus} is the
+  number of "cores" (physical+logical) detected by PAPI.
 }
 \value{
   The return is a list consisting of:
@@ -25,6 +32,7 @@
   \code{proc_time} \tab total process time spent evaluating expression \cr
   \code{ins} \tab Number of instructions. \cr
   \code{ipc} \tab Instructions per cycle. \cr
+  \code{utilization} \tab CPU utilization (proportion) \cr
 }
 }
 \examples{

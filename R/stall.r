@@ -1,9 +1,9 @@
-system.idle <- function(expr, events="float", gcFirst=TRUE, burnin=TRUE)
+system.stall <- function(expr, events="float", gcFirst=TRUE, burnin=TRUE)
 {
   events <- match.arg(tolower(events), c("float", "int", "numeric", "branch", "load", "all"))
   
   if (burnin)
-    b <- system.idle(events=events, gcFirst=gcFirst, burnin=FALSE)
+    system.idle(events=events, gcFirst=gcFirst, burnin=FALSE)
   
   if (missing(expr))
     expr <- NULL

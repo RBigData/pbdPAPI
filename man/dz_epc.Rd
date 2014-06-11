@@ -1,7 +1,7 @@
 \name{system.epc}
 \alias{system.epc}
 
-\title{flops}
+\title{epc}
 \description{
   Events per cycle.
 }

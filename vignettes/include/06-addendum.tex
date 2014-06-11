@@ -1,0 +1,84 @@
+\section{Additional Information}
+
+Your gradeschool teacher who told you that there is no such thing as a bad 
+question?  A liar and an intellectual fraud.
+
+Before beginning this project, a member of the \PAPI team explained that 
+``someone who \emph{really} understands the hardware knows that there are 
+certain questions you just don't ask.''  In \R, we generally prefer to abstract 
+away from the hardware as much as possible.
+
+
+Hardware manufacturers aren't trying to make profiling as simple as possible; 
+they're trying to execute instructions as fast as possible.
+
+
+
+\subsection{Parallel Code}
+
+\thispackage currently does not support the profiling of parallel code.  
+Attempting do to so will almost certainly return incorrect values.  The 
+exception would be SPMD-written code using MPI, where each R process is single 
+threaded.
+
+This is very easy to see with \R's \code{mclapply()} form the \pkg{parallel} 
+package.  Consider this simple example:
+
+\begin{Output}
+system.flops(lapply(1, function(i) as.double(1:1000)/100))$flpops
+# [1] 1008
+
+system.flops(mclapply(1:2, function(i) as.double(1:1000)/100))$flpops
+# [1] 94
+\end{Output}
+
+Here we measure the number of floating point operations performed in dividing 
+the (float) numbers 1 through 1000 by 100.  In the first example, we get 1000 
+and some change (the \PAPI + \thispackage + \R overhead).  In the second, we 
+get\dots94?  Where did the others go?  \PAPI is designed to 
+
+
+This is (usually) true as well of multi-threading, for example, via OpenMP, 
+although this is more difficult to describe, and frankly is platform dependent.
+
+\begin{lstlisting}[language=rr]
+n <- 5000
+x <- matrix(rnorm(n*n), n, n)
+
+system.flops(x %*% x)
+\end{lstlisting}
+
+If we run this with Openblas with 4 threads, on this reference Sandybridge 
+hardware, we find:
+\begin{Output}
+$real_time
+[1] 7.485725
+
+$proc_time
+[1] 7.457387
+
+$flpops
+[1] 13
+
+$mflops
+[1] 1.743238e-06
+\end{Output}
+
+This is obviously not what we intended to find.  
+
+Using the serial Atlas BLAS on the same machine, we find:
+\begin{Output}
+$real_time
+[1] 20.52688
+
+$proc_time
+[1] 20.50697
+
+$flpops
+[1] 110667824
+
+$mflops
+[1] 5.396596
+\end{Output}
+
+

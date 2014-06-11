@@ -54,6 +54,7 @@ University of Tennessee}
 \input{./include/03-background}
 \input{./include/04-interface}
 \input{./include/05-examples}
+\input{./include/06-addendum}
 
 \newpage
 \phantomsection

@@ -18,9 +18,8 @@ papi.flops <- function(expr)
 
 system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
-  ### burnin
   if (burnin)
-    system.flops(gcFirst=gcFirst, burnin=FALSE)
+    b <- system.flops(gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
     gc(FALSE)
@@ -32,6 +31,12 @@ system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
   papi.avail.lookup(events=events, shorthand=FALSE)
   
   ret <- papi.flops(expr=expr)
+  
+  if (burnin)
+  {
+    for (i in 3:length(ret))
+      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
+  }
   
   return( ret )
 }

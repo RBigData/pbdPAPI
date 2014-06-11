@@ -19,7 +19,7 @@ papi.flips <- function(expr)
 system.flips <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
   if (burnin)
-    system.flips(gcFirst=gcFirst, burnin=FALSE)
+    b <- system.flips(gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
     gc(FALSE)
@@ -31,6 +31,12 @@ system.flips <- function(expr, gcFirst=TRUE, burnin=TRUE)
   papi.avail.lookup(events=events, shorthand=FALSE)
   
   ret <- papi.flips(expr=expr)
+  
+  if (burnin)
+  {
+    for (i in 3:length(ret))
+      ret[[i]] <- max(ret[[i]] - b[[i]], 0)
+  }
   
   return( ret )
 }
