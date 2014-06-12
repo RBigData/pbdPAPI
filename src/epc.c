@@ -7,7 +7,7 @@
 
 #include "pbdPAPI.h"
 
-#define NUM_EVENTS 3
+#define NUM_EVENTS 1
 
 /*PAPI_epc( int event, float *rtime, float *ptime, long long *ref, long long *core, long long *evt, float *epc )*/
 

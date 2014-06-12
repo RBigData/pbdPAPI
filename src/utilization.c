@@ -7,6 +7,7 @@
 
 #include "pbdPAPI.h"
 
+#define NUM_EVENTS 1
 
 SEXP papi_utilization_on()
 {
@@ -34,6 +35,7 @@ SEXP papi_utilization_off()
   long long ins;
   int retval;
   int unpt;
+  long_long values[NUM_EVENTS];
   
   PAPI_option_t opts;
   int clockrate, ncpus;
@@ -41,6 +43,8 @@ SEXP papi_utilization_off()
   SEXP RET, RET_NAMES, REAL_TIME, PROC_TIME, INS, IPC, UTILIZATION;
   
   retval = PAPI_ipc(&real_time, &proc_time, &ins, &ipc);
+  
+  PAPI_stop_counters(values, NUM_EVENTS);
   
   clockrate = PAPI_get_opt(PAPI_CLOCKRATE, &opts);
   ncpus = PAPI_get_opt(PAPI_MAX_CPUS, &opts);

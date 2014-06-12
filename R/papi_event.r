@@ -1,7 +1,7 @@
 ### Translate vector of strings of PAPI events into their C-level int equivs
 papi.event.init <- function(which)
 {
-  ret <- .Call("papi_event_counter_init", which)
+  ret <- .Call("papi_event_counter_init", which, PACKAGE="pbdPAPI")
   
   # Warn on duplicates
   ret.uniq <- unique(ret)
@@ -16,7 +16,7 @@ papi.event.init <- function(which)
 
 papi.event.init.light <- function(which)
 {
-  ret <- .Call("papi_event_counter_init", which)
+  ret <- .Call("papi_event_counter_init", which, PACKAGE="pbdPAPI")
   
   ret.uniq <- unique(ret)
   if (length(ret.uniq) != length(ret))
@@ -34,7 +34,7 @@ papi.start <- function(events)
   
   events <- papi.event.init(which=events)
   
-  ret <- .Call("papi_event_counter_on", events) # ret: error value
+  ret <- .Call("papi_event_counter_on", events, PACKAGE="pbdPAPI") # ret: error value
   
   if (!is.integer(ret))
     stop(ret)
@@ -49,7 +49,7 @@ papi.stop <- function(events)
 {
   which <- papi.event.init.light(which=events)
   
-  ret <- .Call("papi_event_counter_off", which) # ret: counter values
+  ret <- .Call("papi_event_counter_off", which, PACKAGE="pbdPAPI") # ret: counter values
   
   if (length(ret) == 1L && is.integer(ret) && ret == -1L)
     stop("There was a problem recovering the counter information.")

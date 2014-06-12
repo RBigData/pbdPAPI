@@ -3,7 +3,7 @@ papi.avail.internal <- function()
 {
   papi.init()
   
-  ret <- .Call("papi_event_avail", NULL)
+  ret <- .Call("papi_event_avail", NULL, PACKAGE="pbdPAPI")
   ret <- as.data.frame(ret, stringsAsFactors=FALSE)
   colnames(ret) <- c("event","avail","desc")
   

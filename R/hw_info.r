@@ -1,6 +1,6 @@
-hw.info <- function()
+hw.info.internal <- function()
 {
-  info <- .Call("papi_hwinfo")
+  info <- .Call("papi_hwinfo", PACKAGE="pbdPAPI")
   
   val <- info[[2L]]
   attr(x=val, which="names") <- info[[1L]]
@@ -8,10 +8,15 @@ hw.info <- function()
   return(val)
 }
 
-hw.info.name <- function()
+cpuinfo <- function()
 {
-  intinfo <- hw.info()
-  info <- .Call("papi_hwname")
+  .Call("R_papi_cpuinfo", PACKAGE="pbdPAPI")
+}
+
+hw.info <- function()
+{
+  intinfo <- hw.info.internal()
+  info <- .Call("papi_hwname", PACKAGE="pbdPAPI")
   
   attr(x=info[[2L]], which="names") <- info[[1L]]
   
@@ -20,6 +25,8 @@ hw.info.name <- function()
   id.model <- intinfo["cpuid_model"]
   
   val <- c(info[[2L]], arch.lookup(id.vendor, id.family, id.model))
+  
+  val <- c(val, cpuinfo())
   
   return(val)
 }
@@ -32,17 +39,11 @@ hw.info.name <- function()
 arch.lookup <- function(vendor, family, model)
 {
   if (vendor == "GenuineIntel")
-  {
    arch <- arch.intel(family, model)
-  }
   else if (vendor == "AuthenticAMD")
-  {
     arch <- arch.amd(family,model)
-  }
   else
-  {
     arch <- "Unknown"
-  }
 
   ret <- list(codename=arch)
   return(ret)
@@ -52,7 +53,7 @@ arch.amd <- function(family, model)
 {
   #TODO
   warning("AMD chipsets are not supported at this time.")
-  return ("Unknown")
+  return ("Unknown AMD")
 }
 
 #http://www.cpu-world.com/cgi-bin/CPUID.pl
@@ -113,7 +114,7 @@ arch.intel <- function(family, model)
   }
   else
   {
-    arch <- "Unknown"
+    arch <- "Unknown Intel"
   }
   
   return(arch)

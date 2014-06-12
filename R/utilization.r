@@ -2,13 +2,13 @@ papi.utilization <- function(expr)
 {
   papi.check.ncounters(3L)
   
-  ret <- .Call("papi_utilization_on")
+  ret <- .Call("papi_utilization_on", PACKAGE="pbdPAPI")
   if (ret == -1L)
     stop("PAPI failed to initialize hardware counters.\nYour platform may not support floating point operation event.\n")
   
   eval(expr)
   
-  ret <- .Call("papi_utilization_off")
+  ret <- .Call("papi_utilization_off", PACKAGE="pbdPAPI")
   if (is.integer(ret) && ret == -1L)
     stop("There was a problem recovering the counter information.")
   
