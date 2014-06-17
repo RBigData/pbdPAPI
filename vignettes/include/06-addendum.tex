@@ -14,6 +14,15 @@ they're trying to execute instructions as fast as possible.
 
 
 
+
+\subsection{Calling Context}
+
+\PAPI is designed to ``listen in'' on hardware counters only from its calling context.  
+In particular, this means that system noise should not interfere with 
+
+
+
+
 \subsection{Parallel Code}
 
 \thispackage currently does not support the profiling of parallel code.  
