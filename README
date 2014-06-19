@@ -16,20 +16,13 @@ http://icl.cs.utk.edu/PAPI/
 
 Installation
 ================================================================================
-pbdPROF requires R version 2.14.0 or higher.  It also requires the PAPI library,
+pbdPAPI requires R version 2.14.0 or higher.  It also requires the PAPI library,
 but a distribution of PAPI v 5.3.0 is bundled with the package for those who
 do not already have a system installation available.  For configuration options,
 and installation instructions, see the package vignette.
 
-The package is distributed on CRAN, but we can not distribute binaries for 
-Windows and Mac, as the installation of PAPI is hardware dependent.  As such,
-you must build it yourself.  
-
-Before beginning, you may need to install some extra software to be able to 
-build packages on your platform.  For Windows, this means installing Rtools: 
-http://cran.r-˙project.org/bin/windows/base/
-For Mac, this means installing Xcode Development Tools 2.4.0 (or higher) from 
-Apple.  
+At this time, PAPI is only supported on Linux (and somewhat on FreeBSD). 
+As such, pbdPAPI will only build and/or function on Linux.
 
 
 
@@ -44,8 +37,6 @@ http://icl.cs.utk.edu/projects/papi/wiki/PAPITopics:SandyFlops
 pbdPAPI only supports serial applications.  For parallel codes, see pbdPROF, and
 or consider using PAPI/TAU directly in your compiled code.  For more details, 
 see:  http://icl.cs.utk.edu/projects/papi/wiki/Threads
-
-
 
 
 
