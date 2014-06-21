@@ -99,8 +99,6 @@ SEXP R_papi_cpuinfo()
   SET_STRING_ELT(retnames, 0, mkChar("clockrate"));
   SET_STRING_ELT(retnames, 1, mkChar("ncpus"));
   
-  printf("%d\n", INT(clockrate));
-  
   UNPROTECT(4);
   return ret;
 }

@@ -12,7 +12,6 @@
 \usage{
   hw.info()
 }
-}
 \value{
   The return is a list consisting of:
   \tabular{ll}{
