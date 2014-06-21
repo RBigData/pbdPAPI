@@ -35,7 +35,7 @@ cache.opts <- function(type, which, level)
   else if (which == "all")
     which <- paste(c("PAPI_L1_IC", "PAPI_L1_DC", "PAPI_L2_IC", "PAPI_L2_DC", "PAPI_L3_IC", "PAPI_L3_DC"), char, sep="")
   else if (is.match(x=which, pattern="l[0-9][.]all"))
-    which <- paste(c(paste("PAPI_L", level, "_IC", sep=""), paste("PAPI_L", level, "_DC")), char, sep="")
+    which <- paste(c(paste("PAPI_L", level, "_IC", sep=""), paste("PAPI_L", level, "_DC", sep="")), char, sep="")
   else if (is.match(x=which, pattern="l[0-9][.]ratio"))
     which <- c(paste("PAPI_L", level, "_TC", char, sep=""), paste("PAPI_L", level, "_TCA", sep=""))
   
@@ -60,12 +60,12 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   
   if (is.ratio || is.all)
   {
-    level <- sub(x=events, pattern="[.]ratio", replacement="")
+    level <- sub(x=events, pattern="[.].*", replacement="")
     level <- sub(x=level, pattern="l", replacement="")
   }
   else
     level <- NULL
-  
+
   if (type == "access" && is.ratio)
   {
     warning("Duplicate counters requested")
@@ -75,7 +75,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   }
   
   events <- cache.opts(type=type, which=events, level=level)
-  
+
   papi.avail.lookup(events=events, shorthand=shorthand)
   
   ret <- system.event(expr=expr, events=events, gcFirst=gcFirst, burnin=burnin)
