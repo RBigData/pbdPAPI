@@ -10,7 +10,7 @@
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
-  \item{events}{The class of cache events to profile; options are
+  \item{events}{The class of processing unit to profile; options are
   "float", "int", "numeric", "branch", "load", and "all".}
   \item{gcFirst}{logical; determines if garbage collection should be
   called before profiling.}
@@ -18,7 +18,10 @@
   evaluated with an empty expression.}
 }
 \details{
-  .
+  This function measures the evaluation of the provided expression,
+  expr, for the number of cycles that specific specialized processing
+  units are idle. The additional arguments, gcFirst and burnin, can
+  be toggled to better simulate the target context.
 }
 \value{
   The results of the requested PAPI events are returned, in a 

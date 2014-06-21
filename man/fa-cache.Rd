@@ -21,7 +21,11 @@
   evaluated with an empty expression.}
 }
 \details{
-  .
+  This function measures the evaluation of the provided expression,
+  expr, for different classes of cache events additionally restricted
+  to misses, hits, accesses, or reads. The additional arguments,
+  gcFirst and burnin, can be toggled to better simulate the target
+  context.
 }
 \value{
   The results of the requested PAPI events are returned, in a 

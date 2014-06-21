@@ -16,7 +16,11 @@
   evaluated with an empty expression.}
 }
 \details{
-  .
+  This function measures the evaluation of the provided expression,
+  expr, for real time, process time, number of floating point
+  operations, and floating point operation rate. The additional
+  arguments, gcFirst and burnin, can be toggled to better simulate
+  the target context.
 }
 \value{
   The return is a list consisting of:
