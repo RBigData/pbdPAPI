@@ -6,7 +6,7 @@
   Events per cycle.
 }
 \usage{
-  system.ipc(expr, event, gcFirst=TRUE, burnin=TRUE)
+  system.epc(expr, event, gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}
@@ -17,7 +17,12 @@
   evaluated with an empty expression.}
 }
 \details{
-  .
+  This function measures the evaluation of the provided expression,
+  expr, for real time, process time, reference clock cycles since
+  last call, core clock cycles since last call, total events since
+  first call, and incremental events per cycle since last call. The
+  additional arguments, gcFirst and burnin, can be toggled to better
+  simulate the target context.
 }
 \value{
   The return is a list consisting of:
@@ -34,7 +39,7 @@
 \dontrun{
 library(pbdPAPI)
 
-system.flops(1+1)
+system.epc(1+1,"PAPI_L1_DCM")
 }
 }
 \keyword{programming}

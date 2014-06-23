@@ -9,6 +9,8 @@
 *~
 *.swp
 
+*.orig
+
 src/Makeconf
 src/Makevars
 src/build
