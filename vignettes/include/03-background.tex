@@ -15,7 +15,7 @@ function \code{system.flops()} will measure both the number of floating point
 operations as well as their rate --- the number of floating point operations 
 per second, or flops.
 
-Generally, reports of flops (or flips) are not give, but Mega-flops (Mflops); 
+Generally, reports of flops (or flips) are not given, but Mega-flops (Mflops); 
 as the name implies, 1 Mflop is 1,000,000 flops.
 
 
@@ -58,7 +58,7 @@ June 1999.
 
 Computers operate at \emph{billions} of cycles per second.  Of course, those  
 operations occur on data.  A useful abstraction we use in thinking about 
-processing data is you load the stuff up into ram and then the processor does 
+processing data is you load the stuff up into RAM and then the processor does 
 things to it.  This is usually fine, or at least convenient, but it's not 
 accurate, as you are probably aware.  
 
@@ -70,8 +70,8 @@ accurate, as you are probably aware.
 \end{figure}
 Another more accurate abstraction is that shown in Figure~\ref{fig:mem}.  In a 
 sense, the magic really happens when things get into the CPU registers.  But 
-something that's in ram that you want to operate on, as it's headed to the CPU, 
-it gets cached into various levels of (comparatively) fast access storage along 
+something that's in RAM that you want to operate on, as it's headed to the CPU, 
+gets cached into various levels of (comparatively) fast access storage along 
 the way. Not understanding this (simplified from reality) architecture can have 
 can cause some pretty nasty performance side-effects. on your code.
 % \begin{figure}[ht]
@@ -98,7 +98,7 @@ great resource is this
 
 \paragraph{Cache Misses} Fundamentally, a cache miss occurs when the cache 
 needs some piece of data to pass along to registers, but it isn't immediately 
-available and the computer has to go digging through ram (or god help you, 
+available and the computer has to go digging through RAM (or god help you, 
 disk) to get it.  Cache misses are bad and reduce performance.  You can't get 
 rid of them completely, unless your entire problem --- copies and all --- 
 comfortably fits into cache, but you can eliminate \emph{unnecessary} cache 
