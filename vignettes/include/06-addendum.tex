@@ -1,16 +1,15 @@
 \section{Additional Information}
+\label{sec:moreinfo}
 
 Your gradeschool teacher who told you that there is no such thing as a bad 
-question?  A liar and an intellectual fraud.
-
-Before beginning this project, a member of the \PAPI team explained that 
-``someone who \emph{really} understands the hardware knows that there are 
-certain questions you just don't ask.''  In \R, we generally prefer to abstract 
-away from the hardware as much as possible.
-
+question?  A liar and an intellectual fraud.  Before beginning this project, a 
+member of the \PAPI team explained that ``someone who \emph{really} understands 
+the hardware knows that there are certain questions you just don't ask.''  In 
+\R, we generally prefer to abstract away from the hardware as much as possible.
 
 Hardware manufacturers aren't trying to make profiling as simple as possible; 
-they're trying to execute instructions as fast as possible.
+they're trying to execute instructions as fast as possible.  As such, there are 
+some special caveats worth making clear.
 
 
 
@@ -18,7 +17,8 @@ they're trying to execute instructions as fast as possible.
 \subsection{Calling Context}
 
 \PAPI is designed to ``listen in'' on hardware counters only from its calling context.  
-In particular, this means that system noise should not interfere with 
+In particular, this means that system noise should not interfere with profiler 
+data gathered by \thispackage.
 
 
 

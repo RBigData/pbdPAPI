@@ -1,15 +1,44 @@
 \section{Using pbdPAPI}
+\label{sec:use}
 
-The \thispackage package has 2 distinct interfaces for gathering performance data, one low-level 
-and ``one'' high-level.  The low-level interface is reminiscent of \PAPI's own native \C interface, 
-and ``the'' high-level interface is a collection of similar-looking wrappers around this interface.
+
+The \thispackage package has 2 distinct interfaces for gathering performance 
+data, one low-level and ``one'' high-level.  The low-level interface is 
+reminiscent of \PAPI's own native \C interface, and ``the'' high-level interface 
+is a collection of similar-looking wrappers around this interface.
+
+Note that not all utilities are available on all hardware platforms.  You can 
+check which profiler events are available on your hardware platform using the 
+\thispackage utility \code{papi.avail()} called with no argument.
 
 
 \subsection{High-Level Interface}
 
-Calling \code{system.flops(expr)} on a valid \R expression \code{expr} will  
-produce system and processor timings, the number of floating point operations, 
-and the Mflops.
+We offer numerous useful simplified interfaces for profiling \R code, shown in 
+the table below:
+\begin{center}
+\vspace{0.2cm}
+\begin{tabular}{ll} \hline\hline
+Function & Description of Measurement \\ \hline
+\code{system.cache()} & Cache misses, hits, accesses, and reads \\
+\code{system.cpuormem()} & Characterize code as CPU or RAM bound (see docs 
+for definition) \\
+\code{system.epc()} & Events per cycle \\
+\code{system.flips()} & Time, floating point instructions, and Mflips \\
+\code{system.flops()} & Time, floating point operations, and Mflops \\
+\code{system.idle()} & Idle cycles \\
+\code{system.utilization()} & CPU utilization (see documentation for 
+definition) \\
+\hline\hline
+\end{tabular}
+\vspace{0.2cm}
+\end{center}
+
+Each of these utilities behaves somewhat like \R's own \code{system.time()} 
+function.  Simply pass a valid \R expression in for the \code{expr} argument 
+for any of these functions and the appropriate measurement will be returned.
+
+See \secref{sec:examples} and/or the package demos for some example usage.
 
 
 \subsection{Low-Level Interface}
@@ -46,3 +75,6 @@ papi.start(events=events)
 1+1
 papi.stop(events=events)
 \end{lstlisting}
+
+
+\
