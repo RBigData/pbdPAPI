@@ -8,7 +8,7 @@
   section for more information.
 }
 \usage{
-  system.idle(expr, events="float", gcFirst=TRUE, burnin=TRUE)
+  system.cpuormem(expr, gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
   \item{expr}{A valid R expression to be profiled.}

@@ -7,9 +7,10 @@ data, one low-level and ``one'' high-level.  The low-level interface is
 reminiscent of \PAPI's own native \C interface, and ``the'' high-level interface 
 is a collection of similar-looking wrappers around this interface.
 
-Note that not all utilities are available on all hardware platforms.  You can 
-check which profiler events are available on your hardware platform using the 
-\thispackage utility \code{papi.avail()} called with no argument.
+Note that not all utilities will function on all hardware platforms.  Those 
+which are not supported for a given hardware platform will return an error.  
+You can check which profiler events are available on your hardware platform 
+using the \thispackage utility \code{papi.avail()} called with no argument.
 
 
 \subsection{High-Level Interface}
