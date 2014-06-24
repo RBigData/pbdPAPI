@@ -4,6 +4,15 @@
 In this section, we will describe the various ways that one can install the 
 \thispackage package.
 
+Please be aware that \thispackage is not supported on Windows or Mac at this 
+time.  This is because the \PAPI library itself does not support these 
+platforms.  If we become able to support more operating systems, we will do so 
+immediately.
+
+For a complete list of supported platforms for PAPI, see 
+\href{http://icl.cs.utk.edu/papi/custom/index.html?lid=62&slid=96}%
+{the official PAPI documentation}.
+
 
 
 \subsection{Important Notes}
@@ -11,10 +20,10 @@ In this section, we will describe the various ways that one can install the
 It is possible for \PAPI and/or \thispackage to build, but still have no access
 to any counter information.  For example, the package will build on the popular 
 Arm architecture device 
-Raspberry Pi\footnote{\url{http://www.raspberrypi.org/}};
-however, it does not have any hardware counters, and as such, \thispackage 
-effectively can not be used.  If the package installs without error, you can 
-see how many hardware counters you have available by calling:
+Raspberry Pi\footnote{\url{http://www.raspberrypi.org/}}.
+However, the device does not have any hardware counters, and as such, 
+\thispackage effectively can not be used.  If the package installs without 
+error, you can see how many hardware counters you have available by calling:
 \begin{lstlisting}[language=rr]
 library(pbdPAPI)
 system.ncounters()
@@ -28,7 +37,8 @@ values, not with \PAPI or \thispackage.  For more details, see:
 {the \PAPI documentation} on this matter.
 
 
-Additionally, not all platforms support all counters.  For the high-level 
+Additionally, not all hardware platforms support all counters.  For the 
+high-level 
 interface, this simply means that some things you may wish to try simply can 
 not physically work, and as such will return an error.  
 

@@ -21,8 +21,12 @@ but a distribution of PAPI v 5.3.0 is bundled with the package for those who
 do not already have a system installation available.  For configuration options,
 and installation instructions, see the package vignette.
 
-At this time, PAPI is only supported on Linux (and somewhat on FreeBSD). 
-As such, pbdPAPI will only build and/or function on Linux.
+Unfortunately, at this time, PAPI is not supported on Windows or Mac
+As such, pbdPAPI does not support these platforms either.
+
+For a complete list of platforms which PAPI supports, see:
+
+http://icl.cs.utk.edu/papi/custom/index.html?lid=62&slid=96
 
 
 

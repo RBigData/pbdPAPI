@@ -1,35 +1,54 @@
 \section{Performance Measurement}
 
+In this section, we will outline some basics of several of the more useful 
+profilers available in \thispackage.
 
 \subsection{flips and flops}
 
-\paragraph{flips}  This is intended to measure \emph{instruction} rate through 
-the floating point pipe with no massaging.
+\thispackage offers two high-level utilities for measuring floating point 
+performance data: \code{system.flips()} and \code{system.flops()}.  
+The former captures floating point instruction measurements; a \textit{flip} is 
+the rate of floating point instructions (flpins), or the number of flpins per 
+second.  Perhaps the more well-known measurement is the rate of floating point 
+\emph{operations}.  Like its cousin \code{system.flips()}, the \thispackage 
+function \code{system.flops()} will measure both the number of floating point 
+operations as well as their rate --- the number of floating point operations 
+per second, or flops.
 
-
-
-\paragraph{flops}  Perhaps the more well-known measurement is the rate of  
-floating point \emph{operations}.  
+Generally, reports of flops (or flips) are not give, but Mega-flops (Mflops); 
+as the name implies, 1 Mflop is 1,000,000 flops.
 
 
 
 \paragraph{Theoretical flops}
+
+A processor has a theoretical peak number of flops, which is typically much 
+higher than what is found experimentally.  Still, understanding the peak flops 
+of a system can be useful in understanding ``good'' flops performance of a 
+program (just understand that it will always be lower in practice than the 
+theoretical peak).
+
+The equation below demonstrates how to compute the peak Mflops of a processor:
 \begin{align*}
-\text{flops} = \text{(\# cores)} * \text{(\# of SSE units per core)} *  
-\text{(cycles / second)} * \text{(\# SSE operations per cycle)}
+\text{Mflops} = \text{(\# cores)} * \text{(Speed in Mhz)} *
+\text{(\# of SSE units per core)} *  \text{(\# SSE operations per cycle)}
 \end{align*}
 
-single precision (divide by 2 for double precision).
-
-So for this Intel Sandy Bridge Core i5 as a reference, the 
-
+single precision Mflops (divide by 2 for double precision).  So for this Intel 
+Sandy Bridge Core i7 as a reference, the theoretical peak is:
 \begin{align*}
-\text{Mflops} &= (4) * (2) * (3200 Mhz) * 2 \\ 
-&= 25600 
+\text{Mflops} &= (4) * (2800 Mhz) * 2 * 2
 \end{align*}
 
-or about 25 Gflops (25,000,000,000 flops), aka, a hell of a lot of arithmetic.
+which is roughly 45 single precision Gflops, or 22.5 double precision Gflops 
+--- 22,500,000,000 floating point operations per second!
 
+See where your computer stacks up against the fastest supercomputers in the 
+world at \href{http://www.top500.org/}{top500.org}.  For instance, again using 
+this laptop as a reference, and using theoretical flops as a proxy for running 
+the Linpack benchmark (which is not really fair, we grant), we would crush 
+every supercomputer on the list from June 1997, but wouldn't make the cut for 
+June 1999.
 
 
 
@@ -61,18 +80,17 @@ can cause some pretty nasty performance side-effects. on your code.
 %   \caption{Still from Interactive Visualization Showing Relative Memory Access Speeds}
 %   \label{fig:cache}
 % \end{figure}
+
 If you're unfamiliar with this, I would strongly encourage you to check out 
-this really cool interactive
-\href{http://www.overbyte.com.au/misc/Lesson3/CacheFun.html}{visualization} 
-showing (relative) speeds of cache misses, also shown in Figure~\ref{fig:cache}. 
-It too involves some hefty simplifications of how modern hardware actually 
-works, so if this is at all confusing, let us all take a moment to pity the 
-tragic life of the computer engineer.
-
-
-\href%
-  {http://www.eecs.berkeley.edu/~rcs/research/interactive_latency.html}%
-  {Latency Numbers}
+this great
+\href{http://www.overbyte.com.au/misc/Lesson3/CacheFun.html}%
+{interactive visualization} 
+showing (relative) speeds of cache misses. It too involves some simplifications 
+of how modern hardware actually works, so if this is at all confusing, let us 
+all take a moment to pity the tragic life of the computer engineer.  Another 
+great resource is this
+\href{http://www.eecs.berkeley.edu/~rcs/research/interactive_latency.html}%
+{interactive visualization} showing memory and cache latency numbers by year.
 
 
 
@@ -80,10 +98,10 @@ tragic life of the computer engineer.
 
 \paragraph{Cache Misses} Fundamentally, a cache miss occurs when the cache 
 needs some piece of data to pass along to registers, but it isn't immediately 
-available and has to go digging through ram (or god help you, disk) to get it.  
-Cache misses are bad and reduce performance.  You can't get rid of them, unless 
-your entire problem fits into cache (which is glorious when it happens), but you 
-can eliminate \emph{unnecessary} cache misses being aware of how your data and 
-algorithms interact with cache.  When people tell you things like ``R's matrices 
-are column-major'' or that you should loop over columns then rows, this is 
-exactly what they are talking about.
+available and the computer has to go digging through ram (or god help you, 
+disk) to get it.  Cache misses are bad and reduce performance.  You can't get 
+rid of them completely, unless your entire problem --- copies and all --- 
+comfortably fits into cache, but you can eliminate \emph{unnecessary} cache 
+misses being aware of how your data and algorithms interact with cache.  See 
+the demo \code{cache_access.r} in \thispackage for an example of good versus 
+bad cache access.
