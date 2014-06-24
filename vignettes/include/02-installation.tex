@@ -77,7 +77,11 @@ install_github(username="wrathematics", repo="pbdPAPI")
 
 If you already have a system installation of \PAPI available, it makes more  
 sense to link with that existing library.  The one catch is that the static 
-library \emph{must} have been compiled with \code{-fPIC}, which is non-standard. 
+library \emph{must} have been compiled with \code{-fPIC}, which is 
+non-standard. Not all versions of \PAPI are supported.  \thispackage package 
+was built and tested with \PAPI \PAPIversion.
+
+
  To build an external \PAPI library in this way, you should do so by first 
 setting:
 \begin{Command}
