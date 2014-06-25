@@ -72,17 +72,11 @@ Another more accurate abstraction is that shown in Figure~\ref{fig:mem}.  In a
 sense, the magic really happens when things get into the CPU registers.  But 
 something that's in RAM that you want to operate on, as it's headed to the CPU, 
 gets cached into various levels of (comparatively) fast access storage along 
-the way. Not understanding this (simplified from reality) architecture can have 
-can cause some pretty nasty performance side-effects. on your code.
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[width=.9\textwidth]{./include/pics/cache}
-%   \caption{Still from Interactive Visualization Showing Relative Memory Access Speeds}
-%   \label{fig:cache}
-% \end{figure}
+the way.  Understanding this behavior, and writing your code to take advantage 
+of it, can have \emph{tremendous} impacts on performance.
 
-If you're unfamiliar with this, I would strongly encourage you to check out 
-this great
+If you are unfamiliar with the importance (or existence) of cache, I would 
+strongly encourage you to experiment with this great
 \href{http://www.overbyte.com.au/misc/Lesson3/CacheFun.html}%
 {interactive visualization} 
 showing (relative) speeds of cache misses. It too involves some simplifications 
