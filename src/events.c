@@ -45,7 +45,6 @@ SEXP papi_event_counter_on(SEXP which)
   SEXP ret;
   int retval;
   int *events;
-  int i;
   const int num = NUM_EVENTS;
 
   events=INTEGER(which);

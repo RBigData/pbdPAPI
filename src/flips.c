@@ -34,7 +34,6 @@ SEXP papi_flips_off()
   float real_time, proc_time, mflips;
   long long flpins;
   int retval;
-  int unpt;
   long_long values[NUM_EVENTS];
   
   SEXP RET;
