@@ -42,7 +42,6 @@ SEXP papi_flops_off()
   float real_time, proc_time, mflops;
   long long flpops;
   int retval;
-  int unpt;
   long_long values[NUM_EVENTS];
   
   SEXP RET;

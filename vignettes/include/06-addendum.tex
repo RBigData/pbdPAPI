@@ -44,12 +44,13 @@ system.flops(mclapply(1:2, function(i) as.double(1:1000)/100))$flpops
 Here we measure the number of floating point operations performed in dividing 
 the (float) numbers 1 through 1000 by 100.  In the first example, we get 1000 
 and some change (the \PAPI + \thispackage + \R overhead).  In the second, we 
-get\dots94?  Where did the others go?  \PAPI is designed to 
-
+get\dots94?  Where did the others go?  \PAPI is designed to profile only the 
+calling context, and \code{mclapply()} does its computation in forks, outside 
+the scope of \PAPI's ability to profile.
 
 This is (usually) true as well of multi-threading, for example, via OpenMP, 
-although this is more difficult to describe, and frankly is platform dependent.
-
+although this is more difficult to describe, and frankly is platform dependent. 
+ Consider this example:
 \begin{lstlisting}[language=rr]
 n <- 5000
 x <- matrix(rnorm(n*n), n, n)
@@ -57,7 +58,7 @@ x <- matrix(rnorm(n*n), n, n)
 system.flops(x %*% x)
 \end{lstlisting}
 
-If we run this with OpenBLAS with 4 threads, on this reference Sandy Bridge 
+If we run this with OpenBLAS using 4 threads, on this reference Sandy Bridge 
 hardware, we find:
 \begin{Output}
 $real_time
@@ -73,9 +74,8 @@ $mflops
 [1] 1.743238e-06
 \end{Output}
 
-This is obviously not what we intended to find.  
-
-Using the serial Atlas BLAS on the same machine, we find:
+This is obviously not what we intended to find.  Using the serial Atlas BLAS on 
+the same machine, we find:
 \begin{Output}
 $real_time
 [1] 20.52688
@@ -90,4 +90,4 @@ $mflops
 [1] 5.396596
 \end{Output}
 
-
+which is almost certainly closer to reality.
