@@ -1,27 +1,7 @@
-======================= Log Before Release =====================================
-
-2014-05-27:
-  * Improved cache counters.
-  * Added idle instruction unit counters.
-  * Modified low-level interface.
-  * Added documentation.
-
-2014-05-16:
-  * Generic, low-level interface added.
-  * Fixed build for FreeBSD
-
-2014-05-12:
-  * Started package vignette.
-
-2014-05-11:
-  * Flips counter added.
-  * Added statistics demos.
-
-2014-05-07:
-  * PAPI bundled in package.
-  * Added error handling.
-  * Added cache counters.
-
-2014-05-06:
-  * Package created.
-  * Flops counter added.
+Release 0.1-0:
+	* CPU utilization
+	* Cache hit/miss/access
+	* Idle cycles
+	* CPU/RAM bound categorization
+	* Hardware information report
+	* Generic low-level R interface for high-level PAPI API
