@@ -72,7 +72,7 @@ system.event <- function(expr, events, gcFirst=TRUE, burnin=TRUE)
     b <- system.event(events=events, gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
-    gc(FALSE)
+    invisible(gc(FALSE))
   
   if (missing(expr))
     expr <- NULL

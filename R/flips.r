@@ -22,7 +22,7 @@ system.flips <- function(expr, gcFirst=TRUE, burnin=TRUE)
     b <- system.flips(gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
-    gc(FALSE)
+    invisible(gc(FALSE))
   
   if (missing(expr))
     expr <- NULL

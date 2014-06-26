@@ -22,7 +22,7 @@ system.utilization <- function(expr, gcFirst=TRUE, burnin=TRUE)
     b <- system.utilization(gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
-    gc(FALSE)
+    invisible(gc(FALSE))
   
   if (missing(expr))
     expr <- NULL

@@ -22,7 +22,7 @@ system.epc <- function(expr, event, gcFirst=TRUE, burnin=TRUE)
     b <- system.epc(event=event, gcFirst=gcFirst, burnin=FALSE)
   
   if (gcFirst) 
-    gc(FALSE)
+    invisible(gc(FALSE))
   
   if (missing(expr))
     expr <- NULL
