@@ -75,6 +75,22 @@ gets cached into various levels of (comparatively) fast access storage along
 the way.  Understanding this behavior, and writing your code to take advantage 
 of it, can have \emph{tremendous} impacts on performance.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=.54]{./include/pics/cache}
+  \caption{Detailed Computer Memory Hierarchy}
+  \label{fig:mem2}
+\end{figure}
+A more detailed presentation of Figure~\ref{fig:mem} is that found in 
+Figure~\ref{fig:mem2}.  Here we see a more accurate presentation; for example, 
+L3 cache (if it exists) is shared by all cores on a moder CPU, with L2 private, 
+and L1 split into data and instruction caches.  The lookup costs in terms of 
+processor cycles are provided for each type of memory.  These ``times'' are 
+presented in terms of the CPU cycle for mostly historical reasons, though there 
+is benefit to thinking in these terms (for example, when trying to minimize 
+wait cycles).  Though note that a faster processor could actually 
+\emph{increase} these costs, specifically RAM to L3 lookups.
+
 If you are unfamiliar with the importance (or existence) of cache, I would 
 strongly encourage you to experiment with this great
 \href{http://www.overbyte.com.au/misc/Lesson3/CacheFun.html}%
