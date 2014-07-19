@@ -1,6 +1,7 @@
 #######################################################
 
-papi_home = ./papi-5.3.0/src/
+PAPI_VERSION=5.3.2
+papi_home = ./papi-${PAPI_VERSION}/src/
 MY_CFLAGS = ${CPICFLAGS}
 
 BUILD_PAPI = @BUILD_BUNDLED_PAPI@

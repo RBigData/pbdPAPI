@@ -1,0 +1,37 @@
+CC=g++
+OPT=-g -O3 -fPIC
+
+# uncomment if you want to rely on Linux perf support (user needs CAP_SYS_ADMIN privileges)
+ifneq ($(wildcard /usr/include/linux/perf_event.h),)
+#OPT+= -DPCM_USE_PERF 
+endif
+
+UNAME:=$(shell uname)
+
+ifeq ($(UNAME), Linux)
+LIB= -lpthread -lrt
+endif
+ifeq ($(UNAME), Darwin)
+LIB= -lpthread -lPcmMsr
+endif
+ifeq ($(UNAME), FreeBSD)
+LIB= -lpthread
+endif
+
+default: msr.o cpucounters.o cpucounterstest.o pci.o client_bw.o
+	#$(CC) -shared -Wl,-soname,libpcm.so -o ../libpcmc.so msr.o pci.o client_bw.o cpucounters.o cpucounterstest.o $(LIB)
+
+msr.o: msr.h msr.cpp 
+	$(CC) $(OPT) -c msr.cpp
+
+cpucounters.o: msr.h msr.cpp cpucounters.h cpucounters.cpp types.h width_extender.h 
+	$(CC) $(OPT) -c cpucounters.cpp
+
+cpucounterstest.o: utils.h cpucounterstest.cpp cpucounters.h pci.h msr.h  types.h
+	$(CC) $(OPT) -c cpucounterstest.cpp
+
+pci.o: pci.h pci.cpp
+	$(CC) $(OPT) -c pci.cpp
+
+client_bw.o: client_bw.h pci.h client_bw.cpp
+	$(CC) $(OPT) -c client_bw.cpp
