@@ -549,6 +549,10 @@ public:
     //! \return CPU model ID
     uint32 getCPUModel() { return cpu_model; }
 
+    //! \brief Reads CPU model id
+    //! \return CPU model ID
+    uint32 getCPUFamily() { return cpu_family; }
+
     //! \brief Reads original CPU model id
     //! \return CPU model ID
     uint32 getOriginalCPUModel() { return original_cpu_model; }

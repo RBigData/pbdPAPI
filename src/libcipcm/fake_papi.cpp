@@ -5,6 +5,7 @@
 
 ipcm_event_val_t *ipcm_val;
 static int global_is_init=0;
+static PAPI_hw_info_t hwinfo;
 
 #define EM(id,rn) {id, #id, rn}
 
@@ -133,7 +134,10 @@ int PAPI_flops(float *rtime, float *ptime, long long * flpops, float *mflops){ /
 }
 
 const PAPI_hw_info_t* PAPI_get_hardware_info(){
-	return NULL; /* TODO: get numeric codes for family/model or have alternate R call for full string? */
+	memset(&hwinfo,0,sizeof(hwinfo));
+	ipcm_get_cpuid(&hwinfo.cpuid_family,&hwinfo.cpuid_model);
+	/* TODO: Fill in the rest of the fields */
+	return &hwinfo;
 }
 
 int PAPI_get_opt(int option, PAPI_option_t *ptr){ /* PAPI_CLOCKRATE, PAPI_MAX_CPUS */

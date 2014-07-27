@@ -59,6 +59,11 @@ int ipcm_get_cpus(){
 	return global_max_cpus;
 }
 
+void ipcm_get_cpuid(int *family, int *model){
+	*family=global_state.m->getCPUFamily();
+	*model=global_state.m->getCPUModel();
+}
+
 void ipcm_cpu_strings(char *vendor, char *model, char *codename){
 	int i;
 	const char *tmp = global_state.m->getCPUBrandString().c_str();

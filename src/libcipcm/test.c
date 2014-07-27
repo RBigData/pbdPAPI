@@ -18,5 +18,9 @@ int main(){
 
 	printf("%lld %lld %lld\n%lld %d\n",ev[0].val,ev[1].val,ev[2].val,ipcm_get_frequency(),ipcm_get_cpus());
 
+	int f,m;
+	ipcm_get_cpuid(&f,&m);
+	printf("%x %x\n",f,m);
+
 	return 0;
 }

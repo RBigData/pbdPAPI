@@ -1,0 +1,57 @@
+diff --git a/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.cpp b/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.cpp
+index c4c5898..73a8f46 100644
+--- a/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.cpp
++++ b/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.cpp
+@@ -782,6 +782,7 @@ PCM::PCM() :
+ #endif
+         #endif //end of ifdef _MSC_VER
+ 
++#ifndef PCM_FORCE_SILENT
+     std::cout << "Number of physical cores: " << (num_cores/threads_per_core) << std::endl;
+     std::cout << "Number of logical cores: " << num_cores << std::endl;
+     std::cout << "Threads (logical cores) per physical core: " << threads_per_core << std::endl;
+@@ -794,6 +795,7 @@ PCM::PCM() :
+         std::cout << "Number of core PMU fixed counters: " << core_fixed_counter_num_max << std::endl;
+         std::cout << "Width of fixed counters: " << core_fixed_counter_width << " bits" << std::endl;
+     }
++#endif
+ 
+     socketRefCore.resize(num_sockets);
+ 
+@@ -859,7 +861,9 @@ PCM::PCM() :
+ 		return;
+         }
+ 
++#ifndef PCM_FORCE_SILENT
+         std::cout << "Nominal core frequency: " << nominal_frequency << " Hz" << std::endl;
++#endif
+     }
+ 
+     if(packageEnergyMetricsAvailable() && MSR)
+@@ -878,9 +882,11 @@ PCM::PCM() :
+         pkgMinimumPower = (uint32) (double(extract_bits(package_power_info, 16, 30))*wattsPerPowerUnit);
+         pkgMaximumPower = (uint32) (double(extract_bits(package_power_info, 32, 46))*wattsPerPowerUnit);
+ 
++#ifndef PCM_FORCE_SILENT
+         std::cout << "Package thermal spec power: "<< pkgThermalSpecPower << " Watt; ";
+         std::cout << "Package minimum power: "<< pkgMinimumPower << " Watt; ";
+         std::cout << "Package maximum power: "<< pkgMaximumPower << " Watt; " << std::endl;
++#endif
+ 
+         if(snb_energy_status.empty())
+ 	    for (i = 0; i < num_sockets; ++i)
+diff --git a/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.h b/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.h
+index 5f7fbe6..dbb4349 100644
+--- a/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.h
++++ b/src/libcipcm/IntelPerformanceCounterMonitorV2.6/cpucounters.h
+@@ -549,6 +549,10 @@ public:
+     //! \return CPU model ID
+     uint32 getCPUModel() { return cpu_model; }
+ 
++    //! \brief Reads CPU model id
++    //! \return CPU model ID
++    uint32 getCPUFamily() { return cpu_family; }
++
+     //! \brief Reads original CPU model id
+     //! \return CPU model ID
+     uint32 getOriginalCPUModel() { return original_cpu_model; }

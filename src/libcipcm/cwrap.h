@@ -30,6 +30,7 @@ extern "C" {
 	long long ipcm_get_frequency();
 	int ipcm_get_cpus();
 	void ipcm_cpu_strings(char *vendor, char *model, char *codename);
+	void ipcm_get_cpuid(int *family, int *model);
 #ifdef __cplusplus
 }
 #endif
