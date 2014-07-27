@@ -782,6 +782,7 @@ PCM::PCM() :
 #endif
         #endif //end of ifdef _MSC_VER
 
+#ifndef PCM_FORCE_SILENT
     std::cout << "Number of physical cores: " << (num_cores/threads_per_core) << std::endl;
     std::cout << "Number of logical cores: " << num_cores << std::endl;
     std::cout << "Threads (logical cores) per physical core: " << threads_per_core << std::endl;
@@ -794,6 +795,7 @@ PCM::PCM() :
         std::cout << "Number of core PMU fixed counters: " << core_fixed_counter_num_max << std::endl;
         std::cout << "Width of fixed counters: " << core_fixed_counter_width << " bits" << std::endl;
     }
+#endif
 
     socketRefCore.resize(num_sockets);
 	
@@ -859,7 +861,9 @@ PCM::PCM() :
 		return;
         }
 
+#ifndef PCM_FORCE_SILENT
         std::cout << "Nominal core frequency: " << nominal_frequency << " Hz" << std::endl;
+#endif
     }
 
     if(packageEnergyMetricsAvailable() && MSR)
@@ -878,9 +882,11 @@ PCM::PCM() :
         pkgMinimumPower = (uint32) (double(extract_bits(package_power_info, 16, 30))*wattsPerPowerUnit);
         pkgMaximumPower = (uint32) (double(extract_bits(package_power_info, 32, 46))*wattsPerPowerUnit);
 
+#ifndef PCM_FORCE_SILENT
         std::cout << "Package thermal spec power: "<< pkgThermalSpecPower << " Watt; ";
         std::cout << "Package minimum power: "<< pkgMinimumPower << " Watt; ";
         std::cout << "Package maximum power: "<< pkgMaximumPower << " Watt; " << std::endl;
+#endif
 
         if(snb_energy_status.empty())
 	    for (i = 0; i < num_sockets; ++i)
