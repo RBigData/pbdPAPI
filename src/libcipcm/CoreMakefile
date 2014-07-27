@@ -1,5 +1,5 @@
 CC=g++
-OPT=-g -O3 -fPIC
+OPT=-g -O3 -fPIC $(DEFS)
 
 # uncomment if you want to rely on Linux perf support (user needs CAP_SYS_ADMIN privileges)
 ifneq ($(wildcard /usr/include/linux/perf_event.h),)

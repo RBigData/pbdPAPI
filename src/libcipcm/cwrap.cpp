@@ -29,9 +29,75 @@ struct CSysCounterState{
 	SystemCounterState start;
 	SystemCounterState end;
 	int cpu_model;
+}global_state;
+
+struct event_list_s{
+	uint64(*event_function)(const SystemCounterState&,const SystemCounterState&);
+	int atom;
+}
+
+static const struct event_list_s=event_list[]={
+	{getL2CacheMisses,1},
+	{getL2CacheHits,1},
+	{getInstructionsRetired,1},
+	{getCycles,1},
+	{getL3CacheHitsNoSnoop,0},
+	{getL3CacheHitsSnoop,0},
+	{getL3CacheHits,0},
+	{getL3CacheMisses,0},
 };
 
-void print_diff(
+static int global_cpu_model=0;
+static long long global_nominal_frequency=0;
+static int global_max_cpus=0;
+
+long long ipcm_get_frequency(){
+	return global_nominal_frequency;
+}
+
+int ipcm_get_cpus(){
+	return global_max_cpus;
+}
+
+void ipcm_cpu_strings(char *vendor, char *model, char *codename){
+	int i;
+	char *tmp = global_state.m->getCPUBrandString().cstr();
+
+	for(i=0;tmp[i] && tmp[i]!=' ';i++);
+
+	memcpy(vendor,tmp,i);
+
+	tmp+=i+1;
+	strcpy(model,tmp);
+
+	tmp=global_state.m->getUArchCodename();
+	strcpy(codename,tmp);
+}
+
+int ipcm_event_avail(const int code){
+	if(code>=IPCM_START_EVENT && code<IPCM_NULL_EVENT){
+		if(global_cpu_model==PCM::ATOM)
+			return event_list[code].atom;
+		else
+			return 1;
+	}
+
+	return 0;
+}
+
+static void set_diff_vals(PCM *m, const SystemCounterState *sstate1, const SystemCounterState *sstate2, const int cpu_model, ipcm_event_val_t *values, const int num){
+	int i;
+
+	for(i=0;i<num;i++){
+		//if(values[i].code>=IPCM_START_EVENT && values[i].code<IPCM_NULL_EVENT){
+		if(ipcm_event_avail(values[i].code))
+			values[i].val=event_list[values[i].code].event_function(*sstate1,*sstate2);
+		else
+			values[i].val=-1;
+	}
+}
+
+static void print_diff(
 		PCM *m,
 		const SystemCounterState *sstate1,
 		const SystemCounterState *sstate2,
@@ -64,7 +130,7 @@ void print_diff(
 			"     N/A\n";
 }
 
-void* get_events(){
+int ipcm_init(){
 	struct CSysCounterState *ret;
 	#ifdef PCM_FORCE_SILENT
 	null_stream nullStream1, nullStream2;
@@ -99,7 +165,7 @@ void* get_events(){
 			break;
 		case PCM::MSRAccessDenied:
 			cerr << "Access to Intel(r) Performance Counter Monitor has denied (no MSR or PCI CFG space access)." << endl;
-			return NULL;
+			return 0;
 		case PCM::PMUBusy:
 			cerr << "Access to Intel(r) Performance Counter Monitor has denied (Performance Monitoring Unit is occupied by other application). Try to stop the application that uses PMU." << endl;
 			cerr << "Alternatively you can try to reset PMU configuration at your own risk. Try to reset? (y/n)" << endl;
@@ -110,33 +176,42 @@ void* get_events(){
 				m->resetPMU();
 				cout << "PMU configuration has been reset. Try to rerun the program again." << endl;
 			}
-			return NULL;
+			return 0;
 		default:
 			cerr << "Access to Intel(r) Performance Counter Monitor has denied (Unknown error)." << endl;
-			return NULL;
+			return 0;
 	}
 
-	ret=(struct CSysCounterState*)malloc(sizeof(*ret));
-	ret->m=m;
-	ret->cpu_model=m->getCPUModel();
+	//global_state=(struct CSysCounterState*)malloc(sizeof(*ret));
+	global_state.m=m;
+	global_cpu_model=m->getCPUModel();
+	global_nominal_frequency=m->getNominalFrequency();
+	global_max_cpus=m->getNumCores();
 
+	return 1;
+}
+
+void* ipcm_get_events(){
 	std::vector<CoreCounterState> cstates1, cstates2;
 	std::vector<SocketCounterState> sktstate1, sktstate2;
 	//SystemCounterState sstate1, sstate2;
 	uint64 TimeAfterSleep = 0;
 
-	m->getAllCounterStates(ret->start, sktstate1, cstates1);
+	global_state.m->getAllCounterStates(global_state.start, sktstate1, cstates1);
+
 
 	return ret;
 }
-void end_events(void *state){
+
+void ipcm_end_events(ipcm_event_val_t *values, const int num){
 	std::vector<CoreCounterState> cstates1, cstates2;
 	std::vector<SocketCounterState> sktstate1, sktstate2;
-	struct CSysCounterState *sa=(struct CSysCounterState*)state;
+	//struct CSysCounterState *sa=(struct CSysCounterState*)state;
 
-	sa->m->getAllCounterStates(sa->end, sktstate2, cstates2);
+	global_state.m->getAllCounterStates(global_state.end, sktstate2, cstates2);
 
-	print_diff(sa->m,&sa->start,&sa->end,sa->cpu_model);
+	//print_diff(sa->m,&sa->start,&sa->end,sa->cpu_model);
+	set_diff_vals(global_state.m,&global_state.start,&global_state.end,global_state.cpu_model,values,num);
 
-	free(state);
+	//free(state);
 }

@@ -25,6 +25,10 @@
 
 AC_INIT(DESCRIPTION)
 
+AC_ARG_ENABLE(ipcm,
+  AC_HELP_STRING([--enable-ipcm], [Use the Intel Performance Counter Monitor instead of PAPI.]),
+  [BUILD_IPCM="no"], [BUILD_IPCM="yes"])
+
 AC_ARG_ENABLE(system-papi,
   AC_HELP_STRING([--enable-system-papi], [Use a PAPI installation already on the system; requires --papi-lib-path to be set.]),
   [BUILD_BUNDLED_PAPI="no"], [BUILD_BUNDLED_PAPI="yes"])
@@ -39,9 +43,15 @@ if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
   PAPI_LIBS="./build/lib/libpapi.a ./build/lib/libpfm.a"
   OBEXTRA="mkpapi"
 else
-  PAPI_CFLAGS="-I${PAPI_HOME}/include"
-  PAPI_LIBS="${PAPI_HOME}/libpapi.a"
-  OBEXTRA=""
+  if test "X${BUILD_IPCM}" = "Xyes"; then
+    PAPI_CFLAGS="-I${PAPI_HOME}/include"
+    PAPI_LIBS="${PAPI_HOME}/libpapi.a ${PAPI_HOME}/libcipcm.so ${PAPI_HOME}/libpcm.so"
+    OBEXTRA="mkipcm"
+  else
+    PAPI_CFLAGS="-I${PAPI_HOME}/include"
+    PAPI_LIBS="${PAPI_HOME}/libpapi.a"
+    OBEXTRA=""
+  fi
 fi
 
 
