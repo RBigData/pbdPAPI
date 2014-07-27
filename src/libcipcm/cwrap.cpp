@@ -34,9 +34,9 @@ struct CSysCounterState{
 struct event_list_s{
 	uint64(*event_function)(const SystemCounterState&,const SystemCounterState&);
 	int atom;
-}
+};
 
-static const struct event_list_s=event_list[]={
+static const struct event_list_s event_list[]={
 	{getL2CacheMisses,1},
 	{getL2CacheHits,1},
 	{getInstructionsRetired,1},
@@ -61,7 +61,7 @@ int ipcm_get_cpus(){
 
 void ipcm_cpu_strings(char *vendor, char *model, char *codename){
 	int i;
-	char *tmp = global_state.m->getCPUBrandString().cstr();
+	const char *tmp = global_state.m->getCPUBrandString().c_str();
 
 	for(i=0;tmp[i] && tmp[i]!=' ';i++);
 
@@ -131,7 +131,7 @@ static void print_diff(
 }
 
 int ipcm_init(){
-	struct CSysCounterState *ret;
+	//struct CSysCounterState *ret;
 	#ifdef PCM_FORCE_SILENT
 	null_stream nullStream1, nullStream2;
 	std::cout.rdbuf(&nullStream1);
@@ -191,7 +191,7 @@ int ipcm_init(){
 	return 1;
 }
 
-void* ipcm_get_events(){
+void ipcm_get_events(){
 	std::vector<CoreCounterState> cstates1, cstates2;
 	std::vector<SocketCounterState> sktstate1, sktstate2;
 	//SystemCounterState sstate1, sstate2;
@@ -199,8 +199,7 @@ void* ipcm_get_events(){
 
 	global_state.m->getAllCounterStates(global_state.start, sktstate1, cstates1);
 
-
-	return ret;
+	//return ret;
 }
 
 void ipcm_end_events(ipcm_event_val_t *values, const int num){

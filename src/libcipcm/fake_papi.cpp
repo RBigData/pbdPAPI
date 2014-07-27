@@ -100,6 +100,8 @@ int PAPI_num_counters(){
 int PAPI_start_counters(int *codes,int num){
 	ipcm_val=(ipcm_event_val_t*)malloc(sizeof(*ipcm_val)*num);
 	ipcm_get_events();
+
+	return PAPI_OK;
 }
 
 int PAPI_stop_counters(int *values,int num){
@@ -114,6 +116,8 @@ int PAPI_stop_counters(int *values,int num){
 
 	//state=NULL;
 	ipcm_val=NULL;
+
+	return PAPI_OK;
 }
 
 int PAPI_epc(int event, float *rtime, float *ptime, long long *ref, long long *core, long long *evt, float *epc){ /* dummy */

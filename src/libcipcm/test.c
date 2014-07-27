@@ -13,6 +13,7 @@ int main(){
 	ev[2].code=IPCM_CYC;
 
 	ipcm_get_events();
+	sleep(5);
 	ipcm_end_events(ev,3);
 
 	printf("%lld %lld %lld\n%lld %d\n",ev[0].val,ev[1].val,ev[2].val,ipcm_get_frequency(),ipcm_get_cpus());

@@ -25,7 +25,7 @@ DEFS=-DPCM_FORCE_SILENT
 
 default: test
 
-test: libcipcm.a
+test: libcipcm.so
 	$(CC) -Wall -L. -o test test.c -lstdc++ -lcipcm -lpcm $(LIB)
 
 core:
@@ -39,7 +39,7 @@ libcipcm.so: libpcm.so
 	$(CXX) -Wall -fPIC -I$(PAPI_SRC) -I$(CORE) $(DEFS) -c fake_papi.cpp
 	$(CXX) -shared -Wl,-soname,libcipcm.so -o libcipcm.so cwrap.o fake_papi.o -L. -lpcm
 
-install: libcipcm.a
+install: libcipcm.so
 	cp *.so ${PREFIX}/
 
 clean:
