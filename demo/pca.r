@@ -1,7 +1,5 @@
 library(pbdPAPI)
 
-### Reimplementation of PAPI's FlopsMatrixMatrix.m in R
-
 ### ~4MiB
 m <- 10000
 n <- 50
