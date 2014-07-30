@@ -1747,9 +1747,9 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 # Check whether --enable-ipcm was given.
 if test "${enable_ipcm+set}" = set; then :
-  enableval=$enable_ipcm; BUILD_IPCM="no"
+  enableval=$enable_ipcm; BUILD_IPCM="yes"
 else
-  BUILD_IPCM="yes"
+  BUILD_IPCM="no"
 fi
 
 
@@ -1769,15 +1769,15 @@ fi
 
 
 
-if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
-  PAPI_CFLAGS="-I./build/include/"
-  PAPI_LIBS="./build/lib/libpapi.a ./build/lib/libpfm.a"
-  OBEXTRA="mkpapi"
+if test "X${BUILD_IPCM}" = "Xyes"; then
+  PAPI_CFLAGS="-I${PAPI_HOME}/include"
+  PAPI_LIBS="${PAPI_HOME}/libpapi.a ${PAPI_HOME}/libcipcm.so ${PAPI_HOME}/libpcm.so"
+  OBEXTRA="mkipcm"
 else
-  if test "X${BUILD_IPCM}" = "Xyes"; then
-    PAPI_CFLAGS="-I${PAPI_HOME}/include"
-    PAPI_LIBS="${PAPI_HOME}/libpapi.a ${PAPI_HOME}/libcipcm.so ${PAPI_HOME}/libpcm.so"
-    OBEXTRA="mkipcm"
+  if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
+    PAPI_CFLAGS="-I./build/include/"
+    PAPI_LIBS="./build/lib/libpapi.a ./build/lib/libpfm.a"
+    OBEXTRA="mkpapi"
   else
     PAPI_CFLAGS="-I${PAPI_HOME}/include"
     PAPI_LIBS="${PAPI_HOME}/libpapi.a"
