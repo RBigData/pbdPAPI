@@ -637,6 +637,7 @@ SHELL'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
+enable_ipcm
 enable_system_papi
 with_papi_home
 '
@@ -1255,6 +1256,8 @@ Optional Features:
   --disable-option-checking  ignore unrecognized --enable/--with options
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-ipcm           Use the Intel Performance Counter Monitor instead of
+                          PAPI.
   --enable-system-papi    Use a PAPI installation already on the system;
                           requires --papi-lib-path to be set.
 
@@ -1742,6 +1745,14 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
+# Check whether --enable-ipcm was given.
+if test "${enable_ipcm+set}" = set; then :
+  enableval=$enable_ipcm; BUILD_IPCM="no"
+else
+  BUILD_IPCM="yes"
+fi
+
+
 # Check whether --enable-system-papi was given.
 if test "${enable_system_papi+set}" = set; then :
   enableval=$enable_system_papi; BUILD_BUNDLED_PAPI="no"
@@ -1763,9 +1774,15 @@ if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
   PAPI_LIBS="./build/lib/libpapi.a ./build/lib/libpfm.a"
   OBEXTRA="mkpapi"
 else
-  PAPI_CFLAGS="-I${PAPI_HOME}/include"
-  PAPI_LIBS="${PAPI_HOME}/libpapi.a"
-  OBEXTRA=""
+  if test "X${BUILD_IPCM}" = "Xyes"; then
+    PAPI_CFLAGS="-I${PAPI_HOME}/include"
+    PAPI_LIBS="${PAPI_HOME}/libpapi.a ${PAPI_HOME}/libcipcm.so ${PAPI_HOME}/libpcm.so"
+    OBEXTRA="mkipcm"
+  else
+    PAPI_CFLAGS="-I${PAPI_HOME}/include"
+    PAPI_LIBS="${PAPI_HOME}/libpapi.a"
+    OBEXTRA=""
+  fi
 fi
 
 
