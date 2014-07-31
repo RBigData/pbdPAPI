@@ -1,5 +1,6 @@
 CC=g++
 OPT=-g -O3 -fPIC $(DEFS)
+DRIVER_DEP=dummy
 
 # uncomment if you want to rely on Linux perf support (user needs CAP_SYS_ADMIN privileges)
 ifneq ($(wildcard /usr/include/linux/perf_event.h),)
@@ -13,13 +14,19 @@ LIB= -lpthread -lrt
 endif
 ifeq ($(UNAME), Darwin)
 LIB= -lpthread -lPcmMsr
+DRIVER_DEP=darwin
 endif
 ifeq ($(UNAME), FreeBSD)
 LIB= -lpthread
 endif
 
-default: msr.o cpucounters.o cpucounterstest.o pci.o client_bw.o
+default: $(DRIVER_DEP) msr.o cpucounters.o cpucounterstest.o pci.o client_bw.o
 	#$(CC) -shared -Wl,-soname,libpcm.so -o ../libpcmc.so msr.o pci.o client_bw.o cpucounters.o cpucounterstest.o $(LIB)
+
+dummy:
+
+darwin:
+       cd MacMSRDriver && make install
 
 msr.o: msr.h msr.cpp 
 	$(CC) $(OPT) -c msr.cpp

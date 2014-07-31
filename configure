@@ -1771,7 +1771,7 @@ fi
 
 if test "X${BUILD_IPCM}" = "Xyes"; then
   PAPI_CFLAGS="-I${PAPI_HOME}/include"
-  PAPI_LIBS="${PAPI_HOME}/libpapi.a ${PAPI_HOME}/libcipcm.so ${PAPI_HOME}/libpcm.so"
+  PAPI_LIBS="build/lib/libpapi.a build/lib/libcipcm.so build/lib/libpcm.so"
   OBEXTRA="mkipcm"
 else
   if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then

@@ -3,12 +3,12 @@
 PAPI_VERSION=5.3.2
 papi_home = ./papi-${PAPI_VERSION}/src/
 libcipcm_home = ./libcipcm/
-base_dir = `pwd`
+base_dir := `pwd`
 MY_CFLAGS = ${CPICFLAGS}
 
 BUILD_PAPI = @BUILD_BUNDLED_PAPI@
 
-PKG_CFLAGS = @PAPI_CFLAGS@
+PKG_CFLAGS = @PAPI_CFLAGS@ -I${papi_home}
 PKG_LIBS = @PAPI_LIBS@
 OBEXTRA = @OBEXTRA@
 
@@ -31,7 +31,7 @@ $(SHLIB): $(OBEXTRA) $(OBJECTS)
 $(OBJECTS): $(OBEXTRA)
 
 
-mkipcm: build_ipcm
+mkipcm:
 	( cd ${libcipcm_home}; make install PREFIX=${base_dir} PAPI_SRC=${papi_home} )
 
 mkpapi: build_papi
