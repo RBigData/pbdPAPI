@@ -161,9 +161,11 @@ int ipcm_init(){
 
 	// interesting start
 
+	int tryagain=0;
 	PCM * m = PCM::getInstance();
 	//if(disable_JKT_workaround) m->disableJKTWorkaround();
 	PCM::ErrorCode status = m->program();
+	PCM::ErrorCode secondstatus;
 	switch (status)
 	{
 		case PCM::Success:
@@ -174,14 +176,19 @@ int ipcm_init(){
 		case PCM::PMUBusy:
 			cerr << "Access to Intel(r) Performance Counter Monitor has denied (Performance Monitoring Unit is occupied by other application). Try to stop the application that uses PMU." << endl;
 			cerr << "Alternatively you can try to reset PMU configuration at your own risk. Try to reset? (y/n)" << endl;
-			char yn;
-			std::cin >> yn;
-			if ('y' == yn)
-			{
+			//char yn;
+			//std::cin >> yn;
+			//if ('y' == yn)
+			//{
 				m->resetPMU();
 				cout << "PMU configuration has been reset. Try to rerun the program again." << endl;
-			}
-			return 0;
+			//}
+			//return 0;
+				m = PCM::getInstance();
+				secondstatus=m->program();
+				if(secondstatus!=PCM::Success)
+					return 0;
+				break;
 		default:
 			cerr << "Access to Intel(r) Performance Counter Monitor has denied (Unknown error)." << endl;
 			return 0;
