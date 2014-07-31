@@ -26,7 +26,7 @@ default: $(DRIVER_DEP) msr.o cpucounters.o cpucounterstest.o pci.o client_bw.o
 dummy:
 
 darwin:
-       cd MacMSRDriver && make install
+	cd MacMSRDriver && make install
 
 msr.o: msr.h msr.cpp 
 	$(CC) $(OPT) -c msr.cpp

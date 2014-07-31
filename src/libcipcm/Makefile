@@ -27,24 +27,24 @@ DEFS=-DPCM_FORCE_SILENT
 default: test
 
 test: libcipcm.so
-       ${CC} -Wall -L. -o test test.c -lstdc++ -lcipcm -lpcm $(LIB)
+	${CC} -Wall -L. -o test test.c -lstdc++ -lcipcm -lpcm $(LIB)
 
 core:
-       cd ${CORE} && make -f ../CoreMakefile DEFS=$(DEFS)
+	cd ${CORE} && make -f ../CoreMakefile DEFS=$(DEFS)
 
 libpcm.so: core
-       cd ${CORE} && ${CXX} -shared -Wl,-${SONAME},libpcm.so -o ../libpcm.so msr.o pci.o client_bw.o cpucounters.o $(LIB)
+	cd ${CORE} && ${CXX} -shared -Wl,-${SONAME},libpcm.so -o ../libpcm.so msr.o pci.o client_bw.o cpucounters.o $(LIB)
 
 libcipcm.so: libpcm.so
-       ${CXX} -Wall -fPIC -I../${PAPI_SRC} -I${CORE} ${DEFS} -c cwrap.cpp
-       ${CXX} -Wall -fPIC -I../${PAPI_SRC} -I${CORE} ${DEFS} -c fake_papi.cpp
-       ${CXX} -shared -Wl,-${SONAME},libcipcm.so -o libcipcm.so cwrap.o fake_papi.o -L. -lpcm
+	${CXX} -Wall -fPIC -I../${PAPI_SRC} -I${CORE} ${DEFS} -c cwrap.cpp
+	${CXX} -Wall -fPIC -I../${PAPI_SRC} -I${CORE} ${DEFS} -c fake_papi.cpp
+	${CXX} -shared -Wl,-${SONAME},libcipcm.so -o libcipcm.so cwrap.o fake_papi.o -L. -lpcm
 
 install: libcipcm.so
-       cp *.so ../build/lib/
+	mkdir inst && cp *.so inst/
 
 clean:
-	rm *.o *.so
+	rm -rd *.o *.so inst
 
 distclean: clean
-       cd ${CORE} && make clean
+	cd ${CORE} && make clean

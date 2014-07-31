@@ -40,8 +40,8 @@ AC_ARG_WITH(papi-home,
 
 if test "X${BUILD_IPCM}" = "Xyes"; then
   PAPI_CFLAGS="-I${PAPI_HOME}/include"
-  PAPI_LIBS="build/lib/libpapi.a build/lib/libcipcm.so build/lib/libpcm.so"
-  OBEXTRA="mkipcm"
+  PAPI_LIBS="build/libs/libcipcm.so build/libs/libpcm.so"
+  OBEXTRA="instipcm"
 else
   if test "X${BUILD_BUNDLED_PAPI}" = "Xyes"; then
     PAPI_CFLAGS="-I./build/include/"

@@ -34,6 +34,11 @@ $(OBJECTS): $(OBEXTRA)
 mkipcm:
 	( cd ${libcipcm_home}; make install PREFIX=${base_dir} PAPI_SRC=${papi_home} )
 
+instipcm: mkipcm
+	mkdir -p ../inst/libs build/libs
+	cp ${libcipcm_home}/inst/* ../inst/libs/
+	cp ${libcipcm_home}/inst/* build/libs/
+
 mkpapi: build_papi
 	@sed -i -e "s#MY_CFLAGS#${MY_CFLAGS}#g" build_papi
 	( cd ${papi_home}; sh ../../build_papi )
