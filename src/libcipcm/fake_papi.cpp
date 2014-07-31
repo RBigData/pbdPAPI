@@ -105,7 +105,7 @@ int PAPI_start_counters(int *codes,int num){
 	return PAPI_OK;
 }
 
-int PAPI_stop_counters(int *values,int num){
+int PAPI_stop_counters(long long *values,int num){
 	int i;
 
 	ipcm_end_events(ipcm_val,num);
