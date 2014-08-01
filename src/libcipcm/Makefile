@@ -1,5 +1,5 @@
-CC=gcc
-CXX=g++
+CC=gcc -g -O3
+CXX=g++ -g -O3
 SONAME=soname
 CORE=IntelPerformanceCounterMonitorV2.6
 #msr.o cpucounters.o pci.o client_bw.o
@@ -28,6 +28,7 @@ default: test
 
 test: libcipcm.so
 	${CC} -Wall -L. -o test test.c -lstdc++ -lcipcm -lpcm $(LIB)
+	${CC} -Wall -L. -I../${PAPI_SRC} -o papitest papi_test.c -lstdc++ -lcipcm -lpcm $(LIB)
 
 core:
 	cd ${CORE} && make -f ../CoreMakefile DEFS=$(DEFS)
@@ -44,7 +45,7 @@ install: libcipcm.so
 	mkdir inst && cp *.so inst/
 
 clean:
-	rm -rd *.o *.so inst
+	rm -rdf *.o *.so inst
 
 distclean: clean
 	cd ${CORE} && make clean

@@ -99,7 +99,16 @@ int PAPI_num_counters(){
 }
 
 int PAPI_start_counters(int *codes,int num){
+	int i;
 	ipcm_val=(ipcm_event_val_t*)malloc(sizeof(*ipcm_val)*num);
+	if(ipcm_val==NULL){
+		return PAPI_ENOMEM;
+	}
+
+	for(i=0;i<num;i++){
+		ipcm_val[i].code=codes[i];
+	}
+
 	ipcm_get_events();
 
 	return PAPI_OK;

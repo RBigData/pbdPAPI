@@ -681,7 +681,7 @@ PCM::PCM() :
     else
         apic_ids_per_core = 1;
 
-    for (i = 0; i < num_cores; i++)
+    for (int i = 0; i < num_cores; i++)
     {
         char cpuctl_name[64];
         int apic_id;

@@ -137,11 +137,14 @@ static void print_diff(
 
 int ipcm_init(){
 	//struct CSysCounterState *ret;
-	#ifdef PCM_FORCE_SILENT
+#ifdef PCM_FORCE_SILENT
+	streambuf *oldout, *olderr;
 	null_stream nullStream1, nullStream2;
+	oldout=std::cout.rdbuf();
+	olderr=std::cerr.rdbuf();
 	std::cout.rdbuf(&nullStream1);
 	std::cerr.rdbuf(&nullStream2);
-	#endif
+#endif
 
 #ifdef _MSC_VER
 	// Increase the priority a bit to improve context switching delays on Windows
@@ -153,10 +156,12 @@ int ipcm_init(){
 
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)cleanup, TRUE);
 #else
+	/*
 	signal(SIGPIPE, cleanup);
 	signal(SIGINT, cleanup);
 	signal(SIGKILL, cleanup);
 	signal(SIGTERM, cleanup);
+	*/
 #endif
 
 	// interesting start
@@ -199,6 +204,11 @@ int ipcm_init(){
 	global_cpu_model=m->getCPUModel();
 	global_nominal_frequency=m->getNominalFrequency();
 	global_max_cpus=m->getNumCores();
+
+#ifdef PCM_FORCE_SILENT
+	std::cout.rdbuf(oldout);
+	std::cerr.rdbuf(olderr);
+#endif
 
 	return 1;
 }
