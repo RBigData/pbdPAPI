@@ -22,11 +22,11 @@ CT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 #include <stdio.h>
 #include <string.h>
 
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 #include <signal.h>
 #endif
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 inline BOOL cleanup(DWORD)
 {
     PCM::getInstance()->cleanup();
@@ -41,7 +41,7 @@ inline void cleanup(int s)
 }
 #endif
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 inline void win_usleep(int delay_us)
 {
     uint64 t1 = 0, t2 = 0, freq = 0;
@@ -58,7 +58,7 @@ inline void win_usleep(int delay_us)
 
 inline void MySleep(int delay)
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     if(delay) Sleep(delay*1000);
 #else
     ::sleep(delay);
@@ -67,7 +67,7 @@ inline void MySleep(int delay)
 
 inline void MySleepMs(int delay_ms)
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     if(delay_ms) Sleep(delay_ms);
 #else
     ::sleep(delay_ms/1000);
@@ -76,7 +76,7 @@ inline void MySleepMs(int delay_ms)
 
 inline void MySleepUs(int delay_us)
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     if(delay_us) win_usleep(delay_us);
 #else
     ::usleep(delay_us);

@@ -23,7 +23,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include "types.h"
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include "windows.h"
 #else
 #include <unistd.h> 

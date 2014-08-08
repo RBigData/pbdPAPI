@@ -22,7 +22,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 // compile for Windows 7 or Windows Server 2008 R2 (processor group support needed for systems with high core count)
+#if (_WIN32_WINNT >= 0x0601)
 #define COMPILE_FOR_WINDOWS_7
+#endif
 
 #include <iostream>
 #include <istream>
@@ -625,7 +627,8 @@ struct BecktonUncorePMUCNTCTLRegister
 #define MSR_CORE_C6_RESIDENCY   (0x3FD)
 #define MSR_CORE_C7_RESIDENCY   (0x3FE)
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
+
 #include <windows.h>
 // data structure for converting two uint32s <-> uin64
 union cvt_ds

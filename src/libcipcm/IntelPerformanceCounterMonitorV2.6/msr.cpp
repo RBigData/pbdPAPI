@@ -18,14 +18,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 #include <unistd.h>
 #endif
 #include "types.h"
 #include "msr.h"
 #include <assert.h>
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 
 #include <windows.h>
 #include "Winmsrdriver\win7\msrstruct.h"
@@ -37,7 +37,7 @@ extern HMODULE hOpenLibSys;
 // here comes an implementatation for Windows
 MsrHandle::MsrHandle(uint32 cpu) : cpu_id(cpu)
 {
-    hDriver = CreateFile(L"\\\\.\\RDMSR", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
+    hDriver = CreateFile("\\\\.\\RDMSR", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
 
     if (hDriver == INVALID_HANDLE_VALUE && hOpenLibSys == NULL)
         throw std::exception();
@@ -49,6 +49,7 @@ MsrHandle::~MsrHandle()
 }
 
 #ifdef COMPILE_FOR_WINDOWS_7
+#include <winnt.h>
 class ThreadGroupTempAffinity
 {
 	GROUP_AFFINITY PreviousGroupAffinity;

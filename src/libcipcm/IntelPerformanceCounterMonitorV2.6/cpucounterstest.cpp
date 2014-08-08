@@ -20,10 +20,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 #define HACK_TO_REMOVE_DUPLICATE_ERROR
 #include <iostream>
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #pragma warning(disable : 4996) // for sprintf
+
+#ifdef USE___UUIDOF
+#undef USE___UUIDOF
+#endif
+#define USE___UUIDOF 0
+
 #include <windows.h>
-#include "../PCM_Win/windriver.h"
+#include "PCM_Win/windriver.h"
 #else
 #include <unistd.h>
 #include <signal.h>
@@ -61,7 +67,7 @@ std::string temp_format(int32 t)
 
 void print_help(char * prog_name)
 {
-        #ifdef _MSC_VER
+        #ifdef OK_WIN_BUILD
     cout << " Usage: pcm <delay>|\"external_program parameters\"|--help|--uninstallDriver|--installDriver <other options>" << endl;
         #else
     cout << " Usage: pcm <delay>|\"external_program parameters\"|--help <other options>" << endl;
@@ -784,7 +790,7 @@ int main(int argc, char * argv[])
     cout << endl;
     cout << " Copyright (c) 2009-2013 Intel Corporation" << endl;
     cout << endl;
-        #ifdef _MSC_VER
+        #ifdef OK_WIN_BUILD
     // Increase the priority a bit to improve context switching delays on Windows
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_ABOVE_NORMAL);
 
@@ -870,7 +876,7 @@ int main(int argc, char * argv[])
         }
 
 
-                #ifdef _MSC_VER
+                #ifdef OK_WIN_BUILD
         if (strcmp(argv[1], "--uninstallDriver") == 0)
         {
             Driver tmpDrvObject;
@@ -903,7 +909,7 @@ int main(int argc, char * argv[])
         return -1;
     }
 
-        #ifdef _MSC_VER
+        #ifdef OK_WIN_BUILD
     // WARNING: This driver code (msr.sys) is only for testing purposes, not for production use
     Driver drv;
     // drv.stop();     // restart driver (usually not needed)
@@ -957,7 +963,7 @@ int main(int argc, char * argv[])
     {
         cout << std::flush;
 
-  	  #ifdef _MSC_VER
+  	  #ifdef OK_WIN_BUILD
 		int delay_ms = delay * 1000;
          // compensate slow Windows console output
         if(TimeAfterSleep) delay_ms -= (uint32)(m->getTickCount() - TimeAfterSleep);

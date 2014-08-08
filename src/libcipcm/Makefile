@@ -22,7 +22,7 @@ ifeq ($(UNAME), FreeBSD)
 LIB= -lpthread
 endif
 
-DEFS=-DPCM_FORCE_SILENT
+DEFS=-DPCM_FORCE_SILENT ${PASS_DEFS}
 
 default: test
 
@@ -31,21 +31,21 @@ test: libcipcm.so
 	${CC} -Wall -L. -I../${PAPI_SRC} -o papitest papi_test.c -lstdc++ -lcipcm -lpcm $(LIB)
 
 core:
-	cd ${CORE} && make -f ../CoreMakefile DEFS=$(DEFS)
+	cd ${CORE} && make -f ../CoreMakefile "DEFS=$(DEFS)"
 
 libpcm.so: core
-	cd ${CORE} && ${CXX} -shared -Wl,-${SONAME},libpcm.so -o ../libpcm.so msr.o pci.o client_bw.o cpucounters.o $(LIB)
+	cd ${CORE} && ${CXX} -shared -Wl,-${SONAME},libpcm.${SOEX} -o ../libpcm.${SOEX} msr.o pci.o client_bw.o cpucounters.o $(LIB)
 
 libcipcm.so: libpcm.so
 	${CXX} -Wall -fPIC -I../${PAPI_SRC} -I${CORE} ${DEFS} -c cwrap.cpp
 	${CXX} -Wall -fPIC -I../${PAPI_SRC} -I${CORE} ${DEFS} -c fake_papi.cpp
-	${CXX} -shared -Wl,-${SONAME},libcipcm.so -o libcipcm.so cwrap.o fake_papi.o -L. -lpcm
+	${CXX} -shared -Wl,-${SONAME},libcipcm.${SOEX} -o libcipcm.${SOEX} cwrap.o fake_papi.o -L. -lpcm
 
 install: libcipcm.so
-	mkdir inst && cp *.so inst/
+	test -d inst || mkdir inst && cp *.${SOEX} inst/
 
 clean:
-	rm -rdf *.o *.so inst
+	rm -rf *.o *.so *.dll inst
 
 distclean: clean
 	cd ${CORE} && make clean

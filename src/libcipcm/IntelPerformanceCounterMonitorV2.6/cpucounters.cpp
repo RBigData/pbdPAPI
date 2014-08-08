@@ -34,7 +34,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "types.h"
 #include "utils.h"
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include <intrin.h>
 #include <windows.h>
 #include <tchar.h>
@@ -77,7 +77,7 @@ int convertUnknownToInt(size_t size, char* value);
 #define PCM_NUM_INSTANCES_SEMAPHORE_NAME "Num Intel(r) PCM insts"
 #endif
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 
 HMODULE hOpenLibSys = NULL;
 
@@ -98,7 +98,7 @@ public:
     SystemWideLock()
     {
         globalMutex = CreateMutex(NULL, FALSE,
-                                  L"Global\\Intel(r) Performance Counter Monitor instance create/destroy lock");
+                                  "Global\\Intel(r) Performance Counter Monitor instance create/destroy lock");
         // lock
         WaitForSingleObject(globalMutex, INFINITE);
     }
@@ -303,7 +303,7 @@ union PCM_CPUID_INFO
 
 void pcm_cpuid(int leaf, PCM_CPUID_INFO & info)
 {
-    #ifdef _MSC_VER
+    #ifdef OK_WIN_BUILD
     // version for Windows
     __cpuid(info.array, leaf);
     #else
@@ -350,6 +350,7 @@ PCM::PCM() :
     mode(INVALID_MODE),
     canUsePerf(false)
 {
+    int i;
     char buffer[1024];
     PCM_CPUID_INFO cpuinfo;
     int max_cpuid;
@@ -460,7 +461,7 @@ PCM::PCM() :
             PCM_CSTATE_ARRAY(coreCStateMsr, PCM_PARAM_PROTECT({ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }) );
     };
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 // version for Windows
 
 #ifdef COMPILE_FOR_WINDOWS_7
@@ -780,7 +781,7 @@ PCM::PCM() :
         std::cout << topology[i].socket << " " << topology[i].os_id << " " << topology[i].core_id << std::endl;
     }
 #endif
-        #endif //end of ifdef _MSC_VER
+        #endif //end of ifdef OK_WIN_BUILD
 
 #ifndef PCM_FORCE_SILENT
     std::cout << "Number of physical cores: " << (num_cores/threads_per_core) << std::endl;
@@ -799,7 +800,7 @@ PCM::PCM() :
 
     socketRefCore.resize(num_sockets);
 	
-	int32 i = 0;
+	//int32 i = 0;
 	
 #ifndef __APPLE__
     MSR = new MsrHandle *[num_cores];
@@ -820,7 +821,7 @@ PCM::PCM() :
         MSR = NULL;
 
         std::cerr << "Can not access CPUs Model Specific Registers (MSRs)." << std::endl;
-                #ifdef _MSC_VER
+                #ifdef OK_WIN_BUILD
         std::cerr << "You must have signed msr.sys driver in your current directory and have administrator rights to run this program." << std::endl;
                 #elif defined(__linux__)
         std::cerr << "Try to execute 'modprobe msr' as root user and then" << std::endl;
@@ -916,7 +917,7 @@ PCM::PCM() :
             server_pcicfg_uncore = NULL;
 
             std::cerr << "Can not access Jaketown/Ivytown PCI configuration space. Access to uncore counters (memory and QPI bandwidth) is disabled." << std::endl;
-                #ifdef _MSC_VER
+                #ifdef OK_WIN_BUILD
             std::cerr << "You must have signed msr.sys driver in your current directory and have administrator rights to run this program." << std::endl;
                 #else
             //std::cerr << "you must have read and write permissions for /proc/bus/pci/7f/10.* and /proc/bus/pci/ff/10.* devices (the 'chown' command can help)." << std::endl;
@@ -937,7 +938,7 @@ PCM::PCM() :
        } catch(...)
        {
            std::cerr << "Can not read memory controller counter information from PCI configuration space. Access to memory bandwidth counters is not possible." << std::endl;
-           #ifdef _MSC_VER
+           #ifdef OK_WIN_BUILD
            // TODO: add message here
            #endif
            #ifdef __linux__
@@ -1156,9 +1157,9 @@ PCM::ErrorCode PCM::program(PCM::ProgramMode mode_, void * parameter_)
 #endif
 
     //std::cout << "Checking for other instances of PCM..." << std::endl;
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #if 1
-    numInstancesSemaphore = CreateSemaphore(NULL, 0, 1 << 20, L"Global\\Number of running Intel Processor Counter Monitor instances");
+    numInstancesSemaphore = CreateSemaphore(NULL, 0, 1 << 20, "Global\\Number of running Intel Processor Counter Monitor instances");
     if (!numInstancesSemaphore)
     {
         std::cout << "Error in Windows function 'CreateSemaphore': " << GetLastError() << std::endl;
@@ -1208,7 +1209,7 @@ PCM::ErrorCode PCM::program(PCM::ProgramMode mode_, void * parameter_)
         if(!canUsePerf) return PCM::Success;
     }
 
-#endif // end ifdef _MSC_VER
+#endif // end ifdef OK_WIN_BUILD
 
 #ifdef PCM_USE_PERF
 /* 
@@ -1705,7 +1706,7 @@ void PCM::computeNominalFrequency()
    uint64 before = 0, after = 0;
    MSR[ref_core]->read(IA32_TIME_STAMP_COUNTER, &before);
 // sleep fo 100 ms
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
         Sleep(1000);
 #else
         usleep(1000*1000);
@@ -1994,7 +1995,7 @@ int convertUnknownToInt(size_t size, char* value){
 bool PCM::decrementInstanceSemaphore()
 {
     bool isLastInstance = false;
-                #ifdef _MSC_VER
+                #ifdef OK_WIN_BUILD
     WaitForSingleObject(numInstancesSemaphore, 0);
 
     DWORD res = WaitForSingleObject(numInstancesSemaphore, 0);
@@ -2055,7 +2056,7 @@ bool PCM::decrementInstanceSemaphore()
 
         // std::cout << "I am the last one"<< std::endl;
     }
-        #endif // end ifdef _MSC_VER
+        #endif // end ifdef OK_WIN_BUILD
 
     return isLastInstance;
 }
@@ -2068,7 +2069,7 @@ uint64 PCM::getTickCount(uint64 multiplier, uint32 core)
 uint64 RDTSC()
 {
         uint64 result = 0;
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
         // Windows
         #if _MSC_VER>= 1600
         result = __rdtsc();
@@ -2086,7 +2087,7 @@ uint64 RDTSC()
 uint64 RDTSCP()
 {
 	uint64 result = 0;
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
         // Windows
         #if _MSC_VER>= 1600
         unsigned int Aux;
@@ -2220,7 +2221,7 @@ void BasicCounterState::readAndAggregate(MsrHandle * msr)
     if(cpu_model != PCM::ATOM ||  m->getOriginalCPUModel() == PCM::ATOM_AVOTON) msr->read(IA32_TIME_STAMP_COUNTER, &cInvariantTSC);
     else
     {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
         cInvariantTSC = ((uint64)(GetTickCount()/1000))*m->getNominalFrequency();
 #else
         struct timeval tp;
@@ -2730,7 +2731,7 @@ ServerUncorePowerState PCM::getServerUncorePowerState(uint32 socket)
   return result;
 }
 
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 void print_mcfg(const char * path)
 {
     int mcfg_handle = ::open(path, O_RDONLY);
@@ -3488,7 +3489,7 @@ uint64 ServerPCICFGUncore::computeQPISpeed()
     return qpi_speed;
 }
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 DWORD WINAPI WatchDogProc(LPVOID state)
 #else
 void * WatchDogProc(void * state)
@@ -3497,14 +3498,18 @@ void * WatchDogProc(void * state)
     CounterWidthExtender * ext = (CounterWidthExtender * ) state;
     while(1)
     {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 		Sleep(10000);
 #else
         sleep(10);
 #endif
         /* uint64 dummy = */ ext->read();
     }
+#ifdef OK_WIN_BUILD
+    return 0;
+#else
     return NULL;
+#endif
 }
 
 uint32 PCM::CX_MSR_PMON_CTRY(uint32 Cbo, uint32 Ctr) const

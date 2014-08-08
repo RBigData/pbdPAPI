@@ -18,7 +18,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 //
 
 #include <iostream>
-#include "cpucounters.h"
+#include "../cpucounters.h"
 
 /*!     \file windriver.h
         \brief Loading and unloading custom Windows MSR (Model Specific Register) Driver
@@ -43,18 +43,18 @@ public:
         \param driverPath full path to the driver
         \return true iff driver start up was successful
     */
-    bool start(LPCWSTR driverPath)
+    bool start(LPCSTR driverPath)
     {
         hSCManager = OpenSCManager(NULL, NULL, SC_MANAGER_CREATE_SERVICE);
         if (hSCManager)
         {
-            hService = CreateService(hSCManager, L"Test MSR 4", L"Test MSR Driver 4", SERVICE_START | DELETE | SERVICE_STOP,
+            hService = CreateService(hSCManager, "Test MSR 4", "Test MSR Driver 4", SERVICE_START | DELETE | SERVICE_STOP,
                                      SERVICE_KERNEL_DRIVER, SERVICE_DEMAND_START, SERVICE_ERROR_IGNORE, driverPath, NULL, NULL, NULL, NULL, NULL);
 
             if (!hService)
             {
                 DWORD err = GetLastError();
-                hService = OpenService(hSCManager, L"Test MSR 4", SERVICE_START | DELETE | SERVICE_STOP);
+                hService = OpenService(hSCManager, "Test MSR 4", SERVICE_START | DELETE | SERVICE_STOP);
             }
 
             if (hService)
@@ -103,7 +103,7 @@ public:
         hSCManager = OpenSCManager(NULL, NULL, SC_MANAGER_CREATE_SERVICE);
         if (hSCManager)
         {
-            hService = OpenService(hSCManager, L"Test MSR 4", SERVICE_START | DELETE | SERVICE_STOP);
+            hService = OpenService(hSCManager, "Test MSR 4", SERVICE_START | DELETE | SERVICE_STOP);
             DWORD res = 0;
             if (hService)
             {
@@ -126,7 +126,7 @@ public:
         hSCManager = OpenSCManager(NULL, NULL, SC_MANAGER_CREATE_SERVICE);
         if (hSCManager)
         {
-            hService = OpenService(hSCManager, L"Test MSR 4", SERVICE_START | DELETE | SERVICE_STOP);
+            hService = OpenService(hSCManager, "Test MSR 4", SERVICE_START | DELETE | SERVICE_STOP);
             DWORD res = 0;
             if (hService)
             {

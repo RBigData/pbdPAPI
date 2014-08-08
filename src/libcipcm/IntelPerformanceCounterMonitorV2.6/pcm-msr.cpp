@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // written by Roman Dementiev
 #define HACK_TO_REMOVE_DUPLICATE_ERROR
 #include "cpucounters.h"
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #pragma warning(disable : 4996) // for sprintf
 #include <windows.h>
 #include "../PCM_Win/windriver.h"
@@ -25,7 +25,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <stdlib.h>
 #include <iomanip>
 #include <string.h>
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include "freegetopt/getopt.h"
 #endif
 
@@ -88,7 +88,7 @@ int main(int argc, char * argv[])
 
     msr = (int) read_number(argv[optind]);
 
-    #ifdef _MSC_VER
+    #ifdef OK_WIN_BUILD
     // Increase the priority a bit to improve context switching delays on Windows
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_ABOVE_NORMAL);
 

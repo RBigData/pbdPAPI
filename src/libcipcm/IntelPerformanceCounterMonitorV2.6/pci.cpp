@@ -26,12 +26,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <string.h>
 #include "pci.h"
 
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 #include <sys/mman.h>
 #include <errno.h>
 #endif
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 
 #include <windows.h>
 #include "Winmsrdriver\win7\msrstruct.h"
@@ -52,7 +52,7 @@ PciHandle::PciHandle(uint32 groupnr_, uint32 bus_, uint32 device_, uint32 functi
         throw std::exception();
     }
 
-    hDriver = CreateFile(L"\\\\.\\RDMSR", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
+    hDriver = CreateFile("\\\\.\\RDMSR", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
 
     if (hDriver == INVALID_HANDLE_VALUE && hOpenLibSys == NULL)
         throw std::exception();
@@ -62,7 +62,7 @@ bool PciHandle::exists(uint32 bus_, uint32 device_, uint32 function_)
 {
 	if(hOpenLibSys != NULL) return true;
 
-    HANDLE tempHandle = CreateFile(L"\\\\.\\RDMSR", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
+    HANDLE tempHandle = CreateFile("\\\\.\\RDMSR", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
     if (tempHandle == INVALID_HANDLE_VALUE)
 		return false;
 

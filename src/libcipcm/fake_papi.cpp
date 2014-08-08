@@ -1,3 +1,7 @@
+#ifdef OK_WIN_BUILD
+typedef void* caddr_t;
+#endif
+
 #include <string.h>
 #include <stdlib.h>
 #include <papi.h>

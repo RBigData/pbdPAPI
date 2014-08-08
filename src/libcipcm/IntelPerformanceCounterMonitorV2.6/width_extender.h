@@ -16,7 +16,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef WIDTH_EXTENDER_HEADER_
 #define WIDTH_EXTENDER_HEADER_ 
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include <windows.h>
 #else
 #include <pthread.h>
@@ -26,7 +26,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "cpucounters.h"
 #include "client_bw.h"
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 DWORD WINAPI WatchDogProc(LPVOID state);
 #else
 void * WatchDogProc(void * state);
@@ -70,7 +70,7 @@ public:
 
 private:
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 	HANDLE UpdateThread;
 	HANDLE CounterMutex;
 #else
@@ -89,7 +89,7 @@ private:
     {
 		if (this==NULL) return 0; // to make security check happy
 		uint64 result = 0, new_raw_value = 0;
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 	 WaitForSingleObject(CounterMutex,INFINITE);
 #else
 	 pthread_mutex_lock(&CounterMutex);
@@ -107,7 +107,7 @@ private:
          last_raw_value = new_raw_value;
 
          result = extended_value;	
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 	 ReleaseMutex(CounterMutex);
 #else
 	 pthread_mutex_unlock(&CounterMutex);
@@ -121,7 +121,7 @@ public:
         last_raw_value = (*raw_counter)();
         extended_value = last_raw_value;
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 		CounterMutex = CreateMutex(NULL,FALSE,NULL);
 		UpdateThread = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)WatchDogProc,this,0,NULL);
 #else
@@ -131,7 +131,7 @@ public:
     }
     ~CounterWidthExtender()
     {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 		TerminateThread(UpdateThread,0);
 		CloseHandle(UpdateThread);
 		CloseHandle(CounterMutex);

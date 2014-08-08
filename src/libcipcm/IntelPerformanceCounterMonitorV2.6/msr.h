@@ -24,7 +24,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include "types.h"
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include "windows.h"
 #elif __APPLE__
 #include <MSRAccessor.h>
@@ -33,7 +33,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 class MsrHandle
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     HANDLE hDriver;
 #elif __APPLE__
     static MSRAccessor* driver;

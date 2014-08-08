@@ -32,7 +32,7 @@ $(OBJECTS): $(OBEXTRA)
 
 
 mkipcm:
-	( cd ${libcipcm_home}; make install PREFIX=${base_dir} PAPI_SRC=${papi_home} )
+	( cd ${libcipcm_home}; make install SOEX=so PREFIX=${base_dir} PAPI_SRC=${papi_home} )
 
 instipcm: mkipcm
 	mkdir -p ../inst/libs build/libs

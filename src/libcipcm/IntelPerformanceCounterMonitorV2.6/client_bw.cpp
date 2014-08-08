@@ -26,12 +26,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "pci.h"
 #include "client_bw.h"
 
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 #include <sys/mman.h>
 #include <errno.h>
 #endif
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 
 #include <windows.h>
 #include "Winmsrdriver\win7\msrstruct.h"

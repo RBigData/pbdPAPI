@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // written by Roman Dementiev
 #define HACK_TO_REMOVE_DUPLICATE_ERROR
 #include "cpucounters.h"
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #pragma warning(disable : 4996) // for sprintf
 #include <windows.h>
 #include "../PCM_Win/windriver.h"
@@ -25,7 +25,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include "freegetopt/getopt.h"
 #endif
 #include "utils.h"
@@ -161,7 +161,7 @@ int main(int argc, char * argv[])
 	else
 		delay = (delay<0)?1:delay;
 
-	#ifdef _MSC_VER
+	#ifdef OK_WIN_BUILD
     // Increase the priority a bit to improve context switching delays on Windows
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_ABOVE_NORMAL);
 
@@ -191,7 +191,7 @@ int main(int argc, char * argv[])
 
     if(PCM::Success != m->programServerUncorePowerMetrics(imc_profile,pcu_profile,freq_band))
     {
-	  #ifdef _MSC_VER
+	  #ifdef OK_WIN_BUILD
 		std::cout << "You must have signed msr.sys driver in your current directory and have administrator rights to run this program" << std::endl;
       #elif defined(__linux__)
       std::cout << "You need to be root and loaded 'msr' Linux kernel module to execute the program. You may load the 'msr' module with 'modprobe msr'. \n";
@@ -222,7 +222,7 @@ int main(int argc, char * argv[])
     {
       std::cout << "----------------------------------------------------------------------------------------------"<<std::endl;
       
-	  #ifdef _MSC_VER
+	  #ifdef OK_WIN_BUILD
 	  int delay_ms = delay * 1000;
 	  // compensate slow Windows console output
 	  if(AfterTime) delay_ms -= (int)(m->getTickCount() - BeforeTime);

@@ -4,6 +4,7 @@ PAPI_VERSION=5.3.2
 papi_home = ./papi-${PAPI_VERSION}/src/
 libcipcm_home = ./libcipcm/
 MY_CFLAGS = ${CPICFLAGS}
+base_dir := `pwd`
 
 BUILD_PAPI = no
 
@@ -31,7 +32,7 @@ $(OBJECTS): $(OBEXTRA)
 
 
 mkipcm:
-	( cd ${libcipcm_home}; make install PAPI_SRC=${papi_home} )
+	( cd ${libcipcm_home}; make install PREFIX=${base_dir} SOEX=dll PASS_DEFS="-include ipcm_windef.h" PAPI_SRC=${papi_home} )
 
 instipcm: mkipcm
 	mkdir -p ../inst/libs build/libs

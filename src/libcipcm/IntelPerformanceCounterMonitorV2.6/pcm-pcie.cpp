@@ -18,7 +18,7 @@
   */
 #define HACK_TO_REMOVE_DUPLICATE_ERROR
 #include <iostream>
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #pragma warning(disable : 4996) // for sprintf
 #include <windows.h>
 #include "../PCM_Win/windriver.h"
@@ -35,7 +35,7 @@
 #include <assert.h>
 #include "cpucounters.h"
 #include "utils.h"
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include "freegetopt/getopt.h"
 #endif
 
@@ -100,7 +100,7 @@ int main(int argc, char * argv[])
     cout << " This utility measures PCIe bandwidth in real-time" << endl;
     cout << endl;
     print_events();
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     // Increase the priority a bit to improve context switching delays on Windows
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_ABOVE_NORMAL);
 
@@ -148,7 +148,7 @@ int main(int argc, char * argv[])
      delay = atoi(argv[optind]);
      delay = (delay<0)?1:delay;
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     // WARNING: This driver code (msr.sys) is only for testing purposes, not for production use
     Driver drv;
     // drv.stop();     // restart driver (usually not needed)

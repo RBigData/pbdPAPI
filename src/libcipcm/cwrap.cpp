@@ -1,9 +1,10 @@
 #define HACK_TO_REMOVE_DUPLICATE_ERROR
 #include <iostream>
-#ifdef _MSC_VER
+
+#ifdef OK_WIN_BUILD
 #pragma warning(disable : 4996) // for sprintf
 #include <windows.h>
-#include "../PCM_Win/windriver.h"
+#include "PCM_Win/windriver.h"
 #else
 #include <unistd.h>
 #include <signal.h>
@@ -146,13 +147,16 @@ int ipcm_init(){
 	std::cerr.rdbuf(&nullStream2);
 #endif
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 	// Increase the priority a bit to improve context switching delays on Windows
 	SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_ABOVE_NORMAL);
 
-	TCHAR driverPath[1040]; // length for current directory + "\\msr.sys"
+	char driverPath[1040]; // length for current directory + "\\msr.sys"
+	//TCHAR driverPath[1040]; // length for current directory + "\\msr.sys"
 	GetCurrentDirectory(1024, driverPath);
-	wcscat_s(driverPath, 1040, L"\\msr.sys");
+	strncat(driverPath,"\\msr.sys",1040);
+	//strcat_s(driverPath, 1040, "\\msr.sys");
+	//wcscat_s(driverPath, 1040, L"\\msr.sys");
 
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)cleanup, TRUE);
 #else

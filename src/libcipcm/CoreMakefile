@@ -20,7 +20,7 @@ ifeq ($(UNAME), FreeBSD)
 LIB= -lpthread
 endif
 
-default: $(DRIVER_DEP) msr.o cpucounters.o cpucounterstest.o pci.o client_bw.o
+default: $(DRIVER_DEP) msr.o cpucounters.o pci.o client_bw.o
 	#$(CC) -shared -Wl,-soname,libpcm.so -o ../libpcmc.so msr.o pci.o client_bw.o cpucounters.o cpucounterstest.o $(LIB)
 
 dummy:

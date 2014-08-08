@@ -18,7 +18,7 @@
   */
 #define HACK_TO_REMOVE_DUPLICATE_ERROR
 #include <iostream>
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #pragma warning(disable : 4996) // for sprintf
 #include <windows.h>
 #include "../PCM_Win/windriver.h"
@@ -45,7 +45,7 @@ using namespace std;
 
 void print_help(char * prog_name)
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     cout << " Usage: " << prog_name << " <delay>|\"external_program parameters\"|--help|--uninstallDriver|--installDriver <other options>" << endl;
 #else
     cout << " Usage: " << prog_name << " <delay>|[external_program parameters]" << endl;
@@ -212,7 +212,7 @@ int main(int argc, char * argv[])
     cout << " Copyright (c) 2009-2013 Intel Corporation" << endl;
     cout << " This utility measures memory bandwidth per channel in real-time" << endl;
     cout << endl;
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     // Increase the priority a bit to improve context switching delays on Windows
     SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_ABOVE_NORMAL);
 
@@ -241,7 +241,7 @@ int main(int argc, char * argv[])
             return -1;
         }
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
         if (strcmp(argv[1], "--uninstallDriver") == 0)
         {
             Driver tmpDrvObject;
@@ -269,7 +269,7 @@ int main(int argc, char * argv[])
         }
     }
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     // WARNING: This driver code (msr.sys) is only for testing purposes, not for production use
     Driver drv;
     // drv.stop();     // restart driver (usually not needed)
@@ -335,7 +335,7 @@ int main(int argc, char * argv[])
 
     while(1)
     {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
         int delay_ms = delay * 1000;
         // compensate slow Windows console output
         if(AfterTime) delay_ms -= (int)(m->getTickCount() - BeforeTime);

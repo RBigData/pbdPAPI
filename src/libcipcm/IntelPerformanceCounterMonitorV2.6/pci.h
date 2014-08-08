@@ -25,7 +25,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include "types.h"
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 #include "windows.h"
 #else
 #include <unistd.h> 
@@ -40,7 +40,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 class PciHandle
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     HANDLE hDriver;
 #else
     int32 fd;
@@ -49,7 +49,7 @@ class PciHandle
     uint32 bus;
     uint32 device;
     uint32 function;
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
     DWORD pciAddress;
 #endif
 
@@ -70,7 +70,7 @@ public:
     virtual ~PciHandle();
 };
 
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 typedef PciHandle PciHandleM;
 #elif __APPLE__
 // This may need to change if it can be implemented for OSX
@@ -82,7 +82,7 @@ typedef PciHandle PciHandleM;
 // read/write PCI config space using physical memory
 class PciHandleM
 {
-#ifdef _MSC_VER
+#ifdef OK_WIN_BUILD
 
 #else
     int32 fd;
@@ -110,7 +110,7 @@ public:
     virtual ~PciHandleM();
 };
 
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 
 // read/write PCI config space using physical memory using mmaped file I/O
 class PciHandleMM

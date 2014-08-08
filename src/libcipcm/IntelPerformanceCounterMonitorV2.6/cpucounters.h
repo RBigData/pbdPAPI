@@ -44,7 +44,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #define PCM_PERF_COUNT_HW_REF_CPU_CYCLES (9)
 #endif
 
-#ifndef _MSC_VER
+#ifndef OK_WIN_BUILD
 #include <semaphore.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -311,7 +311,7 @@ private:
     ProgramMode mode;
     CustomCoreEventDescription coreEventDesc[4];
 
-        #ifdef _MSC_VER
+        #ifdef OK_WIN_BUILD
     HANDLE numInstancesSemaphore;     // global semaphore that counts the number of PCM instances on the system
         #else
     // global semaphore that counts the number of PCM instances on the system
