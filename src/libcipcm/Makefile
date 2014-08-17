@@ -1,7 +1,8 @@
-CC=gcc -g -O3
-CXX=g++ -g -O3
+# CC=gcc -g -O3    # WCC: Platform dependent, get from R as gcc -m32 -g
+# CXX=g++ -g -O3   # WCC: Platform dependent, get from R as gcc -m64 -g
 SONAME=soname
-CORE=IntelPerformanceCounterMonitorV2.6
+# CORE=IntelPerformanceCounterMonitorV2.6
+CORE=ipcm-2.6      # WCC: Total path/file name should less than 100 chars.
 #msr.o cpucounters.o pci.o client_bw.o
 
 # uncomment if you want to rely on Linux perf support (user needs CAP_SYS_ADMIN privileges)
