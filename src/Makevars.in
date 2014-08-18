@@ -27,7 +27,7 @@ OBJECTS = avail.o \
 all: $(SHLIB)
 
 
-$(SHLIB): $(OBEXTRA) $(OBJECTS)
+$(SHLIB): $(OBJECTS)
 $(OBJECTS): $(OBEXTRA)
 
 

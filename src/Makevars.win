@@ -9,7 +9,13 @@ base_dir := `pwd`
 BUILD_PAPI = no
 
 PKG_CFLAGS = -I${papi_home}
-PKG_LIBS = -L./build/libs/ -lcipcm -lpcm
+PKG_LIBS = ./build/libs${R_ARCH}/libcipcm.dll ./build/libs${R_ARCH}/libpcm.dll
+# ifeq "${R_ARCH}" "/i386"
+#   PKG_LIBS = ./build/libs${R_ARCH}/libcipcm.dll ./build/libs${R_ARCH}/libpcm.dll
+# endif
+# ifeq "${R_ARCH}" "/x64"
+#   PKG_LIBS = ./build/libs${R_ARCH}/libcipcm.dll
+# endif
 OBEXTRA = instipcm 
 
 OBJECTS = avail.o \
@@ -26,18 +32,17 @@ OBJECTS = avail.o \
 
 all: $(SHLIB)
 
-
-$(SHLIB): $(OBEXTRA) $(OBJECTS)
+$(SHLIB): $(OBJECTS)
 $(OBJECTS): $(OBEXTRA)
 
-
 mkipcm:
-	( cd ${libcipcm_home}; make install PREFIX=${base_dir} SOEX=dll PASS_DEFS="-include ipcm_windef.h" PAPI_SRC=${papi_home} )
+	( cd ${libcipcm_home}; make install PREFIX=${base_dir} SOEX=dll PASS_DEFS="-include ipcm_windef.h" PAPI_SRC=${papi_home} CC="${CC}" CXX="${CXX}")
 
 instipcm: mkipcm
-	mkdir -p ../inst/libs build/libs
-	cp ${libcipcm_home}/inst/* ../inst/libs/
-	cp ${libcipcm_home}/inst/* build/libs/
+	mkdir -p ../inst/libs${R_ARCH} build/libs${R_ARCH}
+	cp ${libcipcm_home}/inst/* ../inst/libs${R_ARCH}/
+	cp ${libcipcm_home}/inst/* build/libs${R_ARCH}/
 
 clean:
+	rm -rf ../inst/libs
 	rm -rf ./build
