@@ -167,6 +167,21 @@
   "PAPI_FSQ_INS"  \tab  FSq ins \cr
   "PAPI_FNV_INS"  \tab  Finv ins
 }
+
+  If pbdPAPI is built using Intel PCM, pbdPAPI understands only the
+  following counters. A subset of these will be available depending
+  on your platform.
+
+\tabular{ll}{
+  "IPCM_L2_TCM"   \tab  Level 2 cache misses \cr
+  "IPCM_L2_TCH"   \tab  Level 2 cache hits \cr
+  "IPCM_INS_RET"   \tab  Instructions retired \cr
+  "IPCM_CYC"   \tab  Cycles used \cr
+  "IPCM_L3_TCH_NS"   \tab  Level 3 cache hits without snooping on level 2 cache \cr
+  "IPCM_L3_TCH_S"   \tab  Level 3 cache hits with snooping on level 2 cache \cr
+  "IPCM_L3_TCH"   \tab  Level 3 cache hits \cr
+  "IPCM_L3_TCM"   \tab  Level 3 cache misses \cr
+}
 }
 \value{
   If no argument is specified, then a dataframe detailing all events,
