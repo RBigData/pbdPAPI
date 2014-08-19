@@ -7,6 +7,8 @@ papi.avail.internal <- function()
   ret <- as.data.frame(ret, stringsAsFactors=FALSE)
   colnames(ret) <- c("event","avail","desc")
   
+  attr(x=ret, which="lib") <- whichlib()
+  
   assign(".__pbdPAPI_avail", ret, envir=.__pbdPAPIEnv)
   
   invisible()
@@ -15,7 +17,7 @@ papi.avail.internal <- function()
 
 
 ### Checks if event is available
-papi.avail <- function(events)
+counter.avail <- function(events)
 {
   avail <- get(".__pbdPAPI_avail", envir=.__pbdPAPIEnv)
   
@@ -26,13 +28,15 @@ papi.avail <- function(events)
   
   if (!all(events %in% events.all))
   {
-    fail <- events[-which(events %in% events.all)]
-    stop(paste("Event(s) ", paste(fail, collapse=", "), "is/are not recognized PAPI events"))
+    fail <- events[!(events %in% events.all)]
+    stop(paste("Event(s)", paste(fail, collapse=", "), "is/are not recognized PAPI events"))
   }
   
   l <- sapply(events, function(i) which(i == events.all))
   
   ret <- avail[l, 2L]
+#  attr(x=ret, which="lib") <- whichlib()
+  
   return( ret )
 }
 
@@ -48,6 +52,7 @@ papi.avail.lookup <- function(events, shorthand=FALSE)
   else if (!all(check.avail))
   {
     notavail <- -which(check.avail)
+    
     if (length(events) - length(notavail) == 1)
     {
       event <- " event "
@@ -70,4 +75,32 @@ papi.avail.lookup <- function(events, shorthand=FALSE)
   
   invisible()
 }
+
+
+
+papi.avail <- function(events)
+{
+  ret <- counter.avail(events=events)
+  if (attr(x=ret, which="lib") != "PAPI")
+    warning("you should not be using the PAPI interface for IPCM")
+  
+  return( ret )
+}
+
+ipcm.avail <- function(events)
+{
+  ret <- counter.avail(events=events)
+  if (attr(x=ret, which="lib") != "IPCM")
+    warning("you should not be using the IPCM interface for PAPI")
+  
+  return( ret )
+}
+
+print.PAPI <- print.IPCM <- function(x, ...)
+{
+  attr(x=x, which="lib") <- NULL
+  print(as.data.frame(x))
+  invisible()
+}
+
 
