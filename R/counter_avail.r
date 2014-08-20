@@ -45,7 +45,7 @@ counter.avail <- function(events)
 ### Error checking for the higher interfaces
 papi.avail.lookup <- function(events, shorthand=FALSE)
 {
-  check.avail <- try(papi.avail(events=events), silent=TRUE)
+  check.avail <- try(counter.avail(events=events), silent=TRUE)
   
   if (class(check.avail) == "try-error")
     stop("Unknown hardware events; please report this bug to the pbdPAPI developers.")
