@@ -76,7 +76,7 @@ arch.intel <- function(family, model)
   }
   else if (model == 0x3A || model == 0x3E)
   {
-    arch <- "IvyBdridge"
+    arch <- "IvyBridge"
     #IvyBridge-EP #0x3E
   }
   else if (model == 0x2A || model == 0x2D)

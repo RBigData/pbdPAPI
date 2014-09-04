@@ -1,17 +1,15 @@
 library(pbdPAPI)
 
-### Reimplementation of PAPI's FlopsMatrixMatrix.m in R
-
 ### ~4MiB
 m <- 10000
 n <- 50
 
 x <- matrix(rnorm(m*n), m, n)
 
-### Centering requires 2mn+1 flops
-### SVD requires 6mn^2 + 20n^3 flops
-### x %*% svd$v requires 2*m*n^2 flops
-op <- expression(prcomp(x, center=FALSE, scale.=FALSE))
+### Centering requires 2mn+1 ops
+### SVD requires 6mn^2 + 20n^3 ops
+### x %*% svd$v requires 2*m*n^2 ops
+op <- expression(prcomp(x, center=TRUE, scale.=FALSE))
 
 report <- system.flops(eval(op))
 count <- report$flpops

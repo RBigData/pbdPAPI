@@ -1,13 +1,2 @@
-Before June 30: (version 0.1-0)
--write tests
--Add to ChangeLog
-
-
-
-After June 30: (version 0.1-1)
--Create true low-level interface (PAPI_accum, etc.)
--Use above to create 2nd "1.5 level" interface that captures streaming
-counter information (dumb idea ???)
--more derived events
--Add optional argument "checkIfWorks" (name not final) to high-level
- interface so users can programmatically check if a profiler is supported
+Version 0.1-1:
+* Expand compatibility for Windows and possibly Mac
