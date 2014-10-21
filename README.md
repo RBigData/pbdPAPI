@@ -1,5 +1,5 @@
-About
-================================================================================
+# pbdPAPI
+
 pbdPAPI is an R package which offers a set of R bindings for the Performance
 Application Programming Interface (PAPI).  PAPI is a high-level C library for 
 gathering information from hardware performance counters.  PAPI measures events 
@@ -14,8 +14,8 @@ http://icl.cs.utk.edu/PAPI/
 
 
 
-Installation
-================================================================================
+## Installation
+
 pbdPAPI requires R version 2.14.0 or higher.  It also requires the PAPI library,
 but a distribution of PAPI v 5.3.0 is bundled with the package for those who
 do not already have a system installation available.  For configuration options,
@@ -30,8 +30,8 @@ http://icl.cs.utk.edu/papi/custom/index.html?lid=62&slid=96
 
 
 
-Notes
-================================================================================
+## Notes
+
 Those with Intel Sandy Bridge and/or Intel Ivy Bridge architecutres should be 
 aware that flops counts are unreliable on these platforms.  This is a problem 
 with the hardware returning incorrect values, not with PAPI or pbdPAPI.  For 
@@ -44,8 +44,8 @@ see:  http://icl.cs.utk.edu/projects/papi/wiki/Threads
 
 
 
-Software license and disclaimer
-================================================================================
+## Software license and disclaimer
+
 This package has no official affiliation with the PAPI project.
 
 This software is licensed under the permissive 2-clause BSD license. You can 
