@@ -62,13 +62,14 @@ SEXP papi_event_counter_off(SEXP which)
   int retval, unpt;
   int i;
   const int num = NUM_EVENTS;
-  long_long values[NUM_EVENTS];
+  long_long *values;//[NUM_EVENTS];
   PAPI_event_info_t ev;
   int ret;
 
   SEXP RET, RET_NAMES;
   SEXP *svals;
 
+  values=malloc(sizeof(*values)*num);
   svals=malloc(sizeof(*svals)*num);
 
   retval = PAPI_stop_counters(values, num);
@@ -88,7 +89,14 @@ SEXP papi_event_counter_off(SEXP which)
     for (i=0; i<num; i++)
     {
       ret=PAPI_get_event_info(INTEGER(which)[i],&ev);
-      /* TODO: find out what this returns */
+      if(ret != PAPI_OK)
+      {
+        PROTECT(RET = allocVector(INTSXP, 1));
+        INTEGER(RET)[0] = PBD_ERROR;
+
+        unpt = 2;
+        goto cleanup;
+      }
       SETLISTVAR(svals[i],i,ev.long_descr);
     }
 
@@ -97,10 +105,12 @@ SEXP papi_event_counter_off(SEXP which)
     unpt = num + 2;
   }
 
-
+cleanup:
   UNPROTECT(unpt);
 
   free(svals);
+  free(values);
+
 
   return RET;
 }

@@ -41,7 +41,7 @@ SEXP R_papi_error(int retval)
         SET_STRING_ELT(RET, 0, mkChar("internal papi error: please report to PAPI developers"));
         break;
       case PAPI_ENOEVNT :
-        SET_STRING_ELT(RET, 0, mkChar("hardware event does not exist"));
+        SET_STRING_ELT(RET, 0, mkChar("hardware event does not exist or library does not support this feature"));
         break;
       case PAPI_ECNFLCT :
         SET_STRING_ELT(RET, 0, mkChar("hardware event exists, but cannot be counted due to counter resource limitations"));

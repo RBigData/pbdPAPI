@@ -4,9 +4,12 @@
 In this section, we will describe the various ways that one can install the 
 \thispackage package.
 
-Please be aware that \thispackage is not supported on Windows or Mac at this 
-time.  This is because the \PAPI library itself does not support these 
-platforms.  If we become able to support more operating systems, we will do so 
+Please be aware that the full features of \thispackage are not supported on
+Windows or Mac at this time.  This is because the \PAPI library itself does
+not support these platforms.  Until \PAPI officially supports these platforms,
+an alternative option is provided for some Intel CPUs in \thispackage through
+Intel Performance Counter Monitor \href{http://www.intel.com/software/pcm}.
+If we become able to support more platforms, we will do so 
 immediately.
 
 For a complete list of supported platforms for PAPI, see 
@@ -103,3 +106,30 @@ install_github(username="wrathematics", repo="pbdPAPI",
     args="--configure-args='--enable-system-papi 
           --with-papi-home=location/of/PAPI/install'")
 \end{lstlisting}
+
+\subsection{Installing with Intel PCM}
+
+If you are using an Intel CPU on a platform unsupported by \PAPI, you may try using 
+\IPCM with \thispackage.  The \IPCM software requires additional drivers to function.
+On Linux and FreeBSD, these drivers are typically already available in standard kernels.
+Required drivers for OS X and Windows are built automatically when this package is built.
+Please also note that root or administrator privileges may be required for building,
+installing, and running \thispackage with \IPCM enabled.
+
+\begin{Command}
+R CMD INSTALL pbdPAPI_0.1-0.tar.gz \ 
+    --configure-args=--enable-ipcm \ 
+    --no-test-load
+\end{Command}
+and using the \pkg{devtools} package:
+\begin{lstlisting}
+library(devtools)
+install_github(username="wrathematics", repo="pbdPAPI", 
+    args="--configure-args=--enable-ipcm")
+\end{lstlisting}
+
+Running \thispackage may require setting the LD\_LIBRARY\_PATH environment variable to
+include the path where the \IPCM library has been installed.
+\begin{Command}
+	export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/lib/R/site-library/pbdPAPI/libs
+\end{Command}
