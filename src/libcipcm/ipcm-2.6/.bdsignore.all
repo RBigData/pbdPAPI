@@ -1,0 +1,10 @@
+Makefile
+license.txt
+Doxyfile
+TODO
+*\.txt
+*\.pdf
+*\.docx
+*\.rtf
+*\.vcproj
+*\.xcodeproj

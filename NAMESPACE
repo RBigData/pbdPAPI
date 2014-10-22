@@ -3,5 +3,6 @@ useDynLib("pbdPAPI")
 ### All functions
 exportPattern("^system\\.[[:alpha:]]+")
 
-export(papi.start, papi.stop, papi.avail, hw.info)
+export(papi.start, papi.stop, hw.info,
+  papi.avail, ipcm.avail, counter.avail, print.PAPI, print.IPCM, ipcm.cache)
 

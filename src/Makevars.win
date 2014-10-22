@@ -1,0 +1,48 @@
+#######################################################
+
+PAPI_VERSION=5.3.2
+papi_home = ./papi-${PAPI_VERSION}/src/
+libcipcm_home = ./libcipcm/
+MY_CFLAGS = ${CPICFLAGS}
+base_dir := `pwd`
+
+BUILD_PAPI = no
+
+PKG_CFLAGS = -I${papi_home}
+PKG_LIBS = ./build/libs${R_ARCH}/libcipcm.dll ./build/libs${R_ARCH}/libpcm.dll
+# ifeq "${R_ARCH}" "/i386"
+#   PKG_LIBS = ./build/libs${R_ARCH}/libcipcm.dll ./build/libs${R_ARCH}/libpcm.dll
+# endif
+# ifeq "${R_ARCH}" "/x64"
+#   PKG_LIBS = ./build/libs${R_ARCH}/libcipcm.dll
+# endif
+OBEXTRA = instipcm 
+
+OBJECTS = avail.o \
+          check.o \
+          epc.o \
+          events.o \
+          flips.o \
+          flops.o \
+          hwinfo.o \
+          init.o \
+          papi_error.o \
+          setret.o \
+          utilization.o
+
+all: $(SHLIB)
+
+$(SHLIB): $(OBJECTS)
+$(OBJECTS): $(OBEXTRA)
+
+mkipcm:
+	( cd ${libcipcm_home}; make install PREFIX=${base_dir} SOEX=dll PASS_DEFS="-include ipcm_windef.h" PAPI_SRC=${papi_home} CC="${CC}" CXX="${CXX}")
+
+instipcm: mkipcm
+	mkdir -p ../inst/libs${R_ARCH} build/libs${R_ARCH}
+	cp ${libcipcm_home}/inst/* ../inst/libs${R_ARCH}/
+	cp ${libcipcm_home}/inst/* build/libs${R_ARCH}/
+
+clean:
+	rm -rf ../inst/libs
+	rm -rf ./build

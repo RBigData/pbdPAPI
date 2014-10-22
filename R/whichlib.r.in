@@ -1,0 +1,7 @@
+whichlib <- function()
+{
+  if ("@BUILD_IPCM@" == "yes")
+    return("IPCM")
+  else
+    return("PAPI")
+}
