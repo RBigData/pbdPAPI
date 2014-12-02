@@ -1,6 +1,6 @@
 hw.info.internal <- function()
 {
-  info <- .Call("papi_hwinfo", PACKAGE="pbdPAPI")
+  info <- .Call(papi_hwinfo)
   
   val <- info[[2L]]
   attr(x=val, which="names") <- info[[1L]]
@@ -10,13 +10,13 @@ hw.info.internal <- function()
 
 cpuinfo <- function()
 {
-  .Call("R_papi_cpuinfo", PACKAGE="pbdPAPI")
+  .Call(R_papi_cpuinfo)
 }
 
 hw.info <- function()
 {
   intinfo <- hw.info.internal()
-  info <- .Call("papi_hwname", PACKAGE="pbdPAPI")
+  info <- .Call(papi_hwname)
   
   attr(x=info[[2L]], which="names") <- info[[1L]]
   

@@ -14,7 +14,7 @@ papi.init <- function()
 ### Internal checker for number of hw counters
 papi.check.ncounters <- function(n=1)
 {
-  ret <- .Call("papi_check_counters", as.integer(n), PACKAGE="pbdPAPI")
+  ret <- .Call(papi_check_counters, as.integer(n))
   
   if (ret == -2L)
     stop("No hardware counters available")
@@ -29,7 +29,7 @@ papi.check.ncounters <- function(n=1)
 ### User-facing function that gives number of hw counters
 system.ncounters <- function()
 {
-  ret <- .Call("papi_check_counters", 0L, PACKAGE="pbdPAPI")
+  ret <- .Call(papi_check_counters, 0L)
   
   if (ret == -2L)
     return( 0L )
