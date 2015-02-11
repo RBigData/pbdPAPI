@@ -8,7 +8,10 @@ useDynLib("pbdPAPI",
 
 ### All functions
 exportPattern("^system\\.[[:alpha:]]+")
+exportPattern("^papi\\.[[:alpha:]]+")
 
 export(papi.start, papi.stop, hw.info,
-  papi.avail, ipcm.avail, counter.avail, print.PAPI, print.IPCM, ipcm.cache)
+  papi.avail, ipcm.avail, counter.avail, 
+  print.PAPI, print.IPCM, ipcm.cache)
 
+export(plot.papi_cache)
