@@ -65,7 +65,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   }
   else
     level <- NULL
-
+  
   if (type == "access" && is.ratio)
   {
     warning("Duplicate counters requested")
@@ -75,7 +75,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   }
   
   events <- cache.opts(type=type, which=events, level=level)
-
+  
   papi.avail.lookup(events=events, shorthand=shorthand)
   
   ret <- system.event(expr=expr, events=events, gcFirst=gcFirst, burnin=burnin)
@@ -86,7 +86,12 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
     names(ret) <- paste("L", level, " cache ", type, " ratio", sep="")
   }
   
+  
+  class(ret) <- "papi_cache"
+  attr(ret, "call") <- as.character(match.call()[2])
+  
+  
   return( ret )
 }
 
-
+papi.cache <- system.cache

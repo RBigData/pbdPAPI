@@ -6,6 +6,7 @@
   Measuring cache misses, hits, accesses, and reads.
 }
 \usage{
+  papi.cache(expr, type="miss", events="total", gcFirst=TRUE, burnin=TRUE)
   system.cache(expr, type="miss", events="total", gcFirst=TRUE, burnin=TRUE)
 }
 \arguments{
