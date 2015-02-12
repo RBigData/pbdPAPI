@@ -14,4 +14,4 @@ export(papi.start, papi.stop, hw.info,
   papi.avail, ipcm.avail, counter.avail, 
   print.PAPI, print.IPCM, ipcm.cache)
 
-export(plot.papi_cache)
+export(plot.papi_cache, print.papi_output)

@@ -89,6 +89,10 @@ system.event <- function(expr, events, gcFirst=TRUE, burnin=TRUE)
       ret[[i]] <- max(ret[[i]] - b[[i]], 0)
   }
   
+  # Store expression call for plotting
+  attr(ret, "call") <- as.character(match.call()[2])
+  class(ret) <- "papi_output"
+  
   return(ret)
 }
 
