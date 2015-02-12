@@ -87,7 +87,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   }
   
   
-  class(ret) <- c(class(x), "papi_cache")
+  class(ret) <- c(class(ret), "papi_cache")
   
   return( ret )
 }
