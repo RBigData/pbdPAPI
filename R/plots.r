@@ -1,12 +1,28 @@
+cache_lookup_type_levels <- function(x)
+{
+  if (any(class(x) == "papi_cache"))
+  {
+    type <- sub(names(x)[1], pattern=".*cache ", replacement="")
+    type <- gsub(type, pattern="(^|[[:space:]])([[:alpha:]])", replacement="\\1\\U\\2", perl=TRUE)
+    levels <- gsub(names(x), pattern="(Level | cache misses)", replacement="")
+  }
+  
+  ## ...
+  return(list(type=type, levels=levels))
+}
+
+
+
 plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE)
 {
-  type <- sub(names(x)[1], pattern=".*cache ", replacement="")
-  type <- gsub(type, pattern="(^|[[:space:]])([[:alpha:]])", replacement="\\1\\U\\2", perl=TRUE)
-  levels <- gsub(names(x), pattern="(Level | cache misses)", replacement="")
+  tmp <- cache_lookup_type_levels(x=x)
+  type <- tmp$type
+  levels <- tmp$levels
   nlevels <- length(levels)
   
   l <- list(x, ...)
-  if (length(unique(sapply(l, class))) > 1)
+  classes <- unique(as.vector(sapply(l, class)))
+  if (length(classes) > 2)
     stop("You must pass in objects of the same type")
   
   len <- length(l)
@@ -56,6 +72,7 @@ plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE)
   
   return(g)
 }
+
 
 
 ### Examples
