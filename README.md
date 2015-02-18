@@ -69,8 +69,6 @@ theoretical <- 6*m*n^2 + 20*n^3 + 2*m*n^2 + 2*m*n + 1
 mflops <- report$mflops
 
 data.frame(m=m, n=n, measured=count, theoretical=theoretical, difference=count-theoretical, "pct.error"=(1.0 - (theoretical/count))*100, mflops=mflops)
-
-# Loading required package: ggplot2
 #       m  n  measured theoretical difference pct.error   mflops
 # 1 10000 50 218789742   203500001   15289741  6.988326 1107.302
 ```
