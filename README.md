@@ -44,6 +44,50 @@ see:  http://icl.cs.utk.edu/projects/papi/wiki/Threads
 
 
 
+## Usage
+
+Like its parent library PAPI, the pbdPAPI package has 2 distinct
+interfaces, a low-level and a high-level.
+
+
+
+```r
+### ~4MiB
+m <- 10000
+n <- 50
+
+x <- matrix(rnorm(m*n), m, n)
+
+### Centering requires 2mn+1 operations
+### SVD requires 6mn^2 + 20n^3 operations
+### x %*% svd$v requires 2*m*n^2 operations
+op <- expression(prcomp(x, center=TRUE, scale.=FALSE))
+
+report <- system.flops(eval(op))
+count <- report$flpops
+theoretical <- 6*m*n^2 + 20*n^3 + 2*m*n^2 + 2*m*n + 1
+mflops <- report$mflops
+
+data.frame(m=m, n=n, measured=count, theoretical=theoretical, difference=count-theoretical, "pct.error"=(1.0 - (theoretical/count))*100, mflops=mflops)
+
+# Loading required package: ggplot2
+#       m  n  measured theoretical difference pct.error   mflops
+# 1 10000 50 218789742   203500001   15289741  6.988326 1107.302
+```
+
+The package also has some utilities for basic plotting:
+
+```r
+x <- system.cache(runif(1e4))
+y <- system.cache(runif(2e4))
+
+plot(x,y)
+```
+
+![Cache Misses](./cache_misses.png)
+
+
+
 ## Software license and disclaimer
 
 This package has no official affiliation with the PAPI project.
