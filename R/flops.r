@@ -38,5 +38,7 @@ system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
       ret[[i]] <- max(ret[[i]] - b[[i]], 0)
   }
   
+  class(ret) <- c(class(x), "papi_flops")
+  
   return( ret )
 }
