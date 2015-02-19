@@ -60,3 +60,55 @@ print.cachebench <- function(x)
   print(x$summarystats)
 }
 
+
+
+cachemelt <- function(df)
+{
+  len <- ncol(df) - 1
+  value <- sapply(sapply(1:len, function(i) df[, i]), c)
+  nm <- names(df)
+  variable <- as.character(sapply(sapply(1:len, function(i) rep(nm[i], nrow(df))), c))
+  Test <- rep(df$Test, len)
+  
+  data.frame(Test=Test, variable=variable, value=value)
+}
+
+
+
+plot.cachebench <- function(x, levels=1:3, axis.x.angle=0)
+{
+  tmp <- x
+  tmp$summarystats <- NULL
+  tmp$type <- NULL
+  
+  nm <- names(tmp)
+  df <- do.call(rbind, lapply(1:length(tmp), function(i) data.frame(tmp[[i]], nm[i])))
+  df <- df[, c(levels, 4)]
+  
+  colnames(df)[ncol(df)] <- "Test"
+  colnames(df) <- gsub(colnames(df), pattern=".cache.misses", replacement="", fixed=TRUE)
+  
+  df <- cachemelt(df)
+  
+  g1 <- 
+    ggplot(df, aes(Test, value)) +
+      stat_boxplot(geom ='errorbar')+
+      geom_boxplot() + 
+      theme(axis.text.x=element_text(angle=axis.x.angle, hjust=1)) +
+      xlab("Test") + 
+      ylab("") + 
+      ggtitle(x$type) + 
+      facet_wrap(~ variable)
+  
+#  g2 <- g3 <- g1
+#  
+#  plots <- list(g1=g1, g2=g2, g3=g3)
+#  label <- x$type
+#  row_plotter(plots, levels, label, show.title=TRUE)
+  g1
+}
+
+### Example
+#x <- cachebench(A=rnorm(1e4), B=rnorm(1e5))
+#plot(x)
+
