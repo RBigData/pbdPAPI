@@ -1,5 +1,6 @@
 Release 0.2-1:
 	* Added cache and flops plotting utilities.
+	* Fixed bug that made it impossible to profile after errors sometimes.
 
 Release 0.2-0:
 	* Intel PCM backend for OSX and Windows support.

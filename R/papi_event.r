@@ -80,8 +80,11 @@ system.event <- function(expr, events, gcFirst=TRUE, burnin=TRUE)
   papi.avail.lookup(events=events, shorthand=FALSE)
   
   ret <- papi.start(events=events)
-  eval(expr)
+  err <- tryCatch(eval(expr), error=identity)
   ret <- papi.stop(events=events)
+  
+  if (inherits(err, "simpleError"))
+    stop(err)
   
   if (burnin)
   {
