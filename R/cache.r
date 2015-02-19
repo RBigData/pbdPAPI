@@ -86,9 +86,11 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
     names(ret) <- paste("L", level, " cache ", type, " ratio", sep="")
   }
   
+  names(ret) <- gsub(names(ret), pattern="Level ", replacement="L")
+  
   # Store expression call for plotting
   attr(ret, "call") <- as.character(match.call()[2])
-  class(ret) <- c(class(x), "papi_cache")
+  class(ret) <- c(class(ret), "papi_cache")
   
   return( ret )
 }

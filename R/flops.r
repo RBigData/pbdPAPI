@@ -38,7 +38,9 @@ system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
       ret[[i]] <- max(ret[[i]] - b[[i]], 0)
   }
   
-  class(ret) <- c(class(x), "papi_flops")
+  # Store expression call for plotting
+  attr(ret, "call") <- as.character(match.call()[2])
+  class(ret) <- c("papi_output", "papi_flops")
   
   return( ret )
 }
