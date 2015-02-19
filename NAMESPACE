@@ -8,7 +8,7 @@ useDynLib("pbdPAPI",
 
 ### All functions
 exportPattern("^system\\.[[:alpha:]]+")
-exportPattern("^papi\\.[[:alpha:]]+")
+#exportPattern("^papi\\.[[:alpha:]]+")
 
 export(papi.start, papi.stop, hw.info,
   papi.avail, ipcm.avail, counter.avail, 
