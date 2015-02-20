@@ -84,6 +84,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   {
     ret <- ret[[1L]] / ret[[2L]]
     names(ret) <- paste("L", level, " cache ", type, " ratio", sep="")
+    class(ret) <- "papi_output"
   }
   
   names(ret) <- gsub(names(ret), pattern="Level ", replacement="L")
