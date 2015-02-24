@@ -24,8 +24,10 @@ cache_lookup_type_levels <- function(x)
 
 
 
-plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE)
+plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE, facet.by="opnames")
 {
+  facet.by <- match.arg(tolower(facet.by), c("opnames", "level"))
+  
   tmp <- cache_lookup_type_levels(x=x)
   type <- tmp$type
   levels <- tmp$levels
@@ -61,16 +63,42 @@ plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE)
     opnames <- as.vector(sapply(opnames, function(nm) rep(nm, nlevels)))
   }
   
-  opnames <- factor(opnames, levels=unique(opnames))
-  df <- cbind(df, opnames=opnames)
+  if (length(unique(opnames)) != len)
+    stop("operation names are not unique.")
   
-  g <- 
-  ggplot(data=df, aes(x=level, y=val)) + 
-    geom_bar(stat="identity") + 
-    xlab("Level") + 
+  opnames <- factor(opnames, levels=unique(opnames))
+  
+  df <- cbind(df, opnames=opnames)
+  mydf <<- df
+  
+  if (facet.by == "opnames")
+  {
+    xvar <- "level"
+    facetvar <- "opnames"
+    xlab <- "Cache Level"
+  }
+  else if (facet.by == "level")
+  {
+    xvar <- "opnames"
+    facetvar <- "level"
+    xlab <- "Operation"
+  }
+  
+  yvar <- "val"
+  
+  if (len > 1)
+    g <- ggplot(data=df, aes_string(x=xvar, y=yvar, fill="opnames"))
+  else
+    g <- ggplot(data=df, aes_string(x=xvar, y=yvar))
+  
+  g <- g + 
+    geom_bar(stat="identity") +
+    geom_text(data=df, aes(label=val, y=val), vjust=0) +
+    theme_bw() +
+    xlab(xlab) +
     ylab(paste("Cache", type))
   
-  g <- g + facet_wrap(~ opnames)
+  g <- g + facet_wrap(as.formula(paste("~", facetvar)))
   
   if (!show.opnames)
     g <- g + theme(strip.background=element_blank(),
@@ -82,6 +110,9 @@ plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE)
   return(g)
 }
 
+
+#plot(x, y)
+#plot(x, y, facet.by="level")
 
 
 ### Examples
