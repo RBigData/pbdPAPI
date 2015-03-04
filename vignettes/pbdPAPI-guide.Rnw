@@ -9,7 +9,7 @@
 
 \mytitle{Guide to the\\ \thispackage Package}
 \mysubtitle{Performance Analysis Tools for R}
-\myversion{0.1-0}
+\myversion{0.2-1}
 \myauthor{
 \centering
 Drew Schmidt \\
@@ -23,16 +23,6 @@ Boston, Massachusetts}
 %
 Wei-Chen Chen \\
 \textit{Department of Ecology and Evolutionary Biology \\
-University of Tennessee}
-\\[.4cm]
-%
-George Ostrouchov \\
-\textit{Computer Science and Mathematics Division, \\
-Oak Ridge National Laboratory}
-\\[.4cm]
-%
-Pragneshkumar Patel \\
-\textit{National Institute for Computational Sciences \\
 University of Tennessee}
 }
 
