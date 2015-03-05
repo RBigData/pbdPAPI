@@ -19,3 +19,5 @@ export(papi.start, papi.stop, hw.info,
 export(cachebench)
 
 export(plot.papi_cache, print.papi_output, plot.cachebench)
+
+S3method("[", papi_output)

@@ -13,3 +13,16 @@ print.papi_output <- function(x, digits=5)
   invisible()
 }
 
+
+"[.papi_output" <- function(x, i)
+{
+  class(x) <- NULL
+  ret <- x[i]
+  if (length(ret) > 0)
+    class(ret) <- "papi_output"
+  else
+    return(numeric(0))
+  
+  return(ret)
+}
+
