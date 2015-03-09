@@ -24,7 +24,7 @@ cache_lookup_type_levels <- function(x)
 
 
 
-plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE, facet.by="opnames")
+plot.papi_cache <- function(x, ..., title, opnames, color=FALSE, show.opnames=TRUE, facet.by="opnames")
 {
   facet.by <- match.arg(tolower(facet.by), c("opnames", "level"))
   
@@ -87,7 +87,12 @@ plot.papi_cache <- function(x, ..., title, opnames, show.opnames=TRUE, facet.by=
   yvar <- "val"
   
   if (len > 1)
-    g <- ggplot(data=df, aes_string(x=xvar, y=yvar, fill="opnames"))
+  {
+    if (color)
+      g <- ggplot(data=df, aes_string(x=xvar, y=yvar, fill="opnames"))
+    else
+      g <- ggplot(data=df, aes_string(x=xvar, y=yvar))
+  }
   else
     g <- ggplot(data=df, aes_string(x=xvar, y=yvar))
   
