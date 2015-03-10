@@ -37,11 +37,13 @@ papi.flops <- function(expr)
 #' with an empty expression.
 #' 
 #' @return 
-#' The return is a list consisting of: \tabular{ll}{ \code{real_time}
-#' \tab real time spent evaluating expression \cr \code{proc_time} \tab total
-#' process time spent evaluating expression \cr \code{flpops} \tab FLoating
-#' Point OPerationS (count) \cr \code{mflops} \tab Mflops (flpops per second)
-#' \cr }
+#' The return is a list consisting of: 
+#' \tabular{ll}{ 
+#'    \code{real_time} \tab real time spent evaluating expression \cr 
+#'    \code{proc_time} \tab total process time spent evaluating expression \cr 
+#'    \code{flpops} \tab FLoating Point OPerationS (count) \cr 
+#'    \code{mflops} \tab Mflops (flpops per second) \cr 
+#' }
 #' 
 #' @keywords programming
 #' 

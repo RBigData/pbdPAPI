@@ -42,7 +42,9 @@ papi.event.init.light <- function(which)
 #' miss it).  For example, if you want to profile level 1 and level 2 data
 #' cache misses, you would set
 #' 
-#' \tabular{c}{ \code{events <- c("PAPI_L1_DCM", "PAPI_L2_DCM")} }
+#' \tabular{c}{ 
+#'    \code{events <- c("PAPI_L1_DCM", "PAPI_L2_DCM")} 
+#' }
 #' 
 #' You would then enclose the code you wish to profile with a call to
 #' \code{papi.start(events)}, call that code, then call

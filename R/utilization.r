@@ -40,11 +40,14 @@ papi.utilization <- function(expr)
 #' logical; determines if the function should first be evaluated
 #' with an empty expression.
 #' 
-#' @return The return is a list consisting of: \tabular{ll}{ \code{real_time}
-#' \tab real time spent evaluating expression \cr \code{proc_time} \tab total
-#' process time spent evaluating expression \cr \code{ins} \tab Number of
-#' instructions. \cr \code{ipc} \tab Instructions per cycle. \cr
-#' \code{utilization} \tab CPU utilization (proportion) \cr }
+#' @return The return is a list consisting of: 
+#' \tabular{ll}{ 
+#' \code{real_time} \tab real time spent evaluating expression \cr 
+#' \code{proc_time} \tab total process time spent evaluating expression \cr 
+#' \code{ins} \tab Number of instructions. \cr 
+#' \code{ipc} \tab Instructions per cycle. \cr
+#' \code{utilization} \tab CPU utilization (proportion) \cr 
+#' }
 #' 
 #' @keywords programming
 #' 

@@ -15,11 +15,13 @@ before profiling.}
 with an empty expression.}
 }
 \value{
-The return is a list consisting of: \tabular{ll}{ \code{real_time}
-\tab real time spent evaluating expression \cr \code{proc_time} \tab total
-process time spent evaluating expression \cr \code{flpops} \tab FLoating
-Point OPerationS (count) \cr \code{mflops} \tab Mflops (flpops per second)
-\cr }
+The return is a list consisting of:
+\tabular{ll}{
+   \code{real_time} \tab real time spent evaluating expression \cr
+   \code{proc_time} \tab total process time spent evaluating expression \cr
+   \code{flpops} \tab FLoating Point OPerationS (count) \cr
+   \code{mflops} \tab Mflops (flpops per second) \cr
+}
 }
 \description{
 Measuring floating point operations.

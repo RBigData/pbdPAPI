@@ -10,8 +10,10 @@ for gathering information from hardware performance counters.  PAPI measures
 events like cache misses, flops, etc.
 }
 \details{
-\tabular{ll}{ Package: \tab pbdPAPI\cr Type: \tab Package\cr License: \tab
-BSD 2-Clause\cr }
+\tabular{ll}{
+   Package: \tab pbdPAPI\cr
+   Type: \tab Package\cr License: \tab BSD 2-Clause\cr
+}
 }
 \author{
 Drew Schmidt \email{schmidt AT math.utk.edu}, Christian Hckendorf,

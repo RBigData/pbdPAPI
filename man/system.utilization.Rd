@@ -15,11 +15,14 @@ before profiling.}
 with an empty expression.}
 }
 \value{
-The return is a list consisting of: \tabular{ll}{ \code{real_time}
-\tab real time spent evaluating expression \cr \code{proc_time} \tab total
-process time spent evaluating expression \cr \code{ins} \tab Number of
-instructions. \cr \code{ipc} \tab Instructions per cycle. \cr
-\code{utilization} \tab CPU utilization (proportion) \cr }
+The return is a list consisting of:
+\tabular{ll}{
+\code{real_time} \tab real time spent evaluating expression \cr
+\code{proc_time} \tab total process time spent evaluating expression \cr
+\code{ins} \tab Number of instructions. \cr
+\code{ipc} \tab Instructions per cycle. \cr
+\code{utilization} \tab CPU utilization (proportion) \cr
+}
 }
 \description{
 CPU Utilization.

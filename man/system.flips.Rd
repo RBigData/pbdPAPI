@@ -15,11 +15,13 @@ before profiling.}
 with an empty expression.}
 }
 \value{
-The return is a list consisting of: \tabular{ll}{ \code{real_time}
-\tab real time spent evaluating expression \cr \code{proc_time} \tab total
-process time spent evaluating expression \cr \code{flpins} \tab FLoating
-Point INStructions (count) \cr \code{mflips} \tab Mflips (flpins per second)
-\cr }
+The return is a list consisting of:
+\tabular{ll}{
+   \code{real_time} \tab real time spent evaluating expression \cr
+   \code{proc_time} \tab total process time spent evaluating expression \cr
+   \code{flpins} \tab FLoating Point INStructions (count) \cr
+   \code{mflips} \tab Mflips (flpins per second) \cr
+}
 }
 \description{
 Measuring floating point instructions.

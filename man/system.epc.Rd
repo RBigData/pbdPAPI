@@ -17,12 +17,14 @@ before profiling.}
 with an empty expression.}
 }
 \value{
-The return is a list consisting of: \tabular{ll}{ \code{real_time}
-\tab real time spent evaluating expression \cr \code{proc_time} \tab total
-process time spent evaluating expression \cr \code{ref} \tab Incremental
-reference clock cycles since last call. \cr \code{core} \tab Incremental
-clock cycles since last call. \cr \code{evt} \tab Total events since first
-call. \cr \code{epc} \tab Incremental events per cycle since last call. \cr
+The return is a list consisting of:
+\tabular{ll}{
+   \code{real_time} \tab real time spent evaluating expression \cr
+   \code{proc_time} \tab total process time spent evaluating expression \cr
+   \code{ref} \tab Incremental reference clock cycles since last call. \cr
+   \code{core} \tab Incremental clock cycles since last call. \cr
+   \code{evt} \tab Total events since first call. \cr
+   \code{epc} \tab Incremental events per cycle since last call. \cr
 }
 }
 \description{
