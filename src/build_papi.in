@@ -1,13 +1,10 @@
-### Configure PAPI.
 MY_PREFIX_DIR=`pwd | sed -e "s#papi-.*\/src#build#g"`
-#CFLAGS=MY_CFLAGS
 CC=@CC@
 CC="${CC} MY_CFLAGS"
-./configure \
-  --prefix=${MY_PREFIX_DIR} \
-  CC="${CC}"
+CC="${CC}" ./configure --prefix=${MY_PREFIX_DIR}
 
-### Make and install.
+#make static
+#make install-lib
 make
 make install
 make clean

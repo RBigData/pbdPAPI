@@ -1,7 +1,5 @@
 #! /bin/sh
 
-BASE=`pwd`
-
 rm -rf ./chm
 rm -rf ./config.*
 rm -rf ./autom4te.cache
@@ -22,7 +20,5 @@ rm -rf ./man/*.pdf
 rm -rf ./src/build
 rm -rf ./inst/libs
 
-cd ./src/papi-5.3.0/src/ && make clean
-rm -rf ctests/mpifirst
-
-cd ${BASE}/src/libcipcm && make distclean
+cd ./src/papi-5.4.1/src/ && make clean
+cd `pwd`/src/libcipcm && make distclean

@@ -49,7 +49,7 @@ else
     OBEXTRA="mkpapi"
   else
     PAPI_CFLAGS="-I${PAPI_HOME}/include"
-    PAPI_LIBS="${PAPI_HOME}/libpapi.a"
+    PAPI_LIBS="${PAPI_HOME}/lib/libpapi.a ${PAPI_HOME}/lib/libpfm.a"
     OBEXTRA=""
   fi
 fi
