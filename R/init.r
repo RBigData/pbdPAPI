@@ -24,16 +24,3 @@ papi.check.ncounters <- function(n=1)
     return( ret )
 }
 
-
-
-### User-facing function that gives number of hw counters
-system.ncounters <- function()
-{
-  ret <- .Call(papi_check_counters, 0L)
-  
-  if (ret == -2L)
-    return( 0L )
-  else
-    return( ret )
-}
-

@@ -24,6 +24,29 @@ cache_lookup_type_levels <- function(x)
 
 
 
+#' Plots PAPI objects
+#' 
+#' @param x
+#' PAPI object.
+#' @param ...
+#' Additional objects.
+#' @param title
+#' Optional argument for adding a title to the plot.
+#' @param opnames
+#' An optional argument to specify different names for the 
+#' expressions/operations used to generate the profiler data.
+#' @param color
+#' Logical; indicates whether groups should be colored differently
+#' in the case of plotting multiple objects
+#' @param show.opnames
+#' Logical; indicates whether or not expression/operation names should be
+#' shown.
+#' @param facet.by
+#' Choice to facet cache plots by the different expressions/operations
+#' (\code{facet.by="opnames"}), or by the cache level (\code{facet.by="level"}).
+#' 
+#' @rdname plot
+#' @export
 plot.papi_cache <- function(x, ..., title, opnames, color=FALSE, show.opnames=TRUE, facet.by="opnames")
 {
   facet.by <- match.arg(tolower(facet.by), c("opnames", "level"))

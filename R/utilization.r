@@ -16,6 +16,47 @@ papi.utilization <- function(expr)
 }
 
 
+
+
+#' utilization
+#' 
+#' CPU Utilization.
+#' 
+#' We define processor utilization as:\cr
+#' 
+#' \eqn{utilization = \frac{ins}{clockrate\ *\ real\_time\ *\ ncpus}} \cr
+#' 
+#' where \code{ins} is the number of instructions measured by PAPI,
+#' \code{clockrate} is the clock frequency of the processor in Hz,
+#' \code{real_time} is the wall clock time, and \code{ncpus} is the number of
+#' "cores" (physical+logical) detected by PAPI.
+#' 
+#' @param expr 
+#' A valid R expression to be profiled.
+#' @param gcFirst 
+#' logical; determines if garbage collection should be called
+#' before profiling.
+#' @param burnin 
+#' logical; determines if the function should first be evaluated
+#' with an empty expression.
+#' 
+#' @return The return is a list consisting of: \tabular{ll}{ \code{real_time}
+#' \tab real time spent evaluating expression \cr \code{proc_time} \tab total
+#' process time spent evaluating expression \cr \code{ins} \tab Number of
+#' instructions. \cr \code{ipc} \tab Instructions per cycle. \cr
+#' \code{utilization} \tab CPU utilization (proportion) \cr }
+#' 
+#' @keywords programming
+#' 
+#' @examples
+#' 
+#' \dontrun{
+#' library(pbdPAPI)
+#' 
+#' system.flops(1+1)
+#' }
+#' 
+#' @export
 system.utilization <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
   if (burnin)

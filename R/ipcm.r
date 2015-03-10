@@ -23,6 +23,44 @@ ipcm.mid.events <- function(expr, events, gcFirst, burnin)
   return( ret )
 }
 
+
+
+#' IPCM Cache
+#' 
+#' Measuring cache misses and hits
+#' 
+#' This function measures the evaluation of the provided expression, expr, for
+#' different classes of cache events additionally restricted to misses or hits.
+#' The additional arguments, gcFirst and burnin, can be toggled to better
+#' simulate the target context.
+#' 
+#' @param expr 
+#' A valid R expression to be profiled.
+#' @param type 
+#' The type of cache event to profile; options are "miss", "hit",
+#' and "all".
+#' @param level 
+#' The cache level to profile; options are "2" and "3".
+#' @param gcFirst logical; determines if garbage collection should be called
+#' before profiling.
+#' @param burnin 
+#' logical; determines if the function should first be evaluated
+#' with an empty expression.
+#' 
+#' @return 
+#' The results of the requested PAPI events are returned, in a named
+#' list, with values stored in double precision.
+#' 
+#' @keywords programming
+#' 
+#' @examples
+#' \dontrun{
+#' library(pbdPAPI)
+#' 
+#' ipcm.cache(1+1, type="miss", level="2")
+#' }
+#' 
+#' @export
 ipcm.cache <- function(expr, type="all", level=NULL, gcFirst=TRUE, burnin=TRUE)
 {
   ipcm_events <- ipcm.cache.opts(type, level)

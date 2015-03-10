@@ -16,6 +16,43 @@ papi.flops <- function(expr)
 }
 
 
+
+
+#' flops
+#' 
+#' Measuring floating point operations.
+#' 
+#' This function measures the evaluation of the provided expression, expr, for
+#' real time, process time, number of floating point operations, and floating
+#' point operation rate. The additional arguments, gcFirst and burnin, can be
+#' toggled to better simulate the target context.
+#' 
+#' @param expr 
+#' A valid R expression to be profiled.
+#' @param gcFirst 
+#' logical; determines if garbage collection should be called
+#' before profiling.
+#' @param burnin 
+#' logical; determines if the function should first be evaluated
+#' with an empty expression.
+#' 
+#' @return 
+#' The return is a list consisting of: \tabular{ll}{ \code{real_time}
+#' \tab real time spent evaluating expression \cr \code{proc_time} \tab total
+#' process time spent evaluating expression \cr \code{flpops} \tab FLoating
+#' Point OPerationS (count) \cr \code{mflops} \tab Mflops (flpops per second)
+#' \cr }
+#' 
+#' @keywords programming
+#' 
+#' @examples
+#' \dontrun{
+#' library(pbdPAPI)
+#' 
+#' system.flops(1+1)
+#' }
+#' 
+#' @export
 system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
 {
   if (burnin)
