@@ -4,33 +4,15 @@ title_case <- function(x) gsub(x, pattern="(^|[[:space:]])([[:alpha:]])", replac
 #' Prints PAPI objects
 #' 
 #' @param x
-#' PAPI object.
+#' A papi_output object to print.
 #' @param ...
-#' ignored
-#' 
-#' @rdname print
-#' @export
-print.PAPI <- function(x, ...)
-{
-  attr(x=x, which="lib") <- NULL
-  print(as.data.frame(x))
-  invisible()
-}
-
-
-
-#' @rdname print
-#' @export
-print.IPCM <- print.PAPI
-
-
-
+#' Extra arguments (ignored).
 #' @param digits
 #' Number of digits to print.
 #' 
 #' @rdname print
 #' @export
-print.papi_output <- function(x, digits=5)
+print.papi_output <- function(x, ..., digits=5)
 {
   maxlen <- max(sapply(names(x), nchar))
   names <- gsub(names(x), pattern="_", replacement=" ")
@@ -50,6 +32,7 @@ print.papi_output <- function(x, digits=5)
 #' @param i
 #' Index.
 #' 
+#' rdname subset
 #' @export
 "[.papi_output" <- function(x, i)
 {
