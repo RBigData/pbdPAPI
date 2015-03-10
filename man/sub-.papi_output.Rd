@@ -8,7 +8,9 @@
 \arguments{
 \item{x}{PAPI object.}
 
-\item{i}{Index.}
+\item{i}{Index.
+
+rdname subset}
 }
 \description{
 Subsets PAPI outputs.

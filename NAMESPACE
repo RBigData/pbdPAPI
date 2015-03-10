@@ -2,10 +2,7 @@
 
 S3method("[",papi_output)
 S3method(plot,papi_cache)
-S3method(print,IPCM)
-S3method(print,PAPI)
 S3method(print,papi_output)
-export(counter.avail)
 export(hw.info)
 export(ipcm.avail)
 export(ipcm.cache)
