@@ -1,0 +1,30 @@
+# Process this file with autoconf to produce a configure script.
+# File: components/nvml/configure.in
+
+AC_INIT
+
+AC_ARG_WITH(nvml-dir,
+            [--with-nvml-dir=<path> Specify path to nvml library root directory],
+            [NVML_DIR=$withval
+	     CFLAGS="$CFLAGS -I$withval/include"
+             LDFLAGS="$LDFLAGS -L$withval/lib64 -Wl,-rpath,$withval/lib64" 
+             AC_CHECK_LIB([nvidia-ml],
+						  [nvmlInit],
+                          [],				          
+                          [AC_MSG_ERROR([libnvidia-ml.so not found])])],
+            [AC_MSG_ERROR([Component requires path to nvml library])])
+
+AC_ARG_WITH(cuda-dir, 
+			[--with-cuda-dir=<path> Specify path to cuda root directory], 
+			[ CUDA_DIR=$withval
+				LDFLAGS="$LDFLAGS -L$withval/lib64 -Wl,-rpath,$withval/lib64"
+				AC_CHECK_LIB( [cudart],
+					[cudaMalloc],
+					[],
+					[AC_MSG_ERROR([CUDA cudart library not found!])])],
+			[ AC_MSG_ERROR([Component requires path to cuda library.])])
+
+AC_CONFIG_FILES([Makefile.nvml])
+AC_SUBST(NVML_DIR)
+AC_SUBST(CUDA_DIR)
+AC_OUTPUT
