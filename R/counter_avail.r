@@ -17,7 +17,6 @@ papi.avail.internal <- function()
 
 
 ### Checks if event is available
-#' @export
 counter.avail <- function(events)
 {
   avail <- get(".__pbdPAPI_avail", envir=.__pbdPAPIEnv)
@@ -36,7 +35,6 @@ counter.avail <- function(events)
   l <- sapply(events, function(i) which(i == events.all))
   
   ret <- avail[l, 2L]
-#  attr(x=ret, which="lib") <- whichlib()
   
   return( ret )
 }
@@ -260,9 +258,10 @@ papi.avail.lookup <- function(events, shorthand=FALSE)
 #' @export
 papi.avail <- function(events)
 {
-  ret <- counter.avail(events=events)
-  if (attr(x=ret, which="lib") != "PAPI")
+  if (whichlib() != "PAPI")
     warning("you should not be using the PAPI interface for IPCM")
+  
+  ret <- counter.avail(events=events)
   
   return( ret )
 }
@@ -273,9 +272,10 @@ papi.avail <- function(events)
 #' @export
 ipcm.avail <- function(events)
 {
-  ret <- counter.avail(events=events)
-  if (attr(x=ret, which="lib") != "IPCM")
+  if (whichlib() != "IPCM")
     warning("you should not be using the IPCM interface for PAPI")
+  
+  ret <- counter.avail(events=events)
   
   return( ret )
 }
