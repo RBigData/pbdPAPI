@@ -1,3 +1,7 @@
+Release 0.2-2:
+	* Switched to inline comments (roxygen).
+	* Improved documentation significantly.
+
 Release 0.2-1:
 	* Added cache and flops plotting utilities.
 	* Fixed bug that made it impossible to profile after errors sometimes.
