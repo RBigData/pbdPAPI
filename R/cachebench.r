@@ -77,6 +77,11 @@ cachemelt <- function(df)
 
 plot.cachebench <- function(x, levels=1:3, axis.x.angle=0)
 {
+  ### To fool R CMD check
+  Test <- value <- NULL
+  rm(list=c("Test", "value"))
+  
+  
   tmp <- x
   tmp$summarystats <- NULL
   tmp$type <- NULL
