@@ -69,7 +69,6 @@ plot.papi_cache <- function(x, ..., title, opnames, color=FALSE, show.opnames=TR
   opnames <- factor(opnames, levels=unique(opnames))
   
   df <- cbind(df, opnames=opnames)
-  mydf <<- df
   
   if (facet.by == "opnames")
   {
@@ -82,6 +81,8 @@ plot.papi_cache <- function(x, ..., title, opnames, color=FALSE, show.opnames=TR
     xvar <- "opnames"
     facetvar <- "level"
     xlab <- "Operation"
+    
+    df$level <- paste("Level", df$level)
   }
   
   yvar <- "val"
