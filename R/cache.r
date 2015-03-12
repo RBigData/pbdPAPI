@@ -9,10 +9,12 @@ nmatches <- function(x, pattern)
 }
 
 
+
 is.match <- function(x, pattern)
 {
   return( nmatches(x=x, pattern=pattern) != 0 )
 }
+
 
 
 cache.opts <- function(type, which, level)
@@ -44,6 +46,45 @@ cache.opts <- function(type, which, level)
 
 
 
+#' Cache
+#' 
+#' Measuring cache misses, hits, accesses, and reads.
+#' 
+#' This function measures the evaluation of the provided expression, expr, for
+#' different classes of cache events additionally restricted to misses, hits,
+#' accesses, or reads. The additional arguments, gcFirst and burnin, can be
+#' toggled to better simulate the target context.
+#' 
+#' @param expr 
+#' A valid R expression to be profiled.
+#' @param type 
+#' The type of cache event to profile; options are "miss", "hit",
+#' "access", and "read".
+#' @param events 
+#' The class of cache events to profile; options are "total",
+#' "data", "instruction", "all", "l1.all", "l2.all", "l3.all", "l1.ratio",
+#' "l2.ratio", and "l3.ratio".
+#' @param gcFirst 
+#' logical; determines if garbage collection should be called
+#' before profiling.
+#' @param burnin 
+#' logical; determines if the function should first be evaluated
+#' with an empty expression.
+#' 
+#' @return 
+#' The results of the requested PAPI events are returned, in a named
+#' list, with values stored in double precision.
+#' 
+#' @keywords programming
+#' 
+#' @examples
+#' \dontrun{
+#' library(pbdPAPI)
+#' 
+#' system.cache(1+1, type="miss", events="l2.all")
+#' }
+#' 
+#' @export
 system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin=TRUE)
 {
   type <- match.arg(tolower(type), c("miss", "hit", "access", "read"))
@@ -65,7 +106,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   }
   else
     level <- NULL
-
+  
   if (type == "access" && is.ratio)
   {
     warning("Duplicate counters requested")
@@ -75,7 +116,7 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   }
   
   events <- cache.opts(type=type, which=events, level=level)
-
+  
   papi.avail.lookup(events=events, shorthand=shorthand)
   
   ret <- system.event(expr=expr, events=events, gcFirst=gcFirst, burnin=burnin)
@@ -84,9 +125,15 @@ system.cache <- function(expr, type="miss", events="total", gcFirst=TRUE, burnin
   {
     ret <- ret[[1L]] / ret[[2L]]
     names(ret) <- paste("L", level, " cache ", type, " ratio", sep="")
+    class(ret) <- "papi_output"
   }
+  
+  names(ret) <- gsub(names(ret), pattern="Level ", replacement="L")
+  
+  # Store expression call for plotting
+  attr(ret, "call") <- as.character(match.call()[2])
+  class(ret) <- c(class(ret), "papi_cache")
   
   return( ret )
 }
-
 

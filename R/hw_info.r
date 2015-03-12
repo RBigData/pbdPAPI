@@ -1,6 +1,6 @@
 hw.info.internal <- function()
 {
-  info <- .Call("papi_hwinfo", PACKAGE="pbdPAPI")
+  info <- .Call(papi_hwinfo)
   
   val <- info[[2L]]
   attr(x=val, which="names") <- info[[1L]]
@@ -10,13 +10,42 @@ hw.info.internal <- function()
 
 cpuinfo <- function()
 {
-  .Call("R_papi_cpuinfo", PACKAGE="pbdPAPI")
+  .Call(R_papi_cpuinfo)
 }
 
+
+
+#' Hardware Information
+#' 
+#' This function returns some basic hardware information.
+#' 
+#' If you are submitting a bug to the pbdPAPI developers, please include the
+#' output of \code{hw.info()}.  You may also be asked to submit the output of
+#' \code{pbdPAPI:::hw.info.internal()}.
+#' 
+#' 
+#' @return 
+#' The return is a list consisting of: 
+#' \tabular{ll}{ 
+#'    \code{vendor} \tab Hardware vendor. \cr 
+#'    \code{model} \tab CPU model. \cr 
+#'    \code{codename} \tab CPU codename. \cr 
+#'    \code{clockrate} \tab Clock rate in MHz. \cr 
+#'    \code{ncpus} \tab The number of "cores" (physical + logical) detected. 
+#' }
+#' 
+#' @examples
+#' \dontrun{
+#' library(pbdPAPI)
+#' 
+#' hw.info()
+#' }
+#' 
+#' @export
 hw.info <- function()
 {
   intinfo <- hw.info.internal()
-  info <- .Call("papi_hwname", PACKAGE="pbdPAPI")
+  info <- .Call(papi_hwname)
   
   attr(x=info[[2L]], which="names") <- info[[1L]]
   

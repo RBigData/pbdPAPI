@@ -1,0 +1,29 @@
+#!/bin/sh
+
+PAPI_VER="5.4.1"
+
+### Clean up the PAPI distribution that ships with pbdPAPI
+cd src/papi-${PAPI_VER}/
+
+rm -rf ChangeLog*
+rm -rf doc
+rm -rf man
+
+cd src
+rm -rf ctests
+rm -rf event_data
+rm -rf examples
+rm -rf ftests
+rm -rf Matlab
+rm -rf utils
+
+### so we don't spawn an infinite make loop
+mkdir ../doc
+mkdir ../man
+
+mkdir ctests
+mkdir event_data
+mkdir examples
+mkdir ftests
+mkdir Matlab
+mkdir utils

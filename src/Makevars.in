@@ -1,11 +1,14 @@
 #######################################################
 
-papi_home = ./papi-5.3.0/src/
+PAPI_VERSION=5.4.1
+papi_home = ./papi-${PAPI_VERSION}/src/
+libcipcm_home = ./libcipcm/
+base_dir := `pwd`
 MY_CFLAGS = ${CPICFLAGS}
 
 BUILD_PAPI = @BUILD_BUNDLED_PAPI@
 
-PKG_CFLAGS = @PAPI_CFLAGS@
+PKG_CFLAGS = @PAPI_CFLAGS@ -I${papi_home}
 PKG_LIBS = @PAPI_LIBS@
 OBEXTRA = @OBEXTRA@
 
@@ -24,9 +27,17 @@ OBJECTS = avail.o \
 all: $(SHLIB)
 
 
-$(SHLIB): $(OBEXTRA) $(OBJECTS)
+$(SHLIB): $(OBJECTS)
 $(OBJECTS): $(OBEXTRA)
 
+
+mkipcm:
+	( cd ${libcipcm_home}; make install SOEX=so PREFIX=${base_dir} PAPI_SRC=${papi_home} CC="${CC}" CXX="${CXX}" )
+
+instipcm: mkipcm
+	mkdir -p ../inst/libs build/libs
+	cp ${libcipcm_home}/inst/* ../inst/libs/
+	cp ${libcipcm_home}/inst/* build/libs/
 
 mkpapi: build_papi
 	@sed -i -e "s#MY_CFLAGS#${MY_CFLAGS}#g" build_papi

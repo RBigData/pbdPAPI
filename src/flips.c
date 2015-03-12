@@ -35,16 +35,16 @@ SEXP papi_flips_off()
   long long flpins;
   int retval;
   long_long values[NUM_EVENTS];
-  
+
   SEXP RET;
-  
-  
+
+
   retval = PAPI_flips(&real_time, &proc_time, &flpins, &mflips);
-  
+
   PAPI_stop_counters(values, NUM_EVENTS);
-  
+
   RET = R_papi_setret(retval, real_time, proc_time, flpins, "flpins", mflips, "mflips");
-  
+
   return RET;
 }
 

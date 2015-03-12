@@ -82,23 +82,23 @@ SEXP R_papi_cpuinfo()
   SEXP ret, retnames;
   PAPI_option_t opts;
   SEXP clockrate, ncpus;
-  
+
   PROTECT(clockrate = allocVector(INTSXP, 1));
   PROTECT(ncpus = allocVector(INTSXP, 1));
-  
+
   INT(clockrate) = PAPI_get_opt(PAPI_CLOCKRATE, &opts);
   INT(ncpus) = PAPI_get_opt(PAPI_MAX_CPUS, &opts);
-  
+
   PROTECT(ret = allocVector(VECSXP, 2));
   PROTECT(retnames = allocVector(STRSXP, 2));
   setAttrib(ret, R_NamesSymbol, retnames);
-  
+
   SET_VECTOR_ELT(ret, 0, clockrate);
   SET_VECTOR_ELT(ret, 1, ncpus);
-  
+
   SET_STRING_ELT(retnames, 0, mkChar("clockrate"));
   SET_STRING_ELT(retnames, 1, mkChar("ncpus"));
-  
+
   UNPROTECT(4);
   return ret;
 }

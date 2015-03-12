@@ -23,15 +23,15 @@ SEXP papi_flops_on()
   float ireal_time, iproc_time, imflops;
   long long iflpops;
   int retval;
-  
+
   SEXP RET;
   PROTECT(RET = allocVector(INTSXP, 1));
-  
+
   retval = PAPI_flops(&ireal_time, &iproc_time, &iflpops, &imflops);
-  
+
   if (retval != PAPI_OK)
     INTEGER(RET)[0] = PBD_ERROR;
-  
+
   UNPROTECT(1);
   return RET;
 }
@@ -43,16 +43,16 @@ SEXP papi_flops_off()
   long long flpops;
   int retval;
   long_long values[NUM_EVENTS];
-  
+
   SEXP RET;
-  
-  
+
+
   retval = PAPI_flops(&real_time, &proc_time, &flpops, &mflops);
-  
+
   PAPI_stop_counters(values, NUM_EVENTS);
-  
+
   RET = R_papi_setret(retval, real_time, proc_time, flpops, "flpops", mflops, "mflops");
-  
+
   return RET;
 }
 
