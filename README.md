@@ -1,4 +1,5 @@
-# pbdPAPI
+# pbdPAPI [![License](http://img.shields.io/badge/license-BSD%203--Clause-orange.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause)
+
 
 pbdPAPI is an R package which offers a set of R bindings for the Performance
 Application Programming Interface (PAPI).  PAPI is a high-level C library for 
