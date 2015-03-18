@@ -33,6 +33,16 @@ http://icl.cs.utk.edu/papi/custom/index.html?lid=62&slid=96
 
 ## Notes
 
+If your hardware is very old/new/esoteric, pbdPAPI may build, but be
+inable to do any profiling due to a lack of support from the PAPI library.
+If every value of `papi.avail()$avail` is `FALSE`, then this is likely
+the cause.  It could be that your platform does not support hardware
+counters of any kind, however.
+
+AVX instructions may not be monitored correctly (or at all), so profiling
+with `system.flops()` with, for example, OpenBLAS, may produce wildly
+low flops counts.
+
 Those with Intel Sandy Bridge and/or Intel Ivy Bridge architecutres should be 
 aware that flops counts are unreliable on these platforms.  This is a problem 
 with the hardware returning incorrect values, not with PAPI or pbdPAPI.  For 
