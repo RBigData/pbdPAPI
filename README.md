@@ -84,18 +84,6 @@ data.frame(m=m, n=n, measured=count, theoretical=theoretical, difference=count-t
 # 1 10000 50 218789742   203500001   15289741  6.988326 1107.302
 ```
 
-The package also has some utilities for basic plotting:
-
-```r
-x <- system.cache(runif(1e4))
-y <- system.cache(runif(2e4))
-
-plot(x,y)
-```
-
-![Cache Misses](./cache_misses.png)
-
-
 
 ## Software license and disclaimer
 
