@@ -1,36 +1,46 @@
 library(pbdPAPI)
 library(Rcpp)
 
-cppFunction("
-  SEXP bad(const int n)
-  {
-    int i, j;
-    Rcpp::NumericMatrix x(n, n);
-    
-    
-    for (i=0; i<n; i++)
-      for (j=0; j<n; j++)
-        x(i, j) = 1.;
-    
-    return x;
-  }
-")
+badcode <- "
+#include <Rcpp.h>
 
-cppFunction("
-  SEXP good(const int n)
-  {
-    int i, j;
-    Rcpp::NumericMatrix x(n, n);
-    
-    
+// [[Rcpp::export]]
+Rcpp::NumericMatrix bad(const int n)
+{
+  int i, j;
+  Rcpp::NumericMatrix x(n, n);
+  
+  
+  for (i=0; i<n; i++)
     for (j=0; j<n; j++)
-      for (i=0; i<n; i++)
-        x(i, j) = 1.;
-    
-    return x;
-  }
-")
+      x(i, j) = 1.;
+  
+  return x;
+}
+"
 
+goodcode <- "
+#include <Rcpp.h>
+
+// [[Rcpp::export]]
+Rcpp::NumericMatrix good(const int n)
+{
+  int i, j;
+  Rcpp::NumericMatrix x(n, n);
+  
+  
+  for (j=0; j<n; j++)
+    for (i=0; i<n; i++)
+      x(i, j) = 1.;
+  
+  return x;
+}
+"
+
+
+### Compile, link, load into R
+sourceCpp(code=badcode)
+sourceCpp(code=goodcode)
 
 
 n <- 10000L
