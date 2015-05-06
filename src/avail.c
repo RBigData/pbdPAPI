@@ -44,7 +44,7 @@ SEXP papi_event_avail(SEXP which)
       }
 
       /* TODO: find out what this returns */
-      papiret=PAPI_get_event_info(id,&ev);
+      PAPI_get_event_info(id,&ev);
 
       LOGICAL(val)[i]=ev.count>0;
       SET_STRING_ELT(name, i, mkChar(namep));
@@ -75,7 +75,7 @@ SEXP papi_event_avail(SEXP which)
 
     do
     {
-      papiret=PAPI_get_event_info(id,&ev);
+      PAPI_get_event_info(id,&ev);
 
       LOGICAL(val)[i]=ev.count>0;
       SET_STRING_ELT(name, i, mkChar(ev.symbol));
