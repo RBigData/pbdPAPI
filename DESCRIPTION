@@ -1,5 +1,5 @@
 Package: pbdPAPI
-Version: 0.2-2
+Version: 0.3-0
 Title: Programming with Big Data --- Interface to PAPI
 Description: A collection of tools for measuring performance counter
     data.  On modern 'x86' hardware, as programs are running, 
