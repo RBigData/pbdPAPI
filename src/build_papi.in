@@ -1,10 +1,10 @@
 MY_PREFIX_DIR=`pwd | sed -e "s#papi-.*\/src#build#g"`
 CC=@CC@
 CC="${CC} MY_CFLAGS"
-CC="${CC}" ./configure --prefix=${MY_PREFIX_DIR}
+CC="${CC}" ./configure --prefix=${MY_PREFIX_DIR} --with-shared-lib=no
 
-#make static
-#make install-lib
+# make static
+# make install-lib
 make
 make install
 make clean

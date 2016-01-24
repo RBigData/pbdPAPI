@@ -4,7 +4,8 @@ PAPI_VERSION=5.4.1
 papi_home = ./papi-${PAPI_VERSION}/src/
 libcipcm_home = ./libcipcm/
 base_dir := `pwd`
-MY_CFLAGS = ${CPICFLAGS}
+# MY_CFLAGS = ${CPICFLAGS}
+MY_CFLAGS = -fPIC
 
 BUILD_PAPI = @BUILD_BUNDLED_PAPI@
 
