@@ -1,2 +1,7 @@
 reconf
 repapi
+
+cover/build_cover.sh
+cover/cover.tex
+cover/*.png
+
