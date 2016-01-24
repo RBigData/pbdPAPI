@@ -4,7 +4,7 @@
 \alias{print.papi_output}
 \title{Prints PAPI objects}
 \usage{
-\method{print}{papi_output}(x, ..., digits = 5)
+print.papi_output(x, ..., digits = 5)
 }
 \arguments{
 \item{x}{A papi_output object to print.}
