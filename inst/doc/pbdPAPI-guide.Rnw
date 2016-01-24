@@ -9,11 +9,11 @@
 
 \mytitle{Guide to the\\ \thispackage Package}
 \mysubtitle{Performance Analysis Tools for R}
-\myversion{0.2-1}
+\myversion{0.2-2}
 \myauthor{
 \centering
 Drew Schmidt \\
-\textit{National Institute for Computational Sciences \\
+\textit{Business Analytics and Statistics \\
 University of Tennessee}
 \\[.4cm]
 Christian Heckendorf \\

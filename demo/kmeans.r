@@ -31,7 +31,8 @@ m3.cm <- system.cache( m.3 <- kmeans(X, Mu, iter.max = n.iter, nstart = 1,
 m4.cm <- system.cache( m.4 <- kmeans(X, Mu, iter.max = n.iter, nstart = 1,
                                      algorithm = "MacQueen") )
 
-plot(m1.cm, m2.cm, m3.cm, m4.cm,
-     opnames=c("Hartigan-Wong", "Lloyd", "Forgy", "MacQueen")) + 
-    ggtitle(paste0("Comparing the Performance of K-Means Algorithms\non ",
-            memuse::object.size(X), " of data"))
+### Use the scribe package (parte of the shinra meta-package) to plot results
+#plot(m1.cm, m2.cl, m3.cm, m4.cm,
+     #opnames=c("Hartigan-Wong", "Lloyd", "Forgy", "MacQueen")) + 
+    #ggtitle(paste0("Comparing the Performance of K-Means Algorithms\non ",
+            #memuse::object.size(X), " of data"))
