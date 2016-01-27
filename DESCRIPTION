@@ -1,16 +1,24 @@
 Package: pbdPAPI
-Version: 0.2-2
-Title: Programming with Big Data --- Performance Analysis
-    Tools for R
-Description: Profiling tools.
+Version: 0.3-0
+Title: Programming with Big Data --- Interface to PAPI
+Description: A collection of tools for measuring performance counter
+    data.  On modern 'x86' hardware, as programs are running, 
+    certain performance side-effects are being measured, like
+    cache misses, number of floating point operations executed, 
+    etc.  This package allows the R user to easily collect this counter 
+    data for their R programs.  The package uses the well-known 
+    C library 'PAPI' to perform the counter lookups.  There is also
+    an experimental interface to the Intel Performance Counter Monitor
+    (IPCM) for Windows and Mac users.
 Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
     email = "schmidt@math.utk.edu"),
-    person("Christian", "Heckendorf", role=c("aut")),
-    person("Wei-Chen", "Chen", role="aut"))
+    person("Christian", "Heckendorf", role="aut"),
+    person("Wei-Chen", "Chen", role="aut"),
+    person("Innovative Computing Laboratory", role="cph"))
 Depends:
     R (>= 2.14.0)
 Copyright: See pbdPAPI/inst/PAPI_LICENSE.txt for the files in
-    src/papi-5.3.0.
+    src/papi-5.4.1.
 Enhances: Rcpp
 NeedsCompilation: yes
 ByteCompile: yes
@@ -20,3 +28,4 @@ BugReports: http://group.r-pbd.org/
 MailingList: Please send questions and comments regarding pbdR to
     RBigData@gmail.com
 Maintainer: Drew Schmidt <schmidt@math.utk.edu>
+RoxygenNote: 5.0.1

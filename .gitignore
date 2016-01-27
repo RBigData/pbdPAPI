@@ -26,6 +26,7 @@ src/configure
 *.out
 *.toc
 *.tex.backup
+*.pdf
 
 
 ### Misc
@@ -41,6 +42,7 @@ src/papi-*/src/papi_events_table.h
 src/papi-*/src/papi_fwrappers_.c
 src/papi-*/src/papi_fwrappers__.c
 src/papi-*/src/upper_PAPI_FWRAPPERS.c
+src/papi-*/src/papi.pc
 
 src/papi-*/src/ctests/*
 src/papi-*/src/utils/*

@@ -1,3 +1,6 @@
+Release 0.3-0:
+    * Better README.md.
+
 Release 0.2-2:
 	* Switched to inline comments (roxygen).
 	* Improved documentation significantly.

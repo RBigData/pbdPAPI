@@ -1,14 +1,16 @@
-# pbdPAPI [![License](http://img.shields.io/badge/license-BSD%203--Clause-orange.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause)
+# pbdBASE 
+
+* **Version:** 0.3-0
+* **License:** [![License](http://img.shields.io/badge/license-BSD%203--Clause-orange.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause)
+* **Author:** See section below.
 
 
 pbdPAPI is an R package which offers a set of R bindings for the Performance
 Application Programming Interface (PAPI).  PAPI is a high-level C library for 
 gathering information from hardware performance counters.  PAPI measures events 
-like cache misses, flops, etc.
-
-This allows for very powerful profiling of R code (compiled code via, for 
-example, Rcpp, or even just plain old vanilla R), but with a very simple
-interface.
+like cache misses, flops, etc.  This allows for very powerful profiling of R 
+code (compiled code via, for example, Rcpp, or even just plain old vanilla R), 
+but with a very simple interface.
 
 For more information about PAPI, see the official website: 
 http://icl.cs.utk.edu/PAPI/
@@ -26,7 +28,6 @@ Unfortunately, at this time, PAPI is not supported on Windows or Mac
 As such, pbdPAPI does not support these platforms either.
 
 For a complete list of platforms which PAPI supports, see:
-
 http://icl.cs.utk.edu/papi/custom/index.html?lid=62&slid=96
 
 
@@ -85,15 +86,13 @@ data.frame(m=m, n=n, measured=count, theoretical=theoretical, difference=count-t
 ```
 
 
-## Software license and disclaimer
+## Authors
 
-This package has no official affiliation with the PAPI project.
+pbdPAPI is authored and maintained by:
+* Drew Schmidt
+* Christian Heckendorf
+* Wei-Chen Chen
 
-This software is licensed under the permissive 2-clause BSD license. You can 
-find a quick summary of the license here:
-
-https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29
-
-The full terms of the license (it's very short) are contained in the LICENSE 
-file in the root directory of the project.
+For copyrights on the shipped PAPI code, see
+`pbdPAPI/inst/PAPI_LICENSE.txt`.
 
