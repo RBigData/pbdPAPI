@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rm -rf src/libcipcm/ipcm-2.6/.bdsignore.all
+
+rm -rf src/libcipcm/ipcm-2.6/KSysGuard\ HOWTO.docx
+rm -rf src/libcipcm/ipcm-2.6/KSysGuard\ HOWTO.pdf

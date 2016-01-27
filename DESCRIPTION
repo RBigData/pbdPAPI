@@ -12,8 +12,6 @@ Depends:
 Copyright: See pbdPAPI/inst/PAPI_LICENSE.txt for the files in
     src/papi-5.3.0.
 Enhances: Rcpp
-LazyData: yes
-LazyLoad: yes
 NeedsCompilation: yes
 ByteCompile: yes
 License: BSD 3-clause License + file LICENSE

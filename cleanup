@@ -29,9 +29,3 @@ cd $HERE
 cd ./src/libcipcm && make distclean
 cd $HERE
 
-rm -rf src/libcipcm/ipcm-2.6/.bdsignore.all
-rm -rf src/papi-5.4.1/src/.indent.pro
-
-rm -rf src/libcipcm/ipcm-2.6/KSysGuard\ HOWTO.docx
-rm -rf src/libcipcm/ipcm-2.6/KSysGuard\ HOWTO.pdf
-

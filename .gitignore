@@ -28,6 +28,10 @@ src/configure
 *.tex.backup
 
 
+### Misc
+*.indent.pro
+
+
 ### PAPI build
 src/papi-*/src/components/perf_event/tests/
 src/papi-*/src/components/perf_event_uncore/tests/*
@@ -63,5 +67,4 @@ src/papi-*/src/libpfm4/lib/libpfm.so.4.4.0
 src/papi-*/src/man/
 src/papi-*/src/testlib/Makefile.target
 
-src/papi-*/.indent.pro
 src/libipcm/*/.bdsignore.all
