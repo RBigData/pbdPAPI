@@ -2,11 +2,12 @@
 
 PAPI_VER=`ls src | grep papi- | sed -e "s/papi-//"`
 
+sed -i -e "s/^PAPI_VERSION=.*/PAPI_VERSION=${PAPI_VER}/" src/Makevars.in
 
 ### Clean up the PAPI distribution that ships with pbdPAPI
 cd src/papi-${PAPI_VER}/
 
-rm -rf ChangeLog*
+rm -rf ChangeLog* *.txt README RELEASENOTES.txt
 rm -rf doc
 rm -rf man
 

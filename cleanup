@@ -1,6 +1,7 @@
 #! /bin/sh
 
 HERE=`pwd`
+PAPI_VER=`ls src | grep papi- | sed -e "s/papi-//"`
 
 rm -rf ./chm
 rm -rf ./config.*
@@ -22,9 +23,9 @@ rm -rf ./man/*.pdf
 rm -rf ./src/build
 rm -rf ./inst/libs
 
-rm -rf src/papi-5.4.1/src/ctests/mpifirst
+rm -rf src/papi-${PAPI_VERSION}/src/ctests/mpifirst
 
-cd ./src/papi-5.4.1/src/ && make clean
+cd ./src/papi-${PAPI_VERSION}/src/ && make clean
 cd $HERE
 cd ./src/libcipcm && make distclean
 cd $HERE

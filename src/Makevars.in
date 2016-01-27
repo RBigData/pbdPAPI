@@ -1,6 +1,6 @@
 #######################################################
 
-PAPI_VERSION=5.4.1
+PAPI_VERSION=5.4.3
 papi_home = ./papi-${PAPI_VERSION}/src/
 libcipcm_home = ./libcipcm/
 base_dir := `pwd`
