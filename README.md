@@ -1,6 +1,7 @@
-# pbdBASE 
+# pbdPAPI
 
 * **Version:** 0.3-0
+* **URL**: https://github.com/wrathematics/pbdPAPI
 * **License:** [![License](http://img.shields.io/badge/license-BSD%203--Clause-orange.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause)
 * **Author:** See section below.
 
