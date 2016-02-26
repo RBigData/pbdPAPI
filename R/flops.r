@@ -66,7 +66,7 @@ system.flops <- function(expr, gcFirst=TRUE, burnin=TRUE)
   if (missing(expr))
     expr <- NULL
   
-  events <- "PAPI_FP_INS"
+  events <- c("PAPI_FP_OPS", "PAPI_TOT_CYC")
   papi.avail.lookup(events=events, shorthand=FALSE)
   
   ret <- papi.flops(expr=expr)
