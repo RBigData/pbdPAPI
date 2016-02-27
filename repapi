@@ -8,26 +8,26 @@ sed -i -e "s/^PAPI_VERSION=.*/PAPI_VERSION=${PAPI_VER}/" src/Makevars.in
 cd src/papi-${PAPI_VER}/
 
 rm -rf ChangeLog* *.txt README RELEASENOTES.txt
-rm -rf doc
-rm -rf man
+#rm -rf doc
+#rm -rf man
 
 cd src
 rm -rf .indent.pro
 
-rm -rf ctests
-rm -rf event_data
-rm -rf examples
-rm -rf ftests
-rm -rf Matlab
-rm -rf utils
+#rm -rf ctests
+#rm -rf event_data
+#rm -rf examples
+#rm -rf ftests
+#rm -rf Matlab
+#rm -rf utils
 
 ### so we don't spawn an infinite make loop
-mkdir ../doc
-mkdir ../man
+#mkdir ../doc
+#mkdir ../man
 
-mkdir ctests
-mkdir event_data
-mkdir examples
-mkdir ftests
-mkdir Matlab
-mkdir utils
+#mkdir ctests
+#mkdir event_data
+#mkdir examples
+#mkdir ftests
+#mkdir Matlab
+#mkdir utils
