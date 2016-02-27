@@ -17,8 +17,8 @@ rm -rf .indent.pro
 #rm -rf ctests
 #rm -rf event_data
 #rm -rf examples
-#rm -rf ftests
-#rm -rf Matlab
+rm -rf ftests
+rm -rf Matlab
 #rm -rf utils
 
 ### so we don't spawn an infinite make loop
