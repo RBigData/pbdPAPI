@@ -1,6 +1,7 @@
 Package: pbdPAPI
-Version: 0.3-0
+Type: Package
 Title: Programming with Big Data --- Interface to PAPI
+Version: 0.3-0
 Description: A collection of tools for measuring performance counter
     data.  On modern 'x86' hardware, as programs are running, 
     certain performance side-effects are being measured, like
@@ -10,22 +11,23 @@ Description: A collection of tools for measuring performance counter
     C library 'PAPI' to perform the counter lookups.  There is also
     an experimental interface to the Intel Performance Counter Monitor
     (IPCM) for Windows and Mac users.
-Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
-    email = "schmidt@math.utk.edu"),
-    person("Christian", "Heckendorf", role="aut"),
-    person("Wei-Chen", "Chen", role="aut"),
-    person("Innovative Computing Laboratory", role="cph"))
-Depends:
-    R (>= 2.14.0)
+License: BSD 3-clause License + file LICENSE
 Copyright: See pbdPAPI/inst/PAPI_LICENSE.txt for the files in
     src/papi-5.4.1.
+Depends:
+    R (>= 2.14.0)
+SystemRequirements: Linux or FreeBSD.
 Enhances: Rcpp
 NeedsCompilation: yes
 ByteCompile: yes
-License: BSD 3-clause License + file LICENSE
+Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
+    email = "wrathematics@gmail.com"),
+    person("Christian", "Heckendorf", role="aut"),
+    person("Wei-Chen", "Chen", role="aut"),
+    person("Innovative Computing Laboratory", role="cph"))
 URL: http://r-pbd.org/
 BugReports: http://group.r-pbd.org/
 MailingList: Please send questions and comments regarding pbdR to
     RBigData@gmail.com
-Maintainer: Drew Schmidt <schmidt@math.utk.edu>
+Maintainer: Drew Schmidt <wrathematics@gmail.com>
 RoxygenNote: 5.0.1
