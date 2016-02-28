@@ -1,5 +1,7 @@
 Release 0.3-0:
-    * Better README.md.
+	* Better README.md.
+	* Move plotting components to hpcvis package.
+	* Import PAPI 5.4.3; fix build problems.
 
 Release 0.2-2:
 	* Switched to inline comments (roxygen).
