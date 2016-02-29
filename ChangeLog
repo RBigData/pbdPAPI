@@ -1,4 +1,8 @@
+Release 0.3-1:
+  * 
+
 Release 0.3-0:
+	* Better event checking in system.flops().
 	* Better README.md.
 	* Move plotting components to hpcvis package.
 	* Import PAPI 5.4.3; fix build problems.
