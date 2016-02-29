@@ -1,4 +1,6 @@
-Version 3.0:
-    * Expand plots
-    * Expand benchmarkers
+Version 0.3-1
+    * add flops benchmarker
+
+Version 0.4-0
     * develop shiny interface
+
