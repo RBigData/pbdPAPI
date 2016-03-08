@@ -1,27 +1,30 @@
 Release 0.3-1:
   * Add cache benchmarker.
 
-Release 0.3-0:
-	* Better event checking in system.flops().
-	* Better README.md.
-	* Move plotting components to hpcvis package.
-	* Import PAPI 5.4.3; fix build problems.
+Release 0.3-0 (2/29/16):
+  * Better event checking in system.flops().
+  * Better README.md.
+  * Move plotting components to hpcvis package.
+  * Import PAPI 5.4.3; fix build problems.
 
-Release 0.2-2:
-	* Switched to inline comments (roxygen).
-	* Improved documentation significantly.
+Release 0.2-2 (3/10/2015):
+  * Switched to inline comments (roxygen).
+  * Improved documentation significantly.
 
-Release 0.2-1:
-	* Added cache and flops plotting utilities.
-	* Fixed bug that made it impossible to profile after errors sometimes.
+Release 0.2-1 (2/18/2015):
+  * Added cache and flops plotting utilities.
+  * Fixed bug that made it impossible to profile after errors sometimes.
 
-Release 0.2-0:
-	* Intel PCM backend for OSX and Windows support.
+Release 0.2-0 (2/10/2015):
+  * Intel PCM backend for OSX and Windows support.
+  * Register native routines.
+  * Added grid plotter.
 
-Release 0.1-0:
-	* CPU utilization
-	* Cache hit/miss/access
-	* Idle cycles
-	* CPU/RAM bound categorization
-	* Hardware information report
-	* Generic low-level R interface for high-level PAPI API
+Release 0.1-0 (7/7/2014):
+  * CPU utilization
+  * Cache hit/miss/access
+  * Idle cycles
+  * CPU/RAM bound categorization
+  * Hardware information report
+  * Generic low-level R interface for high-level PAPI API
+
