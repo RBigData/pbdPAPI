@@ -69,8 +69,7 @@ R CMD INSTALL pbdPAPI_0.1-0.tar.gz
 \end{Command}
 and using the \pkg{devtools} package:
 \begin{lstlisting}[language=rr]
-library(devtools)
-install_github(username="wrathematics", repo="pbdPAPI")
+devtools::install_github("RBigData/pbdPAPI")
 \end{lstlisting}
 
 
@@ -101,8 +100,7 @@ R CMD INSTALL pbdPAPI_0.1-0.tar.gz \
 \end{Command}
 and using the \pkg{devtools} package:
 \begin{lstlisting}
-library(devtools)
-install_github(username="wrathematics", repo="pbdPAPI", 
+devtools::install_github("RBigData/pbdPAPI", 
     args="--configure-args='--enable-system-papi 
           --with-papi-home=location/of/PAPI/install'")
 \end{lstlisting}
@@ -123,8 +121,7 @@ R CMD INSTALL pbdPAPI_0.1-0.tar.gz \
 \end{Command}
 and using the \pkg{devtools} package:
 \begin{lstlisting}
-library(devtools)
-install_github(username="wrathematics", repo="pbdPAPI", 
+devtools::install_github("RBigData/pbdPAPI", 
     args="--configure-args=--enable-ipcm")
 \end{lstlisting}
 
