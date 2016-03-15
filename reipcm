@@ -4,3 +4,5 @@ rm -rf src/libcipcm/ipcm-2.6/.bdsignore.all
 
 rm -rf src/libcipcm/ipcm-2.6/KSysGuard\ HOWTO.docx
 rm -rf src/libcipcm/ipcm-2.6/KSysGuard\ HOWTO.pdf
+
+rm -rf src/libcipcm/ipcm-2.6/MacMSRDriver/PcmMsr.xcodeproj/project.xcworkspace
