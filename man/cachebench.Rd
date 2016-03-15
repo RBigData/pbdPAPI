@@ -12,10 +12,12 @@ cachebench(..., nreps = 10)
 \item{nreps}{Number of replications for each expression.}
 }
 \value{
-
+A dataframe (class "cachebench") containng the timings and some
+basic summary statistics.
 }
 \description{
-A benchmarker for
+A benchmarker for measuring cache misses of multiple runs of
+one or more functions.
 }
 \details{
 Currently only total cache misses are profiled.  Future versions

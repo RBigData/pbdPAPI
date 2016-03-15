@@ -1,6 +1,7 @@
 #' cachebench
 #' 
-#' A benchmarker for 
+#' A benchmarker for measuring cache misses of multiple runs of
+#' one or more functions.
 #' 
 #' @details
 #' Currently only total cache misses are profiled.  Future versions
@@ -13,6 +14,8 @@
 #' Number of replications for each expression.
 #' 
 #' @return
+#' A dataframe (class "cachebench") containng the timings and some
+#' basic summary statistics.
 #' 
 #' @examples
 #' \dontrun{
