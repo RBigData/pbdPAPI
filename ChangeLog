@@ -1,5 +1,6 @@
 Release 0.3-2 (///)
-  * Add flops benchmarker (TODO)
+  * Fix documentation errors.
+  * Declare GNU make as system requirement.
 
 Release 0.3-1 (3/8/2016):
   * Add cache benchmarker.
@@ -30,4 +31,3 @@ Release 0.1-0 (7/7/2014):
   * CPU/RAM bound categorization
   * Hardware information report
   * Generic low-level R interface for high-level PAPI API
-
