@@ -12,12 +12,12 @@ Description: A collection of tools for measuring performance counter
     an experimental interface to the Intel Performance Counter Monitor
     (IPCM) for Windows and Mac users.
 License: BSD 3-clause License + file LICENSE
-Copyright: See pbdPAPI/inst/PAPI_LICENSE.txt for the files in
-    src/papi-5.4.1.
+Copyright: See pbdPAPI/inst/PAPI_LICENSE.txt for the files in src/papi-5.4.1.
 Depends:
-    R (>= 2.14.0)
-SystemRequirements: Linux or FreeBSD.
-Enhances: Rcpp
+    R (>= 3.0.0)
+Enhances: 
+    Rcpp
+SystemRequirements: GNU make
 NeedsCompilation: yes
 ByteCompile: yes
 Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
@@ -27,7 +27,5 @@ Authors@R: c(person("Drew", "Schmidt", role = c("aut", "cre"),
     person("Innovative Computing Laboratory", role="cph"))
 URL: http://r-pbd.org/
 BugReports: http://group.r-pbd.org/
-MailingList: Please send questions and comments regarding pbdR to
-    RBigData@gmail.com
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
 RoxygenNote: 5.0.1
