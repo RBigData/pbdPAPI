@@ -24,6 +24,7 @@
 ################################################################################
 
 AC_INIT(DESCRIPTION)
+AC_PROG_CC([xlc icc gcc cc])
 
 AC_ARG_ENABLE(ipcm,
   AC_HELP_STRING([--enable-ipcm], [Use the Intel Performance Counter Monitor instead of PAPI.]),
@@ -55,16 +56,29 @@ else
 fi
 
 
-AC_PROG_CC([xlc icc gcc cc])
 
-AC_SUBST(CPICFLAGS)
+### Report
+echo " "
+echo "****************** Results of pbdPAPI package configure *****************"
+echo " "
+echo ">> CC = ${CC}"
+echo ">> Build IPCM: ${BUILD_IPCM}"
+echo ">> Build Bundled PAPI: ${BUILD_BUNDLED_PAPI}"
+echo ">> PAPI_HOME = ${PAPI_HOME}"
+echo " "
+echo "************************************************************************"
+echo " "
+
+
+
 AC_SUBST(BUILD_BUNDLED_PAPI)
 AC_SUBST(PAPI_CFLAGS)
 AC_SUBST(PAPI_LIBS)
 AC_SUBST(OBEXTRA)
-AC_SUBST(BUILD_IPCM)
-
-
 AC_OUTPUT(src/Makevars)
+
+AC_SUBST(CC)
 AC_OUTPUT(src/build_papi)
+
+AC_SUBST(BUILD_IPCM)
 AC_OUTPUT(R/whichlib.r)

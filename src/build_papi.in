@@ -1,6 +1,6 @@
 MY_PREFIX_DIR=`pwd | sed -e "s#papi-.*\/src#build#g"`
 CC=@CC@
-CC="${CC} MY_CFLAGS"
+#CC="${CC} MY_CFLAGS"
 CC="${CC}" ./configure --prefix=${MY_PREFIX_DIR} --with-shared-lib=no --with-tests=ctests
 
 # make static
