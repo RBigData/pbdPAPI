@@ -9,7 +9,7 @@
 
 \mytitle{Guide to the\\ \thispackage Package}
 \mysubtitle{Performance Analysis Tools for R}
-\myversion{0.3-0}
+\myversion{0.3-2}
 \myauthor{
 \centering
 Drew Schmidt \\
