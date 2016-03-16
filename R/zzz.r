@@ -18,6 +18,8 @@
   
   library.dynam("pbdPAPI", pkgname, libname)
   
+  papi.avail.internal()
+  
   invisible()
 }
 
@@ -40,5 +42,5 @@
 
 .onAttach <- function(libname, pkgname)
 {
-  papi.avail.internal()
+  invisible()
 }
