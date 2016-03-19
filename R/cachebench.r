@@ -19,7 +19,7 @@
 #' 
 #' @examples
 #' \dontrun{
-#' cachebench(rnorm(1e4), rnorm(2e4), rnorm(3e4))
+#' pbdPAPI::cachebench(rnorm(1e4), rnorm(2e4), rnorm(3e4))
 #' }
 #' 
 #' @export
