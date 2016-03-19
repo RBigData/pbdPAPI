@@ -28,10 +28,16 @@ cachebench <- function(..., nreps=10)
   l <- list(...)
   len <- length(l)
   
-  type <- "Cache Misses"
-  
   if (len == 0)
     stop("No expressions")
+  
+  if (!is.numeric(nreps))
+    stop("argument 'nreps' must be a positive integer")
+  nreps <- as.integer(nreps)
+  if (is.na(nreps) || nreps < 1)
+    stop("argument 'nreps' must be a positive integer")
+  
+  type <- paste("Cache Misses with", nreps, "Replications")
   
   args <- match.call()[-1]
   names <- names(args)
