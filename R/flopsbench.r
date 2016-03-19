@@ -43,7 +43,7 @@ flopsbench <- function(..., data)
     argnames <- sapply(1:len, function(i) if (argnames[i] == "") charargs[i] else argnames[i])
   }
   
-  template <- system.flops(NULL)
+  template <- system.flops(NULL, gcFirst=TRUE, burnin=TRUE)
   colnames <- names(template)
   ret <- lapply(1:len, function(.) {tmp <- matrix(0, nrow=datalen, ncol=4); colnames(tmp) <- colnames; tmp})
   names(ret) <- argnames
@@ -52,7 +52,7 @@ flopsbench <- function(..., data)
   {
     for (j in 1:datalen)
     {
-      tmp <- system.flops(expr=eval(args[[i]]))
+      tmp <- system.flops(expr=eval(args[[i]]), gcFirst=FALSE, burnin=FALSE)
       ret[[i]][j, ] <- as.numeric(tmp)
     }
   }

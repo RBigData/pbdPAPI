@@ -47,7 +47,7 @@ cachebench <- function(..., nreps=10)
     argnames <- sapply(1:len, function(i) if (argnames[i] == "") charargs[i] else argnames[i])
   }
   
-  template <- system.cache(NULL)
+  template <- system.cache(NULL, gcFirst=TRUE, burnin=TRUE)
   colnames <- names(template)
   ret <- lapply(1:len, function(.) {tmp <- matrix(0L, nrow=nreps, ncol=3); colnames(tmp) <- colnames; tmp})
   names(ret) <- argnames
@@ -57,7 +57,7 @@ cachebench <- function(..., nreps=10)
   {
     for (j in 1:nreps)
     {
-      tmp <- system.cache(expr=eval(args[[i]]))
+      tmp <- system.cache(expr=eval(args[[i]]), gcFirst=FALSE, burnin=FALSE)
       ret[[i]][j, ] <- as.integer(tmp)
     }
   }
