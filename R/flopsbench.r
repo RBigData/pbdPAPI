@@ -14,7 +14,7 @@
 #' 
 #' @examples
 #' \dontrun{
-#' data <- list(rnorm(1e4), rnorm(2e4), rnorm(3e4))
+#' data <- list(runif(1e4), runif(2e4), runif(3e4))
 #' flopsbench(sqrt, exp, data=data)
 #' }
 #' 
@@ -52,7 +52,8 @@ flopsbench <- function(..., data)
   {
     for (j in 1:datalen)
     {
-      tmp <- system.flops(expr=eval(args[[i]]), gcFirst=FALSE, burnin=FALSE)
+      expr <- parse(text=paste0(args[[i]], "(", data[[j]], ")"))
+      tmp <- system.flops(expr=eval(expr), gcFirst=TRUE, burnin=FALSE)
       ret[[i]][j, ] <- as.numeric(tmp)
     }
   }

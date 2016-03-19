@@ -21,7 +21,7 @@ second) of one or more functions.
 }
 \examples{
 \dontrun{
-data <- list(rnorm(1e4), rnorm(2e4), rnorm(3e4))
+data <- list(runif(1e4), runif(2e4), runif(3e4))
 flopsbench(sqrt, exp, data=data)
 }
 
