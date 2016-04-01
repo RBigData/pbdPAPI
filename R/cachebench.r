@@ -10,6 +10,8 @@
 #' 
 #' @param ...
 #' Expressions to be benchmarked.
+#' @param type,events
+#' See \code{?system.cache()}.
 #' @param nreps
 #' Number of replications for each expression.
 #' 
@@ -23,7 +25,7 @@
 #' }
 #' 
 #' @export
-cachebench <- function(..., nreps=10) 
+cachebench <- function(..., type="miss", events="total", nreps=10) 
 {
   l <- list(...)
   len <- length(l)
@@ -37,7 +39,8 @@ cachebench <- function(..., nreps=10)
   if (is.na(nreps) || nreps < 1)
     stop("argument 'nreps' must be a positive integer")
   
-  type <- paste("Cache Misses with", nreps, "Replications")
+  
+  typename <- paste("Cache", titlecase(pluralize(type)), "with", nreps, "Replications")
   
   args <- match.call()[-1]
   names <- names(args)
@@ -53,9 +56,9 @@ cachebench <- function(..., nreps=10)
     argnames <- sapply(1:len, function(i) if (argnames[i] == "") charargs[i] else argnames[i])
   }
   
-  template <- system.cache(NULL, gcFirst=TRUE, burnin=TRUE)
+  template <- system.cache(NULL, type=type, events=events, gcFirst=TRUE, burnin=TRUE)
   colnames <- names(template)
-  ret <- lapply(1:len, function(.) {tmp <- matrix(0L, nrow=nreps, ncol=3); colnames(tmp) <- colnames; tmp})
+  ret <- lapply(1:len, function(.) {tmp <- matrix(0L, nrow=nreps, ncol=length(template)); colnames(tmp) <- colnames; tmp})
   names(ret) <- argnames
   class(ret) <- "cachebench"
   
@@ -63,7 +66,7 @@ cachebench <- function(..., nreps=10)
   {
     for (j in 1:nreps)
     {
-      tmp <- system.cache(expr=eval(args[[i]]), gcFirst=FALSE, burnin=FALSE)
+      tmp <- system.cache(expr=eval(args[[i]]), type=type, events=events, gcFirst=FALSE, burnin=FALSE)
       ret[[i]][j, ] <- as.integer(tmp)
     }
   }
@@ -76,7 +79,7 @@ cachebench <- function(..., nreps=10)
   summarystats <- cbind(summarystats, means)
   ret$summarystats <- summarystats
   
-  ret$type <- type
+  ret$type <- typename
   class(ret) <- "cachebench"
   
   return(ret)

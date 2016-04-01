@@ -4,10 +4,12 @@
 \alias{cachebench}
 \title{cachebench}
 \usage{
-cachebench(..., nreps = 10)
+cachebench(..., type = "miss", events = "total", nreps = 10)
 }
 \arguments{
 \item{...}{Expressions to be benchmarked.}
+
+\item{type, events}{See \code{?system.cache()}.}
 
 \item{nreps}{Number of replications for each expression.}
 }
