@@ -52,7 +52,7 @@ flopsbench <- function(..., data)
   {
     for (j in 1:datalen)
     {
-      expr <- parse(text=paste0(args[[i]], "(", data[[j]], ")"))
+      expr <- parse(text=paste0(args[[i]], "(data[[j]])"))
       tmp <- system.flops(expr=eval(expr), gcFirst=TRUE, burnin=FALSE)
       ret[[i]][j, ] <- as.numeric(tmp)
     }
